@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import heroImage from '../../images/heroImage.jpg';
-import { ImgContainer, Border } from '../../shared';
+import heroImage from 'images/heroImage.jpg';
+import { ImgContainer, Border } from 'Shared';
 
 const Wrapper = styled.div`
   position: absolute;

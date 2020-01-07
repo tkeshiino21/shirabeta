@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {
-  theme,
-  Border,
-  Text,
-  Container,
-  Card,
-  Spacing,
-  Strong,
-} from '../shared';
-import Layout from '../components/App/Layout';
+import { theme, Border, Text, Container, Card, Spacing, Strong } from 'Shared';
+import Layout from 'Layout';
 
 const AddBook = () => {
   const [result, setResult] = useState({

@@ -2,25 +2,28 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import styled from 'styled-components';
-import InputData from './InputData';
-import { media, Card, Container, Button } from '../../shared';
+import InputData from 'components/templates/Contact/InputData';
+import { media, Card, Container, Button } from 'Shared';
 
-const ResponsiveContainer = styled(Container)`
+const ResponsiveVanish = styled(Container)`
   ${media.md`
     display: none;
   `}
 `;
 
+const ContactContainer = styled(Container)`
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+`;
+
 const ContactForm = () => {
   return (
-    <ResponsiveContainer>
-      <Container
-        className="vertical"
-        justify="center"
-        align="flex-end"
-        height="100%"
-        width="100%"
-      >
+    <ResponsiveVanish>
+      <ContactContainer>
         <Card width="200px" className="shadow" style={{ opacity: 0.9 }}>
           <Formik
             initialValues={{ name: '', password: '', email: '' }}
@@ -59,8 +62,8 @@ const ContactForm = () => {
             )}
           </Formik>
         </Card>
-      </Container>
-    </ResponsiveContainer>
+      </ContactContainer>
+    </ResponsiveVanish>
   );
 };
 

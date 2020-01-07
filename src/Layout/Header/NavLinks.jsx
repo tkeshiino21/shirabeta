@@ -1,25 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { MdHome } from 'react-icons/md';
-import { theme, Border } from '../../../shared';
-
-const NavLink = styled(Link)`
-  color: ${theme.secondary};
-  margin: 0 ${theme.large};
-  &.navItem {
-    line-height: 2.5;
-  }
-`;
-
-const NavMenu = styled.div`
-  position: absolute;
-  top: 35px;
-  width: 200px;
-  background: white;
-  z-index: 1;
-  box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
-`;
+import { theme, Border } from 'Shared';
+import { NavLink, NavMenu } from 'Layout/Header/HeaderStyle';
 
 const NavLinks = () => {
   const navItems = [

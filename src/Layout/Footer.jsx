@@ -1,14 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme, Text, Container } from '../../shared';
-
-const WText = styled(Text)`
-  color: ${theme.light};
-`;
-
-const GText = styled(Text)`
-  color: ${theme.naturalDark};
-`;
+import { theme, NaturalDarkText, LightText, Container } from 'Shared';
 
 const FooterContainer = styled.div`
   display: flex;
@@ -29,27 +21,29 @@ const Footer = () => {
         height="120px"
       >
         <Container className="vertical" style={{ flexGrow: 1 }}>
-          <WText as="h2" fs={theme.large}>
+          <LightText as="h2" fs={theme.large}>
             Livrio
-          </WText>
-          <GText fs={theme.small}>web created by Takeshi Inoue</GText>
+          </LightText>
+          <NaturalDarkText fs={theme.small}>
+            web created by Takeshi Inoue
+          </NaturalDarkText>
         </Container>
         <Container className="horizontal" alignSelf="flex-end" width="300px">
           <Container className="vertical" width="50%">
-            <WText as="h5" fs={theme.medium}>
+            <LightText as="h5" fs={theme.medium}>
               Footer
-            </WText>
-            <GText as="p">Footer</GText>
-            <GText as="p">Footer</GText>
-            <GText as="p">Footer</GText>
+            </LightText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
           </Container>
           <Container className="vertical" width="50%">
-            <WText as="h5" fs={theme.medium}>
+            <NaturalDarkText as="h5" fs={theme.medium}>
               Footer
-            </WText>
-            <GText as="p">Footer</GText>
-            <GText as="p">Footer</GText>
-            <GText as="p">Footer</GText>
+            </NaturalDarkText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <NaturalDarkText as="p">Footer</NaturalDarkText>
           </Container>
         </Container>
       </Container>

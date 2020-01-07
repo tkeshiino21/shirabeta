@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { MdTrendingUp, MdFlag } from 'react-icons/md';
-import { media, theme, Container, Button } from '../../../shared';
+import { media, theme, Container, Button } from 'Shared';
 
 const MenuButton = styled(Button)`
   border: none;

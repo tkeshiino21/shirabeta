@@ -2,16 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import moment from 'moment';
-import SubMenu from './App/SubMenu/MenuLinks';
-import {
-  theme,
-  media,
-  Text,
-  Card,
-  Container,
-  Spacing,
-  Border,
-} from '../shared';
+import SubMenu from 'Layout/SubMenu/MenuLinks';
+import { theme, media, Text, Card, Container, Spacing, Border } from 'Shared';
 
 const ResponsiveContainer = styled(Container)`
   width: 100%;

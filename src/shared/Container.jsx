@@ -7,11 +7,8 @@ export const Container = styled.div`
   display: ${props => props.display || 'flex'};
   width: ${props => props.width || 'auto'};
   height: ${props => props.height || '100%'};
-  /* 水平方向の揃え flex-start flex-end center space-between space-around space-evenly*/
   justify-content: ${props => props.justify || 'flex-start'};
-  /* 垂直方向の揃え stretch flex-start flex-end center baseline*/
   align-items: ${props => props.align || 'stretch'};
-  /* 垂直方向の複数行 stretch flex-start flex-end center space-between space-around space-evenly*/
   align-content: ${props => props.aligns || 'strech'};
 
   &.vertical {
@@ -44,10 +41,10 @@ const MainContents = styled.div`
   margin: 0 10px;
 `;
 
-export const MainWrapper = props => {
+export const MainWrapper = ({ children }) => {
   return (
     <MainContainer>
-      <MainContents>{props}</MainContents>
+      <MainContents>{children}</MainContents>
     </MainContainer>
   );
 };

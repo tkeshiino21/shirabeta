@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorMessage, Field } from 'formik';
-import { theme, Container, Spacing, Border } from '../../shared';
+import { theme, Container, Spacing, Border } from 'Shared';
 
 const InputData = () => {
   const datas = [

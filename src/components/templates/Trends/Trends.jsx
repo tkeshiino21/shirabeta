@@ -2,16 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import moment from 'moment';
-import SubMenu from './App/SubMenu/MenuLinks';
-import {
-  theme,
-  media,
-  Text,
-  Card,
-  Container,
-  Spacing,
-  Border,
-} from '../shared';
+import SubMenu from 'Layout/SubMenu/MenuLinks';
+import { theme, media, Text, Card, Container, Spacing, Border } from 'Shared';
 
 const ResponsiveContainer = styled(Container)`
   width: 100%;
@@ -51,35 +43,33 @@ const Trends = () => {
       <Container width="100%" height="80%">
         <ResponsiveCard>
           <Container className="vertical" height="60%">
-            <ul>
-              {posts.map(post => {
-                return (
-                  <li key={post.title}>
-                    <Spacing mTop={theme.large} />
-                    <Text
-                      as="h5"
-                      fs="14px"
-                      lh="1"
-                      color={theme.dark}
-                      display="block"
-                      style={{
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {post.title}
-                    </Text>
-                    <Text as="p" fs="8px" color={theme.naturalDark}>
-                      {moment(post.created_at).format(
-                        'dddd, MMMM Do YYYY, h:mm:ss a',
-                      )}
-                    </Text>
-                    <Border bottom="1px" color={theme.naturalDark} />
-                  </li>
-                );
-              })}
-            </ul>
+            {posts.map(post => {
+              return (
+                <li key={post.id}>
+                  <Spacing mTop={theme.large} />
+                  <Text
+                    as="h5"
+                    fs="14px"
+                    lh="1"
+                    color={theme.dark}
+                    display="block"
+                    style={{
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {post.title}
+                  </Text>
+                  <Text as="p" fs="8px" color={theme.naturalDark}>
+                    {moment(post.created_at).format(
+                      'dddd, MMMM Do YYYY, h:mm:ss a',
+                    )}
+                  </Text>
+                  <Border bottom="1px" color={theme.naturalDark} />
+                </li>
+              );
+            })}
           </Container>
         </ResponsiveCard>
       </Container>

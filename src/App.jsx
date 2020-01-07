@@ -2,17 +2,17 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // for style
 import { ThemeProvider } from 'styled-components';
-import { theme } from './shared';
-import GlobalStyle from './shared/GlobalStyle';
+import { theme } from 'Shared';
+import GlobalStyles from 'Shared/GlobalStyle';
 // router components
-import HomePage from './containers/HomePage';
-import SearchPage from './containers/SearchPage';
-import AddBook from './containers/AddBook';
+import HomePage from 'components/pages/Home';
+import SearchPage from 'components/pages/Search';
+import AddBook from 'components/pages/AddBook';
 
 const App = () => {
   return (
     <ThemeProvider theme={{ theme }}>
-      <GlobalStyle />
+      <GlobalStyles />
       <Router>
         <Switch>
           <Route path="/" exact component={HomePage} />

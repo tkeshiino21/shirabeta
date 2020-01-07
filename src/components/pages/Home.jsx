@@ -1,11 +1,11 @@
 import React from 'react';
-import Layout from '../components/App/Layout';
-import HeroHeader from '../components/App/HeroHeader';
-import Trends from '../components/Trends';
-import ContactForm from '../components/Contact/ContactForm';
-import { theme, Text, Spacing, Container } from '../shared';
+import Layout from 'Layout';
+import HeroHeader from 'Layout/HeroHeader';
+import Trends from 'components/templates/Trends/Trends';
+import ContactForm from 'components/templates/Contact/ContactForm';
+import { theme, Text, Spacing, Container } from 'Shared';
 
-const HomePage = () => {
+const Home = () => {
   return (
     <Layout>
       <HeroHeader />
@@ -42,4 +42,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { theme } from './theme';
+import { theme } from 'Shared/theme';
 
 export const LinkButton = styled(Link)`
   color: ${props => props.color || theme.secondary};

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from './theme';
-import { media } from './media';
+import { theme } from 'Shared/theme';
+import { media } from 'Shared/media';
 
 export const Text = styled.span`
   display: ${props => props.display};
@@ -15,6 +15,14 @@ export const Text = styled.span`
     font-size: 18px;
   `};
   }
+`;
+
+export const LightText = styled(Text)`
+  color: ${theme.light};
+`;
+
+export const NaturalDarkText = styled(Text)`
+  color: ${theme.naturalDark};
 `;
 
 Text.defaultProps = {
