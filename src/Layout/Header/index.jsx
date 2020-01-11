@@ -7,6 +7,7 @@ import {
   Button,
   LinkButton,
   Spacing,
+  Strong,
 } from 'Shared';
 import {
   HeaderContainer,
@@ -17,6 +18,14 @@ import {
 import NavLinks from 'Layout/Header/NavLinks';
 
 const Header = () => {
+  const [auth, setAuth] = useState({
+    uid: false,
+    name: 'hogefuga',
+  });
+  const handleClick = () => {
+    return setAuth({ ...auth, uid: !auth.uid });
+  };
+
   const [isOpen, setIsOpen] = useState(false);
   const onClickHandler = () => {
     return setIsOpen(!isOpen);
@@ -33,16 +42,39 @@ const Header = () => {
             <LinkButton to="/">Livrio</LinkButton>
           </Text>
           <AuthButtonContainer>
-            <Button className="primary" style={{ padding: '5px 10px' }}>
-              Signup
-            </Button>
-            <Spacing mRight={theme.small} />
-            <Button className="text" color={theme.light} mRight={theme.small}>
-              Login
-            </Button>
-            <Button className="text" color={theme.light} mRight={theme.small}>
-              Logout
-            </Button>
+            {!auth.uid ? (
+              <>
+                <Button
+                  className="primary"
+                  style={{ padding: '5px 10px' }}
+                  onClick={handleClick}
+                >
+                  Signup
+                </Button>
+                <Spacing mRight={theme.small} />
+                <Button
+                  className="text"
+                  color={theme.light}
+                  mRight={theme.small}
+                >
+                  Login
+                </Button>
+              </>
+            ) : (
+              <>
+                <Text color={theme.light} fs={theme.small}>
+                  ようこそ<Strong fs={theme.medium}> {auth.name} </Strong> さん
+                </Text>
+                <Spacing mRight={theme.small} />
+                <Button
+                  className="text"
+                  color={theme.light}
+                  mRight={theme.small}
+                >
+                  Logout
+                </Button>
+              </>
+            )}
           </AuthButtonContainer>
         </Container>
       </MainWrapper>

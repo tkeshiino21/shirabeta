@@ -5,9 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'Shared';
 import GlobalStyles from 'Shared/GlobalStyle';
 // router components
-import HomePage from 'components/pages/Home';
-import SearchPage from 'components/pages/Search';
-import AddBook from 'components/pages/AddBook';
+import Home from 'components/Home';
+import Search from 'components/Search';
+import AddBook from 'components/AddBook';
+import MyPage from 'components/MyPage';
 
 const App = () => {
   return (
@@ -15,9 +16,10 @@ const App = () => {
       <GlobalStyles />
       <Router>
         <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/search" component={SearchPage} />
+          <Route path="/" exact component={Home} />
+          <Route path="/search" component={Search} />
           <Route path="/add-book" component={AddBook} />
+          <Route path="/my-page" component={MyPage} />
         </Switch>
       </Router>
     </ThemeProvider>

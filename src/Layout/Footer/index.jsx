@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme, NaturalDarkText, LightText, Container } from 'Shared';
+import TechLog from 'Layout/Footer/TechLog';
+import Increments from 'Layout/Footer/Increments';
 
 const FooterContainer = styled.div`
   display: flex;
@@ -12,6 +14,17 @@ const FooterContainer = styled.div`
 `;
 
 const Footer = () => {
+  const LinkItemMapping = ({ linkItems }) => {
+    return linkItems.map(linkItem => {
+      return (
+        <li key={linkItem.name}>
+          <NaturalDarkText as="a" href={linkItem.link}>
+            {linkItem.name}
+          </NaturalDarkText>
+        </li>
+      );
+    });
+  };
   return (
     <FooterContainer className="vertical">
       <Container
@@ -31,19 +44,15 @@ const Footer = () => {
         <Container className="horizontal" alignSelf="flex-end" width="300px">
           <Container className="vertical" width="50%">
             <LightText as="h5" fs={theme.medium}>
-              Footer
+              TechLog
             </LightText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <LinkItemMapping linkItems={TechLog} />
           </Container>
           <Container className="vertical" width="50%">
-            <NaturalDarkText as="h5" fs={theme.medium}>
-              Footer
-            </NaturalDarkText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
-            <NaturalDarkText as="p">Footer</NaturalDarkText>
+            <LightText as="h5" fs={theme.medium}>
+              Increments
+            </LightText>
+            <LinkItemMapping linkItems={Increments} />
           </Container>
         </Container>
       </Container>

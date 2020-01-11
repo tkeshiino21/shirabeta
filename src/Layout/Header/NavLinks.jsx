@@ -22,6 +22,12 @@ const NavLinks = () => {
       value: 'BookRegister',
       label: '本の登録',
       link: '/add-book',
+      border: theme.naturalDark,
+    },
+    {
+      value: 'MyPage',
+      label: '本の登録',
+      link: '/my-page',
       border: 'inherit',
     },
   ];

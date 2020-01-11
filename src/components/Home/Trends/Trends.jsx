@@ -3,7 +3,22 @@ import styled from 'styled-components';
 import axios from 'axios';
 import moment from 'moment';
 import SubMenu from 'Layout/SubMenu/MenuLinks';
+import { MdTrendingUp, MdFlag } from 'react-icons/md';
 import { theme, media, Text, Card, Container, Spacing, Border } from 'Shared';
+import Filter from 'components/Home/Trends/Filter';
+
+const listItems = [
+  {
+    name: 'trends',
+    label: 'トレンド',
+    icon: MdTrendingUp,
+  },
+  {
+    name: 'milestones',
+    label: '定番',
+    icon: MdFlag,
+  },
+];
 
 const ResponsiveContainer = styled(Container)`
   width: 100%;
@@ -23,8 +38,12 @@ const ResponsiveCard = styled(Card)`
 `;
 
 const Trends = () => {
+  const [tag, setTag] = useState({ tagName: '本' });
+  const handleClick = e => {
+    return setTag({ tagName: e.target.value });
+  };
   const [posts, setPosts] = useState([1, 2, 3]);
-  const url = 'https://qiita.com/api/v2/tags/技術書/items?page=1&per_page=10';
+  const url = `https://qiita.com/api/v2/tags/${tag.tagName}/items?page=1&per_page=10`;
   const fetchResource = async () => {
     const response = await axios.get(url);
     setPosts(response.data);
@@ -33,16 +52,19 @@ const Trends = () => {
     fetchResource().catch(error => {
       return <h1>{error}</h1>;
     });
-  }, []);
+  }, [tag]);
 
   return (
     <ResponsiveContainer height="auto">
       {/* {console.log(posts)} */}
-      <SubMenu />
+      {console.log(tag)}
+      <SubMenu listItems={listItems} />
       <Spacing mRight="-5px" />
       <Container width="100%" height="80%">
         <ResponsiveCard>
           <Container className="vertical" height="60%">
+            <Spacing mTop="-14px" />
+            <Filter tag={tag} handleClick={handleClick} />
             {posts.map(post => {
               return (
                 <li key={post.id}>

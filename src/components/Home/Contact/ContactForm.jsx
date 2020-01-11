@@ -1,26 +1,17 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
-import styled from 'styled-components';
-import InputData from 'components/templates/Contact/InputData';
-import { media, Card, Container, Button } from 'Shared';
+import {
+  ResponsiveVanish,
+  ContactContainer,
+} from 'components/Home/Contact/ContactStyle';
+import InputData from 'components/Home/Contact/InputData';
+import { Card, Container, Button } from 'Shared';
+// import { connect } from 'react-redux';
+// import { authStart } from 'duck/auth/actions';
 
-const ResponsiveVanish = styled(Container)`
-  ${media.md`
-    display: none;
-  `}
-`;
-
-const ContactContainer = styled(Container)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 20px;
-  height: 100%;
-  width: 100%;
-`;
-
-const ContactForm = () => {
+const ContactForm = ({ onSubmit }) => {
+  console.log(onSubmit);
   return (
     <ResponsiveVanish>
       <ContactContainer>
@@ -39,12 +30,7 @@ const ContactForm = () => {
                 .email('Invalid email address')
                 .required('Required'),
             })}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                // alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-            }}
+            onSubmit={onSubmit}
           >
             {() => (
               <Container width="200px">

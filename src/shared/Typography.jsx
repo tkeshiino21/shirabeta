@@ -36,7 +36,7 @@ Text.defaultProps = {
 
 export const Strong = styled.span`
   font-size: ${props => props.fs};
-  color: ${props => props.color};
+  color: inherit;
   font-weight: 600;
 `;
 Strong.defaultProps = {

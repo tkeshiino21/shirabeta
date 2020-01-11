@@ -1,13 +1,15 @@
 import React from 'react';
 import Layout from 'Layout';
 import HeroHeader from 'Layout/HeroHeader';
-import Trends from 'components/templates/Trends/Trends';
-import ContactForm from 'components/templates/Contact/ContactForm';
+import Trends from 'components/Home/Trends/Trends';
+import MileStones from 'components/Home/MileStones/MileStones';
+import ContactForm from 'containers/ContactForm';
 import { theme, Text, Spacing, Container } from 'Shared';
 
-const Home = () => {
+const Home = ({ fetchedPost }) => {
   return (
     <Layout>
+      {console.log('home:', fetchedPost)}
       <HeroHeader />
       <Container className="horizontal" height="65vh">
         <Container
@@ -37,7 +39,7 @@ const Home = () => {
         <ContactForm />
       </Container>
       <Spacing mTop={theme.large} />
-      <Trends />
+      <MileStones />
     </Layout>
   );
 };

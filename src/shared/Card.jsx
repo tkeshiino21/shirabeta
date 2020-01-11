@@ -4,7 +4,7 @@ import { theme } from './theme';
 export const Card = styled.div`
   display: flex;
   background-color: ${theme.light};
-  padding: ${theme.large};
+  padding: ${theme.xlarge};
   width: ${props => props.width || '200px'};
 
   &.shadow {

@@ -1,49 +1,16 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { MdTrendingUp, MdFlag } from 'react-icons/md';
-import { media, theme, Container, Button } from 'Shared';
+import { theme, Spacing } from 'Shared';
+import { ResponsiveContainer, MenuButton } from 'Layout/SubMenu/SubMenuStyle';
 
-const MenuButton = styled(Button)`
-  border: none;
-  padding: 5px;
-  padding-left: 15px;
-  margin-top: 5px;
-  text-align: left;
-
-  &:active {
-    background-color: ${theme.primary};
-  }
-`;
-
-const listItems = [
-  {
-    name: 'trends',
-    label: 'トレンド',
-    icon: MdTrendingUp,
-  },
-  {
-    name: 'milestones',
-    label: '定番',
-    icon: MdFlag,
-  },
-];
-
-const ResponsiveContainer = styled(Container)`
-  height: 80px;
-  width: 165px;
-  ${media.md`
-      width: 100%;
-    `}
-`;
-
-const MenuLinks = () => {
-  const [activeMenu, setActiveMenu] = useState('milestones');
+const MenuLinks = ({ listItems }) => {
+  const [activeMenu, setActiveMenu] = useState(listItems[1].name);
   const onClickHandler = e => {
     setActiveMenu(e.target.value);
   };
 
   return (
     <ResponsiveContainer className="vertical">
+      <Spacing mTop={theme.small} />
       {listItems.map(listItem => {
         return (
           <MenuButton

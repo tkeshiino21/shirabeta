@@ -3,7 +3,7 @@ import axios from 'axios';
 import { theme, Border, Text, Container, Card, Spacing, Strong } from 'Shared';
 import Layout from 'Layout';
 
-const AddBook = () => {
+const ISBNFetch = () => {
   const [result, setResult] = useState({
     id: '',
     title: '',
@@ -15,15 +15,15 @@ const AddBook = () => {
   const handleChange = e => {
     return setQuery({ value: e.target.value });
   };
-  const baseURL = 'https://www.googleapis.com/';
-  const ISBNURL = `${baseURL}books/v1/volumes?q=isbn:${query.value}`;
+  const baseURL = 'https://www.googleapis.com';
+  const ISBNURL = `${baseURL}/books/v1/volumes?q=isbn:${query.value}`;
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(ISBNURL);
       if (response.data.totalItems === 1) {
         const formatData = () => {
           response.data.items.map(item => {
-            // console.log(item);
+            console.log(item);
             return setResult({
               id: item.id,
               title: item.volumeInfo.title,
@@ -34,6 +34,8 @@ const AddBook = () => {
           });
         };
         formatData();
+      } else {
+        console.log('error!');
       }
     };
     fetchData();
@@ -45,7 +47,7 @@ const AddBook = () => {
     }
 
     return (
-      <>
+      <Container className="vertical">
         <Text as="h3" fs="18px" lh="1" color={theme.dark}>
           {result.title}
         </Text>
@@ -56,60 +58,31 @@ const AddBook = () => {
         <Text as="p" fs="12px" color={theme.naturalDark}>
           {result.publishedDate}
         </Text>
-      </>
+      </Container>
     );
   };
 
   return (
-    <Layout>
-      <Container>
-        <Container
-          width="100%"
-          height="80%"
-          style={{ minHeight: '70vh' }}
-          className="vertical"
-        >
-          <Spacing mTop="100px" />
-          <Card>
-            <Container className="vertical">
-              <Container>
-                {/* <Spacing mTop="200px" />
-                <label htmlFor="isbn">ISBN</label>
-                <Spacing mRight={theme.small} /> */}
-                <Strong>
-                  <input
-                    id="isbn"
-                    type="text"
-                    onChange={handleChange}
-                    value={query.value}
-                  />
-                  <Border bottom="1px" color="#aaaaaa" width="160px" />
-                </Strong>
-              </Container>
-            </Container>
-          </Card>
+    <Card width="auto">
+      <Container className="vertical" align="center">
+        <Container className="horizontal" height="auto">
+          <Spacing mRight={theme.small} />
+          <label htmlFor="isbn">ISBN</label>
+          <div style={{ dispaly: 'inline' }}>
+            <input
+              id="isbn"
+              type="text"
+              onChange={handleChange}
+              value={query.value}
+            />
+            <Border bottom="1px" color="#aaaaaa" width="160px" />
+          </div>
         </Container>
-        <Container
-          width="50vw"
-          height="80%"
-          style={{ minHeight: '70vh' }}
-          className="vertical"
-        >
-          <Spacing mTop="100px" />
-          <Card width="50vw">
-            <Container className="vertical">
-              {result.item === '' ? (
-                <h1>検索に該当する結果はありません。</h1>
-              ) : (
-                <FetchedContents />
-              )}
-            </Container>
-          </Card>
-        </Container>
-        {/* {console.log('result:', result)} */}
+        <Spacing mTop="20px" />
+        <FetchedContents />
       </Container>
-    </Layout>
+    </Card>
   );
 };
 
-export default AddBook;
+export default ISBNFetch;
