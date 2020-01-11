@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { theme, Border, Spacing, Text } from 'Shared';
+import Filter from 'components/Home/MileStones/Filter';
 
 const PostItems = ({ onRequest, fetchedPost, isLoading }) => {
-  useEffect(onRequest, []);
+  const [tag, setTag] = useState({ tagName: '本' });
+  const handleClick = e => {
+    return setTag({ tagName: e.target.value });
+  };
+  useEffect(() => onRequest(tag.tagName), [tag]);
   if (isLoading !== false) return <h1>isLoading</h1>;
   else {
     return (
       <div>
+        <Filter tag={tag} handleClick={handleClick} />
         <ul>
           {fetchedPost.map(post => {
             return (

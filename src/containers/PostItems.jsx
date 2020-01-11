@@ -7,9 +7,9 @@ const mapStateToProps = state => ({
   isLoading: state.post.isLoading,
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onRequest: () => {
-    dispatch(postRequest(ownProps));
+const mapDispatchToProps = dispatch => ({
+  onRequest: tagName => {
+    dispatch(postRequest(tagName));
   },
 });
 

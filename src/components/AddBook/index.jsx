@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
-import { theme, media, Text, Container, Card, Spacing, Strong } from 'Shared';
+import { theme, media, Container, Spacing } from 'Shared';
 import Layout from 'Layout';
 import ISBNFetch from 'components/AddBook/ISBNFetch';
 import AddForm from 'components/AddBook/AddForm';

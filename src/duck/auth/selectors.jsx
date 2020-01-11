@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
 
-const userSelector = state => state.user;
+const userName = state => state.firebase;
 
-const getUserId = createSelector(userSelector, state => state.userId);
-
-const getIsValid = createSelector(getUserId, id => 1000 < id && id <= 9999);
+export const visibleTodosSelector = createSelector(
+  userName,
+  (visibilityFilter, todos) => {},
+);

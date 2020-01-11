@@ -10,8 +10,8 @@ import { Card, Container, Button } from 'Shared';
 // import { connect } from 'react-redux';
 // import { authStart } from 'duck/auth/actions';
 
-const ContactForm = ({ onSubmit }) => {
-  console.log(onSubmit);
+const ContactForm = ({ onSignUp }) => {
+  console.log(onSignUp);
   return (
     <ResponsiveVanish>
       <ContactContainer>
@@ -30,7 +30,11 @@ const ContactForm = ({ onSubmit }) => {
                 .email('Invalid email address')
                 .required('Required'),
             })}
-            onSubmit={onSubmit}
+            onSubmit={(userData, { setSubmitting }) => {
+              onSignUp(userData);
+              setSubmitting(false);
+              console.log(userData);
+            }}
           >
             {() => (
               <Container width="200px">

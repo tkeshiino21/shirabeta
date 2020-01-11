@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import ContactFormComponent from 'components/Home/Contact/ContactForm';
-import { authStart } from 'duck/auth/actions';
+import authSwitch from 'duck/auth/operations';
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onSubmit: () => {
-    dispatch(authStart(ownProps));
+const mapDispatchToProps = dispatch => ({
+  onSignUp: userData => {
+    dispatch(authSwitch({ method: 'signup', userData: userData }));
   },
 });
 

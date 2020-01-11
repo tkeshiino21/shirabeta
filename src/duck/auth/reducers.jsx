@@ -1,10 +1,10 @@
 import * as actionTypes from 'duck/auth/actionTypes';
 
 const initState = {
-  authState: false,
   userName: '',
   userEmail: '',
   userPassword: '',
+  authError: '',
 };
 
 const authReducer = (state = initState, action) => {
@@ -12,14 +12,14 @@ const authReducer = (state = initState, action) => {
     case actionTypes.AUTH_START:
       return {
         ...state,
-        authError: 'Login failed',
+        authError: null,
       };
-    case actionTypes.AUTH_FAIL:
+    case actionTypes.AUTH_SUCCESS:
       return {
         ...state,
         authError: null,
       };
-    case actionTypes.AUTH_SUCCESS:
+    case actionTypes.AUTH_FAIL:
       return {
         ...state,
         authError: null,

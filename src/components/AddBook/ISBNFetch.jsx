@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { theme, Border, Text, Container, Card, Spacing, Strong } from 'Shared';
-import Layout from 'Layout';
+import { theme, Border, Text, Container, Card, Spacing } from 'Shared';
 
 const ISBNFetch = () => {
   const [result, setResult] = useState({
