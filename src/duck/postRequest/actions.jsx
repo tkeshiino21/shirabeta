@@ -4,8 +4,8 @@ export const requestStart = () => {
   return { type: actionTypes.REQUEST_START };
 };
 
-export const requestSuccess = post => {
-  return { type: actionTypes.REQUEST_SUCCESS, payload: post };
+export const requestSuccess = data => {
+  return { type: actionTypes.REQUEST_SUCCESS, payload: data };
 };
 
 export const requestFail = error => {

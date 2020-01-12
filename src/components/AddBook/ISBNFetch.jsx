@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { theme, Border, Text, Container, Card, Spacing } from 'Shared';
 
+// ISBN CODE FOR TESTING
+// 9784873115658
+
 const ISBNFetch = () => {
   const [result, setResult] = useState({
     id: '',

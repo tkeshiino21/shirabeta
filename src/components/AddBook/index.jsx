@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { theme, media, Container, Spacing } from 'Shared';
 import Layout from 'Layout';
-import ISBNFetch from 'components/AddBook/ISBNFetch';
-import AddForm from 'components/AddBook/AddForm';
+import ISBNRequest from 'containers/ISBNRequest';
+import DirectInputForm from 'containers/DirectInputForm';
 
 export const ResponsiveVanish = styled(Container)`
   width: 10px;
@@ -29,13 +29,13 @@ const AddBook = () => {
             justify="space-around"
             style={{ flexWrap: 'wrap' }}
           >
-            <ISBNFetch />
+            <ISBNRequest />
             <ResponsiveVanish>
               <p style={{ display: 'block', backgroundColor: theme.natural }}>
                 OR
               </p>
             </ResponsiveVanish>
-            <AddForm />
+            <DirectInputForm />
           </Container>
         </div>
       </Container>

@@ -15,8 +15,8 @@ const Data = () => {
       type: 'text',
     },
     {
-      id: 'publishDate',
-      name: 'publishDate',
+      id: 'publishedDate',
+      name: 'publishedDate',
       type: 'text',
     },
   ];
