@@ -19,16 +19,15 @@ src
 
 ## Libraries
 
-MainLibrary: React  
-StateManagement: Redux  
-Middleware: redux-thunk  
-Database: Firebase Cloudstore  
-Authentication: Firebase Authentication  
-StylingLibrary: styled-components  
-Testing: Jest and Enzyme  
-FormValidation: formik and Yup  
-DateFormatter: moment  
-ReduxAxiliary: react-redux react-redux-firebase
+フレームワーク: React  
+状態管理: Redux  
+ミドルウェア: redux-thunk  
+データベース: Firebase Cloudstore  
+認証: Firebase Authentication  
+スタイリングライブラリ: styled-components  
+テスト: Jest and Enzyme  
+フォーム: formik and Yup  
+Redux 関連ツール: react-redux react-redux-firebase
 
 ## DevelopmentLog
 
