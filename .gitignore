@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# my setting
+.env
+.prettierrc
+.firebaserc
+.eslintignore
+.eslintrc.js
+.stylelint.config.js
+database.rules.json
+firestore.indexes.json
+firestore.rules
