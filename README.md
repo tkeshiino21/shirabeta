@@ -1,50 +1,36 @@
 # Livrio
 
-Livrio is Web Book Library mainly targets company.
-If you need to manage books stock and its rental or resevation states,
-Livrio can help you to do so comfortably.
+Livrio は図書管理用アプリケーションです。
+お気に入りの本を会社で回し読みしたいとき、
+あるいは他のチームメイトに推薦したい本があるときなどの
+ユースケースを想定しています。
+主な実装は、本の貸出履歴の管理と本へのコメント機能、
+また Qiita の本に関する記事を閲覧できる機能です。
 
 ## directory
 
-Livrio
-┣━ components // Redux を使ったアルコールの Count 機能
-┣━ containers //
-┣━ ducks // Components that contains Logic related Redux Architecture
-┣━ images // PNG or JPG files like favicon.icon
-┣━ Layout // Layout components like Header
-┣━ Shared // Shared UI components like Button
-┗━ stories // UI catalog byStorybook
+src  
+┣━ components // View に関するもの  
+┣━ containers // State と View をつなぐもの(mapStateToProps など)  
+┣━ ducks // Redux に関するもの(reducer や actionCreator など)  
+┣━ images // 画像フォルダ  
+┣━ Layout // ヘッダーなどの共通する Layout  
+┗━ Shared // styled-components で作成した UI コンポーネント
 
 ## Libraries
 
-Document
+MainLibrary: React  
+StateManagement: Redux  
+Middleware: redux-thunk  
+Database: Firebase Cloudstore  
+Authentication: Firebase Authentication  
+StylingLibrary: styled-components  
+Testing: Jest and Enzyme  
+FormValidation: formik and Yup  
+DateFormatter: moment  
+ReduxAxiliary: react-redux react-redux-firebase
 
-### Main
+## DevelopmentLog
 
-MainLibrary: React
-StateManagement: Redux
-Middleware: redux-thunk
-Database: Firebase Cloudstore
-Authentication: Firebase Authentication
-ReduxTools: ReduxDevTools,react,redux react-redux-firebase
-StylingLibrary: styled-components
-Testing: Jest and Enzyme
-
-### Sub
-
-FormValidation: formik and Yup
-Date Adaption: moment
-
-\_a
-\_b
-\_c
-
-## MyStruggle
-
-This is a first Project Using Testing Library, Jest and Enzyme.
-I didn't know what to test, how to test.
-That was a little big deal for me to overcome.
-In this project I try to find the best directory structure,
-and got to the answer that is called "re-ducks".
-This project is not perfect, there are many way left to improve user experience.
-However, I did it widh all of my skills that I have today.
+このアプリに関する開発ブログは Quranch に公開しております。  
+url: <https://101378.qrunch.io/entries/SU2orLU1to7MPyvJ>
