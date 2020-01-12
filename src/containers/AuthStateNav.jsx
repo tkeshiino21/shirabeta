@@ -3,7 +3,7 @@ import AuthStateNav from 'Layout/Header/AuthStateNav';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({
-  authState: state.firebase.uid === undefined ? false : true,
+  authState: state.firebase.auth.uid === undefined ? false : true,
   userName: state.firebase.profile.name,
 });
 

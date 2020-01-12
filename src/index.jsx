@@ -12,13 +12,13 @@ import App from 'App';
 import { Loading } from 'Shared';
 
 const fbConfig = {
-  apiKey: 'AIzaSyBhQBb4mkK9noaAbveedCcP5eLSo9qgxMQ',
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
   authDomain: 'livrio.firebaseapp.com',
   databaseURL: 'https://livrio.firebaseio.com',
   projectId: 'livrio',
   storageBucket: 'livrio.appspot.com',
-  messagingSenderId: '101156026665',
-  appId: '1:101156026665:web:34b335bb66b8aabd5fdf38',
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 const rrfConfig = {
