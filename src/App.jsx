@@ -1,28 +1,27 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// for style
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'Shared';
-import GlobalStyles from 'Shared/GlobalStyle';
 // router components
 import Home from 'components/Home';
 import Search from 'components/Search';
 import AddBook from 'components/AddBook';
-import MyPage from 'components/MyPage';
+import MyPage from 'containers/MyPage';
+import LogIn from 'components/AuthPages/LogIn';
+import SignUp from 'components/AuthPages/SignUp';
+import NotFoundPage from 'components/NotFoundPage';
 
-const App = () => {
+const App = ({ authState }) => {
   return (
-    <ThemeProvider theme={{ theme }}>
-      <GlobalStyles />
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search" component={Search} />
-          <Route path="/add-book" component={AddBook} />
-          <Route path="/my-page" component={MyPage} />
-        </Switch>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Switch>
+        <Route path="/my-page" component={MyPage} />
+        <Route path="/" exact component={Home} />
+        <Route path="/search" component={Search} />
+        <Route path="/add-book" component={AddBook} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </Router>
   );
 };
 

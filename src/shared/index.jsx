@@ -1,10 +1,12 @@
 export { Border, Shadow } from 'Shared/Border';
-export { Button, LinkButton } from 'Shared/Button';
+export { Button, LinkButton, InlineButton } from 'Shared/Button';
 export { Card } from 'Shared/Card';
-export { Container, ImgContainer, MainWrapper } from 'Shared/Container';
+export { Container, ImgContainer, MainWrapper, Box } from 'Shared/Container';
 export { GlobalStyle } from 'Shared/GlobalStyle';
+export { Input } from 'Shared/Input';
 export { Loading } from 'Shared/Loading';
 export { Spacing } from 'Shared/Spacing';
+export { Snackbar } from 'Shared/Snackbar';
 export { Text, Strong, NaturalDarkText, LightText } from 'Shared/Typography';
 
 // important

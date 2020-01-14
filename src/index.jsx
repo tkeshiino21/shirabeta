@@ -8,8 +8,11 @@ import 'firebase/functions';
 import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import configureStore from 'duck/configureStore';
-import App from 'App';
+import App from 'containers/App';
 import { Loading } from 'Shared';
+import GlobalStyles from 'Shared/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import { theme } from 'Shared';
 
 const fbConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -48,7 +51,10 @@ ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
       <AuthIsLoaded>
-        <App />
+        <ThemeProvider theme={{ theme }}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
       </AuthIsLoaded>
     </ReactReduxFirebaseProvider>
   </Provider>,

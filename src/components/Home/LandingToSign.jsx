@@ -1,7 +1,8 @@
 import React from 'react';
 import ContactForm from 'containers/ContactForm';
+import * as Yup from 'yup';
 import { theme, Text, Spacing, Container } from 'Shared';
-import HeroHeader from 'Layout/HeroHeader';
+import HeroHeader from 'components/Layout/HeroHeader';
 
 const LandingToSign = ({ authState }) => {
   console.log(authState);
@@ -9,33 +10,49 @@ const LandingToSign = ({ authState }) => {
     return null;
   } else {
     return (
-      <Container className="horizontal" height="65vh">
-        <HeroHeader />
-        <Container
-          className="vertical"
-          justify="center"
-          height="100%"
-          width="auto"
-          style={{ flexGrow: 1 }}
-        >
-          <Spacing mTop="40px" />
-          <Text
-            className="responsive"
-            as="h1"
-            fs="5rem"
-            lh="1.2"
-            color={theme.primary}
+      <div style={{ marginTop: '-24px', marginBottom: '40px' }}>
+        <Container className="horizontal" height="58vh">
+          <HeroHeader />
+          <Container
+            className="vertical"
+            justify="center"
+            height="100%"
+            style={{ flexGrow: 1 }}
           >
-            We provide <br />
-            Tech Books info
-          </Text>
-          <Spacing mTop={theme.medium} />
-          <Text as="p" fs="1.8rem" color={theme.primary}>
-            Looking for Tech Book? Here is all what you need.
-          </Text>
+            <Text
+              className="responsive"
+              as="h1"
+              fs="4.4rem"
+              lh="1.2"
+              color={theme.primary}
+            >
+              How developers read is
+              <br />
+              here.
+            </Text>
+            <Spacing mTop={theme.medium} />
+            <Text as="p" fs="1.5rem" lh="1.8" color={theme.primary}>
+              Livrioはチームのための図書管理用サービスです。お気に入りの本を会社で回し読みしたいとき、
+              あるいは他のチームメイトに推薦したいときなどにご活用ください。
+            </Text>
+          </Container>
+          <Spacing mRight="-40px" />
+          <ContactForm
+            validationSchema={Yup.object({
+              name: Yup.string()
+                .max(15, 'Must be 15 characters or less')
+                .required('Required'),
+              password: Yup.string()
+                .max(20, 'Must be 20 characters or less')
+                .min(8, 'Must be 8 characters or more')
+                .required('Required'),
+              email: Yup.string()
+                .email('Invalid email address')
+                .required('Required'),
+            })}
+          />
         </Container>
-        <ContactForm />
-      </Container>
+      </div>
     );
   }
 };

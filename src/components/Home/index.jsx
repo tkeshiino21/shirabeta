@@ -1,18 +1,36 @@
-import React from 'react';
-import Layout from 'Layout';
-import MileStones from 'components/Home/MileStones/MileStones';
-import { theme, Spacing, ImgContainer } from 'Shared';
+import React, { useState } from 'react';
+import Layout from 'components/Layout';
+import Qiita from 'containers/Qiita';
+import Library from 'containers/Library';
 import LandingToSign from 'containers/LandingToSign';
-import loader from 'images/loader.gif';
+import SubMenu from 'components/Layout/SubMenu/MenuLinks';
+import { Container, Spacing } from 'Shared';
+import { subMenuItems } from 'components/Home/SubMenuItems';
+import { ResponsiveContainer, ResponsiveCard } from 'components/Home/Style';
 
-const Home = ({ fetchedPost }) => {
+const Home = () => {
+  const [activeMenu, setActiveMenu] = useState(subMenuItems[1].name);
+  const menuHandler = e => {
+    setActiveMenu(e.target.value);
+  };
   return (
     <Layout>
-      {console.log('home:', fetchedPost)}
       <LandingToSign />
-
-      <Spacing mTop={theme.large} />
-      <MileStones />
+      <ResponsiveContainer height="auto">
+        <SubMenu
+          listItems={subMenuItems}
+          menuHandler={menuHandler}
+          currentMenu={activeMenu}
+        />
+        <Spacing mRight="-5px" />
+        <Container width="100%" height="80%">
+          <ResponsiveCard>
+            <Container className="vertical" height="60%">
+              {activeMenu === 'qiita' ? <Qiita /> : <Library />}
+            </Container>
+          </ResponsiveCard>
+        </Container>
+      </ResponsiveContainer>
     </Layout>
   );
 };

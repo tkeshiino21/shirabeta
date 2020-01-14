@@ -5,7 +5,7 @@ import styled from 'styled-components';
 // Don't set Margin or Padding this components
 export const Container = styled.div`
   display: ${props => props.display || 'flex'};
-  width: ${props => props.width || 'auto'};
+  width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
   justify-content: ${props => props.justify || 'flex-start'};
   align-items: ${props => props.align || 'stretch'};
@@ -18,6 +18,10 @@ export const Container = styled.div`
   &.horizontal {
     flex-direction: row;
   }
+
+  &.grow {
+    flex-grow: 1;
+  }
 `;
 
 export const ImgContainer = styled.div`
@@ -25,7 +29,7 @@ export const ImgContainer = styled.div`
   background-image: url(${props => props.image || null});
   background-size: ${props => props.bgSize || 'cover'};
   background-repeat: no-repeat;
-  width: ${props => props.width || '200px'};
+  width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
   opacity: ${props => props.opacity || '0.7'};
 `;
@@ -37,7 +41,7 @@ const MainContainer = styled.div`
 `;
 
 const MainContents = styled.div`
-  width: 900px;
+  width: 870px;
   margin: 0 10px;
 `;
 
@@ -48,3 +52,7 @@ export const MainWrapper = ({ children }) => {
     </MainContainer>
   );
 };
+
+export const Box = styled.div`
+  display: block;
+`;

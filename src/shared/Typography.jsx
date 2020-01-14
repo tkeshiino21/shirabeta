@@ -9,6 +9,7 @@ export const Text = styled.span`
   color: ${props => props.color};
   font-weight: ${props => props.fw};
   line-height: ${props => props.lh};
+  font-family: ${props => props.family || 'sans-serif'};
 
   &.responsive {
     ${media.xs`

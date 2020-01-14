@@ -1,8 +1,8 @@
-import LandingToSignComponent from 'components/Home/LandingToSign';
+import LandingToSign from 'components/Home/LandingToSign';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
-  authState: state.firebase.uid === undefined ? false : true,
+  authState: state.firebase.auth.uid === undefined ? false : true,
 });
 
-export default connect(mapStateToProps)(LandingToSignComponent);
+export default connect(mapStateToProps)(LandingToSign);

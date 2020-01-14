@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ContactFormComponent from 'components/Home/Contact/ContactForm';
+import ContactForm from 'components/Home/Contact/ContactForm';
 import authSwitch from 'duck/auth/operations';
 
 const mapDispatchToProps = dispatch => ({
@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(ContactFormComponent);
+export default connect(null, mapDispatchToProps)(ContactForm);
 
 //  const dispatch = useDispatch();
 //    dispatch(

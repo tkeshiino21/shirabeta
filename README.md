@@ -2,10 +2,10 @@
 
 Livrio は図書管理用アプリケーションです。
 お気に入りの本を会社で回し読みしたいとき、
-あるいは他のチームメイトに推薦したい本があるときなどの
-ユースケースを想定しています。
+あるいは他のチームメイトに推薦したい本があるときなどにご活用ください。
 主な実装は、本の貸出履歴の管理と本へのコメント機能、
 また Qiita の本に関する記事を閲覧できる機能です。
+全体として「ついつい技術書を読みたくなってしまうサイト」を目指して作りました。
 
 ## directory
 
@@ -24,10 +24,9 @@ src
 ミドルウェア: redux-thunk  
 データベース: Firebase Cloudstore  
 認証: Firebase Authentication  
-スタイリングライブラリ: styled-components  
-テスト: Jest and Enzyme  
-フォーム: formik and Yup  
 Redux 関連ツール: react-redux react-redux-firebase
+スタイリングライブラリ: styled-components  
+テスト: Jest and Enzyme
 
 ## DevelopmentLog
 

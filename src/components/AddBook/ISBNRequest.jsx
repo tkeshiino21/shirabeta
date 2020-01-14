@@ -1,6 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { theme, Border, Text, Container, Card, Spacing } from 'Shared';
+import React, { useState } from 'react';
+import {
+  theme,
+  Border,
+  InlineButton,
+  Container,
+  Card,
+  Input,
+  Spacing,
+} from 'Shared';
 
 // ISBN CODE FOR TESTING
 // 9784873115658
@@ -10,22 +17,24 @@ const ISBNRequest = ({ onRequest, fetchedBook }) => {
   const handleChange = e => {
     return setISBN(e.target.value);
   };
+  const handleClick = () => {
+    onRequest(ISBN);
+    setISBN('');
+  };
 
   return (
-    <Card width="auto">
-      <Container className="vertical" align="center">
-        <Container className="horizontal" height="auto">
-          <Spacing mRight={theme.small} />
-          <label htmlFor="isbn">ISBN</label>
-          <div style={{ dispaly: 'inline' }}>
-            <input id="isbn" type="text" onChange={handleChange} value={ISBN} />
-            <Border bottom="1px" color="#aaaaaa" width="160px" />
-            <button onClick={() => onRequest(ISBN)}>SEARCH</button>
-          </div>
-        </Container>
-        <Spacing mTop="20px" />
-      </Container>
-    </Card>
+    <Container className="horizontal" height="auto">
+      <label htmlFor="isbn">ISBN</label>
+      <Input
+        className="outlined"
+        id="isbn"
+        type="text"
+        onChange={handleChange}
+        value={ISBN}
+        style={{ width: '100%', boxSizing: 'border-box' }}
+      />
+      <InlineButton onClick={handleClick}>SEARCH</InlineButton>
+    </Container>
   );
 };
 

@@ -1,18 +1,30 @@
-import axios from 'axios';
+import * as action from 'duck/bookAdd/actions';
+import { getFirebase } from 'react-redux-firebase';
+import Data from 'components/AddBook/DirectInputData';
 
-const BookAdd = () => {
-  const state = getState();
-  const userId = userSelectors.getUserId(state);
-  // try {
-  //   const article = await fetchApi.getArticle(key, userId);
-  //   dispatch(actions.appendArticle(artile));
-  //   dispatch(usrerOperations.incrementRequestCount());
-  // } catch (e) {
-  //   dispatch(errorOperations.requestFailed());
-  //   return null;
-  // }
-
-  return null;
+const bookAdd = book => dispatch => {
+  // console.log('request', tagName);
+  dispatch(action.bookAddStart());
+  const firebase = getFirebase();
+  const author = book.author[0];
+  const today = new Date();
+  const registerDate = `${today.getFullYear()}-${today.getMonth() +
+    1}-${today.getDate()}`;
+  const addingData = firebase
+    .firestore()
+    .collection('books')
+    .doc()
+    .set({
+      title: book.title,
+      author: author,
+      publishedDate: book.publishedDate,
+      registerDate: registerDate,
+      // firebase.firestore.FieldValue.serverTimestamp()
+    });
+  addingData.then(response => {
+    dispatch(action.bookAddSuccess(response));
+    console.log(response);
+  });
 };
 
-export default BookAdd;
+export default bookAdd;

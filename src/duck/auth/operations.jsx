@@ -12,7 +12,6 @@ const authSwitch = ({ method, userData }) => dispatch => {
           .createUserWithEmailAndPassword(userData.email, userData.password)
           .then(res => {
             dispatch(action.authSuccess(res));
-            const uid = getFirebase().auth().currentUser.uid;
             getFirebase()
               .firestore()
               .collection('users')
@@ -40,7 +39,7 @@ const authSwitch = ({ method, userData }) => dispatch => {
           .catch(err => dispatch(action.authFail(err)))
       );
     default:
-      return console.log('err!');
+      return dispatch(action.authFail('unpredictable errors occur'));
   }
 };
 

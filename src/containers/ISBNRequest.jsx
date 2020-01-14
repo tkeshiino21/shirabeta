@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import ISBNRequest from 'components/AddBook/ISBNRequest';
-import bookRequest from 'duck/bookRequest/operations';
-import getFormatData from 'duck/bookRequest/selectors';
+import bookRequest from 'duck/requestBook/operations';
+import getFormatData from 'duck/requestBook/selectors';
 
 const mapStateToProps = state => {
   return {
     fetchedBook: getFormatData(state),
-    isLoading: state.post.isLoading,
+    isLoading: state.request.isLoading,
   };
 };
 

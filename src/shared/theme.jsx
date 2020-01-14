@@ -1,7 +1,21 @@
 export const theme = {
   // typo
   fontSize: '10px',
-  fontFamily: 'Roboto',
+  fontFamily: [
+    'Titillium Web',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Hiragino Sans',
+    'Noto Sans CJK JP',
+    'Original Yu Gothic',
+    'Yu Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Sans Emoji',
+  ],
   lineHeight: '1.5',
   // color
   primary: '#ffbb00',

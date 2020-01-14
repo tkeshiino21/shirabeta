@@ -40,6 +40,15 @@ export const Button = styled.button`
     background-image: linear-gradient(45deg, #ffc107 0%, #ff8b5f 100%);
     color: ${props => props.color || theme.light};
   }
+
+  &.stretch {
+    width: 100%;
+  }
+`;
+
+export const InlineButton = styled.button`
+  display: inline;
+  border: 1px solid ${theme.naturalDark};
 `;
 
 Button.defaultProps = {

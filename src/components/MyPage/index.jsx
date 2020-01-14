@@ -1,7 +1,8 @@
 import React from 'react';
+import { Redirect, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import Layout from 'Layout';
-import SubMenu from 'Layout/SubMenu/MenuLinks';
+import Layout from 'components/Layout';
+import SubMenu from 'components/Layout/SubMenu/MenuLinks';
 import { MdTrendingUp, MdFlag } from 'react-icons/md';
 import { media, Spacing, Container, Card } from 'Shared';
 
@@ -29,16 +30,18 @@ const ResponsiveContainer = styled(Container)`
 const ResponsiveCard = styled(Card)`
   display: block;
   height: 400px;
-  width: 730px;
   ${media.md`
     max-width: 80vw;
   `}
 `;
 
-const MyPage = () => {
+const MyPage = ({ authState }) => {
+  let location = useLocation();
+  if (authState !== true) {
+    return <Redirect to={{ pathname: 'login', state: 'MyPage' }} />;
+  }
   return (
     <Layout>
-      <Spacing mTop="70px" />
       <ResponsiveContainer height="auto">
         <SubMenu listItems={listItems} />
         <Spacing mRight="-5px" />
