@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Library from 'components/Home/Library/Library';
+import Libraries from 'components/Home/Library/Libraries';
 import libraryRequest from 'duck/requestLibrary/operations';
 
 // const mapStateToProps = state => ({
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Library);
+export default connect(mapStateToProps, mapDispatchToProps)(Libraries);

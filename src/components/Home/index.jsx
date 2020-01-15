@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Layout from 'components/Layout';
 import Qiita from 'containers/Qiita';
-import Library from 'containers/Library';
+import Libraries from 'containers/Libraries';
 import LandingToSign from 'containers/LandingToSign';
 import SubMenu from 'components/Layout/SubMenu/MenuLinks';
 import { Container, Spacing } from 'Shared';
@@ -26,7 +26,7 @@ const Home = () => {
         <Container width="100%" height="80%">
           <ResponsiveCard>
             <Container className="vertical" height="60%">
-              {activeMenu === 'qiita' ? <Qiita /> : <Library />}
+              {activeMenu === 'qiita' ? <Qiita /> : <Libraries />}
             </Container>
           </ResponsiveCard>
         </Container>

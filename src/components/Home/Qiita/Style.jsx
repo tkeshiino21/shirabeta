@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { theme, media, Button, Card, Container, Text } from 'Shared';
 
+// TODO: 重複箇所のリファクタリング
+// Libraryとの重複がある
+
 export const FavoriteIcon = styled.button`
   color: ${theme.primary};
   border: none;
@@ -8,6 +11,22 @@ export const FavoriteIcon = styled.button`
   position: absolute;
   top: 0;
   right: 0;
+`;
+
+export const SortControl = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+`;
+
+export const SortButton = styled.button`
+  border: none;
+  &.selected {
+    color: ${theme.primary};
+  }
+  &.unSelected {
+    color: ${theme.naturalDark};
+  }
 `;
 
 export const ArticleTitle = styled(Text)`

@@ -1,4 +1,4 @@
-import MyPage from 'components/MyPage';
+import MyPage from 'components/MyPage/MyPage';
 
 import { connect } from 'react-redux';
 import App from 'App';

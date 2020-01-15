@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // router components
 import Home from 'components/Home';
+// import LibraryDetail from 'components/Home/Library/LibraryDetail/LibraryDetail';
 import Search from 'components/Search';
 import AddBook from 'components/AddBook';
 import MyPage from 'containers/MyPage';
@@ -15,6 +16,7 @@ const App = ({ authState }) => {
       <Switch>
         <Route path="/my-page" component={MyPage} />
         <Route path="/" exact component={Home} />
+        {/* <Route path="/:id" component={LibraryDetail} /> */}
         <Route path="/search" component={Search} />
         <Route path="/add-book" component={AddBook} />
         <Route path="/login" component={LogIn} />

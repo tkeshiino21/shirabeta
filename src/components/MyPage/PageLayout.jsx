@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from 'components/Layout';
@@ -35,21 +35,24 @@ const ResponsiveCard = styled(Card)`
   `}
 `;
 
-const MyPage = ({ authState }) => {
-  let location = useLocation();
-  if (authState !== true) {
-    return <Redirect to={{ pathname: 'login', state: 'MyPage' }} />;
-  }
+const PageLayout = ({ children }) => {
+  const [activeMenu, setActiveMenu] = useState(listItems[1].name);
+  const menuHandler = e => {
+    setActiveMenu(e.target.value);
+  };
   return (
+    // TODO: このレイアウトはLayoutに移して使い回す
     <Layout>
       <ResponsiveContainer height="auto">
-        <SubMenu listItems={listItems} />
+        <SubMenu
+          listItems={listItems}
+          menuHandler={menuHandler}
+          currentMenu={activeMenu}
+        />
         <Spacing mRight="-5px" />
-        <Container width="100%" height="80%">
+        <Container width="100%">
           <ResponsiveCard>
-            <Container className="vertical" height="60%">
-              <h1>hello</h1>
-            </Container>
+            <Container className="vertical">{children}</Container>
           </ResponsiveCard>
         </Container>
       </ResponsiveContainer>
@@ -57,4 +60,4 @@ const MyPage = ({ authState }) => {
   );
 };
 
-export default MyPage;
+export default PageLayout;

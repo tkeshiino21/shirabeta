@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { theme, Spacing } from 'Shared';
 import {
   ResponsiveContainer,
@@ -6,11 +6,6 @@ import {
 } from 'components/Layout/SubMenu/SubMenuStyle';
 
 const MenuLinks = ({ listItems, menuHandler, currentMenu }) => {
-  const [activeMenu, setActiveMenu] = useState(listItems[1].name);
-  const onClickHandler = e => {
-    setActiveMenu(e.target.value);
-  };
-
   return (
     <ResponsiveContainer className="vertical">
       <Spacing mTop={theme.small} />

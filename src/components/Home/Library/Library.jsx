@@ -1,33 +1,44 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { theme, Border, Spacing, Text } from 'Shared';
 import { ArticleTitle } from 'components/Home/Qiita/Style';
-import { FavoriteIcon, NotFavoriteIcon } from 'components/Home/Library/Style';
+import { FavoriteIcon } from 'components/Home/Library/Style';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 
 const Library = ({ onRequest, isLoading, library }) => {
   useEffect(() => onRequest(), [Library]);
+  const initState = [
+    { likes: 0 },
+    { likes: 2 },
+    { likes: 4 },
+    { likes: 6 },
+    { likes: 8 },
+    { likes: 9 },
+    { likes: 7 },
+    { likes: 5 },
+    { likes: 3 },
+    { likes: 1 },
+  ];
   const [favorite, setFavorite] = useState([
-    { index: 0, value: { name: 'And', value: 45 } },
-    { index: 1, value: { name: 'Edward', value: 21 } },
-    { index: 2, value: { name: 'Magnetic', value: 13 } },
-    { index: 3, value: { name: 'Sharpe', value: 37 } },
-    { index: 4, value: { name: 'The', value: -12 } },
-    { index: 5, value: { name: 'Zeros', value: 37 } },
-    { index: 6, value: { name: 'Zeros', value: 37 } },
-    { index: 7, value: { name: 'Zeros', value: 37 } },
-    { index: 8, value: { name: 'Zeros', value: 37 } },
-    { index: 9, value: { name: 'Zeros', value: 37 } },
-    { index: 10, value: { name: 'Zeros', value: 37 } },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
+    { like: false },
   ]);
   const favoriteIconHandler = e => {
-    setFavorite(...favorite, [
-      {
-        id: e.currentTarget.value,
-        count: favorite.count + (favorite.liked ? -1 : 1),
-        liked: true,
-      },
+    setFavorite([
+      ...favorite,
+      (favorite[e.currentTarget.value].likes = !favorite[e.currentTarget.value]
+        .likes),
     ]);
-    console.log(e.currentTarget.value);
+    // , favorite[e.currentTarget.value].likes++
+    console.log(favorite);
   };
   if (isLoading === true) return <h1>isLoading</h1>;
   return (
@@ -43,9 +54,12 @@ const Library = ({ onRequest, isLoading, library }) => {
             .map((doc, id, index) => (
               <div style={{ position: 'relative' }} key={id}>
                 <Spacing mTop={theme.large} />
-                <ArticleTitle as="h5" fs="14px" lh="1">
-                  {doc.title}
-                </ArticleTitle>
+                <Link to={`/library/${library.id}`}>
+                  <ArticleTitle as="h5" fs="14px" lh="1">
+                    {doc.title}
+                  </ArticleTitle>
+                  {console.log(library.querySnapshot.docs.data())}
+                </Link>
                 <Text as="p" fs="8px" color={theme.naturalDark}>
                   {doc.publishedDate}
                 </Text>
@@ -59,10 +73,31 @@ const Library = ({ onRequest, isLoading, library }) => {
                   );
                 })}
                 <FavoriteIcon value={id} onClick={favoriteIconHandler}>
-                  <MdFavorite />
+                  <span>
+                    {favorite[id].likes === true ? (
+                      <MdFavorite
+                        style={{
+                          position: 'relative',
+                          top: '3px',
+                          height: '15px',
+                          width: '15px',
+                          marginRight: '2px',
+                        }}
+                      />
+                    ) : (
+                      <MdFavoriteBorder
+                        style={{
+                          position: 'relative',
+                          top: '2px',
+                          height: '12px',
+                          width: '12px',
+                          marginRight: '2px',
+                        }}
+                      />
+                    )}
+                  </span>
+                  {initState[id].likes + (favorite[id].likes === true ? 1 : 0)}
                 </FavoriteIcon>
-                {favorite[0].liked}
-                {favorite[id].value.name}
                 <Border bottom="1px" color={theme.naturalDark} />
               </div>
             ))

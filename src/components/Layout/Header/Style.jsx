@@ -43,6 +43,9 @@ export const AuthButtonContainer = styled(Container)`
 export const MyNavLink = styled(NavLink)`
   color: ${theme.secondary};
   margin: 0 ${theme.large};
+  :hover {
+    text-decoration-color: ${theme.secondary} !important;
+  }
   &.navItem {
     line-height: 2.5;
   }
