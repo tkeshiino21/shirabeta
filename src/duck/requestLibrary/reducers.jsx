@@ -1,7 +1,7 @@
 import * as actionTypes from 'duck/request/actionTypes';
 
 const initState = {
-  querySnapshot: '',
+  response: '',
   error: '',
   isLoading: '',
 };
@@ -17,7 +17,7 @@ const requestReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        querySnapshot: action.payload,
+        response: action.payload,
       };
     case actionTypes.REQUEST_FAIL:
       return {
@@ -28,7 +28,7 @@ const requestReducer = (state = initState, action) => {
     case actionTypes.CLEAR_STATE:
       return {
         ...state,
-        response: '',
+        // response: '',
         error: '',
         isLoading: false,
       };

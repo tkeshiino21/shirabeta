@@ -1,7 +1,5 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
-import { ContactContainer } from 'components/Home/Contact/Style';
 import FormData from 'components/AuthPages/FormData';
 import { theme, Card, Container, Button, Spacing } from 'Shared';
 import { Contact } from 'components/Home/Contact/Style';

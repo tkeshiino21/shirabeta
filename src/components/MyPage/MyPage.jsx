@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import PageLayout from 'components/MyPage/PageLayout';
+import { listItems } from 'components/MyPage/listItems';
+import SubMenuLayout from 'components/Layout/SubMenu/SubMenuLayout';
 import {
   Table,
   TableHead,
@@ -26,7 +27,7 @@ const MyPage = ({ authState }) => {
     return <Redirect to={{ pathname: 'login', state: 'MyPage' }} />;
   }
   return (
-    <PageLayout>
+    <SubMenuLayout listItems={listItems}>
       <Spacing mTop={theme.xlarge} />
       <Table>
         <TableHead>
@@ -51,7 +52,7 @@ const MyPage = ({ authState }) => {
           ))}
         </TableBody>
       </Table>
-    </PageLayout>
+    </SubMenuLayout>
   );
 };
 

@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { theme, Border, Spacing, Text } from 'Shared';
-import { ArticleTitle } from 'components/Home/Qiita/Style';
-import { FavoriteIcon } from 'components/Home/Library/Style';
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+import {
+  ArticleTitle,
+  FavoriteIconContainer,
+  NotFavoriteIcon,
+  FavoriteIcon,
+} from 'components/Home/Style';
 
 const Library = ({ onRequest, isLoading, library }) => {
   useEffect(() => onRequest(), [Library]);
@@ -43,22 +46,23 @@ const Library = ({ onRequest, isLoading, library }) => {
   if (isLoading === true) return <h1>isLoading</h1>;
   return (
     <div>
-      {library.querySnapshot.docs
-        ? library.querySnapshot.docs
-            .map(eachDocument => {
+      {library
+        ? library
+            .map(queryDocumentSnapshot => {
               {
-                /* console.log('big', eachDocument); */
+                /* {
+                console.log(queryDocumentSnapshot);
+              } */
               }
-              return eachDocument.data();
+              return queryDocumentSnapshot.data();
             })
             .map((doc, id, index) => (
               <div style={{ position: 'relative' }} key={id}>
                 <Spacing mTop={theme.large} />
-                <Link to={`/library/${library.id}`}>
+                <Link to={`/library/${doc.ISBN}`}>
                   <ArticleTitle as="h5" fs="14px" lh="1">
                     {doc.title}
                   </ArticleTitle>
-                  {console.log(library.querySnapshot.docs.data())}
                 </Link>
                 <Text as="p" fs="8px" color={theme.naturalDark}>
                   {doc.publishedDate}
@@ -72,32 +76,16 @@ const Library = ({ onRequest, isLoading, library }) => {
                     </div>
                   );
                 })}
-                <FavoriteIcon value={id} onClick={favoriteIconHandler}>
+                <FavoriteIconContainer value={id} onClick={favoriteIconHandler}>
                   <span>
                     {favorite[id].likes === true ? (
-                      <MdFavorite
-                        style={{
-                          position: 'relative',
-                          top: '3px',
-                          height: '15px',
-                          width: '15px',
-                          marginRight: '2px',
-                        }}
-                      />
+                      <FavoriteIcon />
                     ) : (
-                      <MdFavoriteBorder
-                        style={{
-                          position: 'relative',
-                          top: '2px',
-                          height: '12px',
-                          width: '12px',
-                          marginRight: '2px',
-                        }}
-                      />
+                      <NotFavoriteIcon />
                     )}
                   </span>
                   {initState[id].likes + (favorite[id].likes === true ? 1 : 0)}
-                </FavoriteIcon>
+                </FavoriteIconContainer>
                 <Border bottom="1px" color={theme.naturalDark} />
               </div>
             ))

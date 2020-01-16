@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import Libraries from 'components/Home/Library/Libraries';
-import libraryRequest from 'duck/requestLibrary/operations';
+import Library from 'components/Home/Library/Library';
+import { librariesRequest } from 'duck/requestLibrary/operations';
 
 // const mapStateToProps = state => ({
 //   bookLibrary: state.fireStore,
 // });
 
 const mapStateToProps = state => ({
-  library: state.library,
+  library: state.library.response.docs,
   isLoading: state.request.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({
   onRequest: () => {
-    dispatch(libraryRequest());
+    dispatch(librariesRequest());
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Libraries);
+export default connect(mapStateToProps, mapDispatchToProps)(Library);

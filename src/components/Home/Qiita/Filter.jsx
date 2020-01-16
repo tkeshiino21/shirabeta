@@ -1,6 +1,6 @@
 import React from 'react';
 import { Spacing } from 'Shared';
-import { TagSelect } from 'components/Home/Qiita/Style';
+import { TagSelect } from 'components/Home/Style';
 
 const Filter = ({ tag, handleClick }) => {
   return (

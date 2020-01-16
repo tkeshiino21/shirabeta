@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { theme, Button, Border, Spacing, Text } from 'Shared';
+import { theme, Border, Spacing, Text } from 'Shared';
 import Filter from 'components/Home/Qiita/Filter';
-import { ArticleTitle, SortControl } from 'components/Home/Qiita/Style';
 import {
-  FavoriteIcon,
+  ArticleTitle,
+  SortControl,
+  FavoriteIconContainer,
   NotFavoriteIcon,
   SortButton,
-} from 'components/Home/Qiita/Style';
-import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
+} from 'components/Home/Style';
 
 const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
   const [tag, setTag] = useState({ tagName: '本' });
@@ -75,10 +75,10 @@ const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
                 )}
               </Text>
               {post.reactions_count}
-              <FavoriteIcon disabled>
-                <MdFavorite />
+              <FavoriteIconContainer disabled>
+                <NotFavoriteIcon />
                 {post.likes_count}
-              </FavoriteIcon>
+              </FavoriteIconContainer>
               <Border bottom="1px" color={theme.naturalDark} />
             </li>
           );

@@ -3,18 +3,18 @@ import { theme, Spacing } from 'Shared';
 import {
   ResponsiveContainer,
   MenuButton,
-} from 'components/Layout/SubMenu/SubMenuStyle';
+} from 'components/Layout/SubMenu/Style';
 
-const MenuLinks = ({ listItems, menuHandler, currentMenu }) => {
+const MenuLinks = ({ listItems, menuHandler, activeMenu }) => {
   return (
-    <ResponsiveContainer className="vertical">
+    <ResponsiveContainer className="vertical" width="auto">
       <Spacing mTop={theme.small} />
       {listItems.map(listItem => {
         return (
           <MenuButton
             key={listItem.name}
             value={listItem.name}
-            className={listItem.name === currentMenu ? 'primary' : 'text'}
+            className={listItem.name === activeMenu ? 'primary' : 'text'}
             style={{ width: '100%' }}
             onClick={menuHandler}
           >

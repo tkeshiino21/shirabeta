@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import {
   ResponsiveVanish,
   ContactContainer,

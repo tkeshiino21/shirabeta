@@ -9,18 +9,19 @@ import MyPage from 'containers/MyPage';
 import LogIn from 'components/AuthPages/LogIn';
 import SignUp from 'components/AuthPages/SignUp';
 import NotFoundPage from 'components/NotFoundPage';
+import LibraryDetail from 'containers/LibraryDetail';
 
-const App = ({ authState }) => {
+const App = () => {
   return (
     <Router>
       <Switch>
         <Route path="/my-page" component={MyPage} />
         <Route path="/" exact component={Home} />
-        {/* <Route path="/:id" component={LibraryDetail} /> */}
         <Route path="/search" component={Search} />
         <Route path="/add-book" component={AddBook} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/library/:id" component={LibraryDetail} />
         <Route path="*" component={NotFoundPage} />
       </Switch>
     </Router>

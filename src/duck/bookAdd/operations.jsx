@@ -1,6 +1,5 @@
 import * as action from 'duck/bookAdd/actions';
 import { getFirebase } from 'react-redux-firebase';
-import Data from 'components/AddBook/DirectInputData';
 
 const bookAdd = book => dispatch => {
   // console.log('request', tagName);
@@ -13,8 +12,9 @@ const bookAdd = book => dispatch => {
   const addingData = firebase
     .firestore()
     .collection('books')
-    .doc()
+    .doc(book.ISBN)
     .set({
+      ISBN: book.ISBN,
       title: book.title,
       author: author,
       publishedDate: book.publishedDate,

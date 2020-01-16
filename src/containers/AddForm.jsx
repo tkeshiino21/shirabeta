@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import AddForm from 'components/AddBook/AddForm';
 import getFormatData from 'duck/requestBook/selectors';
 import bookAdd from 'duck/bookAdd/operations';
-import { clearStateRequest } from 'duck/request/operations';
 import * as action from 'duck/request/actions';
+import bookRequest from 'duck/requestBook/operations';
 
 const mapStateToProps = state => {
   return {
@@ -23,6 +23,9 @@ const mapDispatchToProps = dispatch => ({
   },
   setClear: () => {
     dispatch(action.clearState());
+  },
+  onRequest: ISBN => {
+    dispatch(bookRequest(ISBN));
   },
 });
 

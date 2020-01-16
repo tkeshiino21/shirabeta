@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import App from 'App';
-import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({
   authState: state.firebase.auth.uid === undefined ? false : true,
