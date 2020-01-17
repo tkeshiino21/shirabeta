@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from 'components/Layout';
-import { MdKeyboardBackspace, MdRefresh } from 'react-icons/md';
+import { MdKeyboardBackspace } from 'react-icons/md';
 import { ArticleTitle } from 'components/Home/Style';
 import {
   theme,
@@ -17,7 +17,11 @@ import { useHistory, useParams } from 'react-router-dom';
 const LibraryDetail = ({ uid, isLoading, library, onRequest, onBorrow }) => {
   const slug = useParams();
   const ISBN = slug.id;
-  useEffect(() => onRequest(ISBN), [LibraryDetail]);
+  useEffect(
+    () => onRequest(ISBN),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [LibraryDetail],
+  );
   const history = useHistory();
   console.log('lib', library);
   const BookData = () => {
@@ -59,12 +63,9 @@ const LibraryDetail = ({ uid, isLoading, library, onRequest, onBorrow }) => {
     <Layout>
       <Container className="vertical">
         <Spacing mTop={theme.xlarge} mBottom={theme.xlarge}>
-          <button onClick={() => history.goBack()}>
+          <Button onClick={() => history.goBack()} className="text xlarge">
             <MdKeyboardBackspace />
-          </button>
-          <button onClick={() => onRequest(ISBN)}>
-            <MdRefresh />
-          </button>
+          </Button>
         </Spacing>
         <Container className="horizontal" style={{ alignSelf: 'center' }}>
           <ImgContainer image="http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api" />

@@ -31,8 +31,11 @@ export const Button = styled.button`
   }
 
   &.text {
-    background-color: inherit;
-    border: none;
+     background-color: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        appearance: none;
     color: ${props => props.color || theme.naturalDark};
   }
 
@@ -43,6 +46,12 @@ export const Button = styled.button`
 
   &.stretch {
     width: 100%;
+  }
+
+  &.xlarge {
+    font-size: ${theme.xlarge};
+    /* height: ${theme.xlarge};
+    width: ${theme.xlarge}; */
   }
 `;
 

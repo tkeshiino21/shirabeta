@@ -22,6 +22,10 @@ export const Container = styled.div`
   &.grow {
     flex-grow: 1;
   }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
 `;
 
 export const ImgContainer = styled.div`

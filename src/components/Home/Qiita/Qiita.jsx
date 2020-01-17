@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { theme, Border, Spacing, Text } from 'Shared';
+import { theme, Container, Spacing, Text } from 'Shared';
 import Filter from 'components/Home/Qiita/Filter';
 import {
   ArticleTitle,
-  SortControl,
+  SortContainer,
   FavoriteIconContainer,
   NotFavoriteIcon,
   SortButton,
@@ -42,45 +42,50 @@ const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
   else {
     return (
       <div style={{ position: 'relative' }}>
-        {/* {console.log(eachPost)} */}
-        <Filter tag={tag} handleClick={handleFilter} />
-        <SortControl>
-          <SortButton
-            className={sort === true ? 'selected' : 'unSelected'}
-            onClick={enableLikeSort}
-          >
-            人気順
-          </SortButton>
-          <Text> | </Text>
-          <SortButton
-            className={sort === true ? 'unSelected' : 'selected'}
-            onClick={disableLikeSort}
-          >
-            新着順
-          </SortButton>
-        </SortControl>
+        <Container wrap>
+          <Filter tag={tag} handleClick={handleFilter} />
+          <SortContainer>
+            <SortButton
+              className={sort === true ? 'selected' : 'unSelected'}
+              onClick={enableLikeSort}
+            >
+              人気順
+            </SortButton>
+            <Text> | </Text>
+            <SortButton
+              className={sort === true ? 'unSelected' : 'selected'}
+              onClick={disableLikeSort}
+            >
+              新着順
+            </SortButton>
+          </SortContainer>
+        </Container>
         {sortedPost.map(post => {
           return (
-            <li key={post.title} style={{ position: 'relative' }}>
-              {console.log(post.id)}
-              <Spacing mTop={theme.large} />
-              <a href={`https://qiita.com/items/${post.id}`}>
-                <ArticleTitle as="h5" fs="14px" lh="1">
-                  {post.title}
-                </ArticleTitle>
-              </a>
-              <Text as="p" fs="8px" color={theme.naturalDark}>
-                {moment(post.created_at).format(
-                  'dddd, MMMM Do YYYY, h:mm:ss a',
-                )}
-              </Text>
-              {post.reactions_count}
-              <FavoriteIconContainer disabled>
-                <NotFavoriteIcon />
-                {post.likes_count}
+            <Container
+              key={post.id}
+              style={{ borderBottom: `1px solid ${theme.naturalDark}` }}
+            >
+              <Container className="vertical" width="85%">
+                <Spacing mTop={theme.large} />
+                <a href={`https://qiita.com/items/${post.id}`}>
+                  <ArticleTitle as="h5" fs="14px" lh="1">
+                    {post.title}
+                  </ArticleTitle>
+                </a>
+                <Text as="p" fs="8px" color={theme.naturalDark}>
+                  {moment(post.created_at).format(
+                    'dddd, MMMM Do YYYY, h:mm:ss a',
+                  )}
+                </Text>
+              </Container>
+              <FavoriteIconContainer>
+                <button style={{ border: 'none', cursor: 'default' }}>
+                  <NotFavoriteIcon />
+                  {post.likes_count}
+                </button>
               </FavoriteIconContainer>
-              <Border bottom="1px" color={theme.naturalDark} />
-            </li>
+            </Container>
           );
         })}
       </div>

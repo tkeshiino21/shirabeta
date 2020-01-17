@@ -9,22 +9,20 @@ import {
   TableBody,
   StyledTableRow,
   StyledTableCell,
-  FlexShrink,
-  TableContainer,
-} from 'components/MyPage/Style';
+} from 'Shared/Table';
 import { theme, Button, Spacing } from 'Shared';
 
 const MyPage = ({ authState, uid, borrowData, onRequest, onReturn }) => {
-  useEffect(() => onRequest(uid), [MyPage]);
-  const ISBN = '4839925232';
+  useEffect(
+    () => onRequest(uid),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [MyPage],
+  );
   const [activeMenu, setActiveMenu] = useState(listItems[1].name);
   const menuHandler = e => {
     setActiveMenu(e.target.value);
   };
   console.log(borrowData);
-  const createData = (bookTitle, borrowDate, returnDate) => {
-    return { bookTitle, borrowDate, returnDate };
-  };
   const FetchedBorrowData = () => {
     return borrowData === ''
       ? null
@@ -92,7 +90,6 @@ const MyPage = ({ authState, uid, borrowData, onRequest, onReturn }) => {
         <TableBody>
           <FetchedBorrowData />
         </TableBody>
-        {console.log('userID', uid)}
       </Table>
     </SubMenuLayout>
   );

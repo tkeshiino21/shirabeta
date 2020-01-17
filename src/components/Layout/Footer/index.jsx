@@ -50,7 +50,7 @@ const Footer = () => {
           </Container>
           <Container className="vertical" width="50%">
             <LightText as="h5" fs={theme.medium}>
-              Increments
+              Links
             </LightText>
             <LinkItemMapping linkItems={Increments} />
           </Container>

@@ -37,6 +37,7 @@ export const bookComment = (ISBN, title, uid, comment) => dispatch => {
 };
 
 export const bookLike = (ISBN, uid) => dispatch => {
+  console.log(ISBN, uid, 'it');
   dispatch(action.bookAddStart());
   const firebase = getFirebase();
   const addingData = firebase
@@ -44,7 +45,7 @@ export const bookLike = (ISBN, uid) => dispatch => {
     .collection('users')
     .doc(uid)
     .update({
-      likes: firebase.firestore.FieldValue.arrayUnion('ISBN'),
+      likes: firebase.firestore.FieldValue.arrayUnion(ISBN),
     });
   const addingBookData = firebase
     .firestore()

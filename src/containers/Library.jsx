@@ -12,12 +12,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRequest: uid => {
+  onRequest: () => {
     dispatch(librariesRequest());
-    dispatch(likesRequest(uid));
   },
-  onLike: (ISBN, title) => {
-    dispatch(bookLike(ISBN, title));
+  onLikesRequest: uid => {
+    dispatch(likesRequest(uid));
+    console.log('mapd', uid);
+  },
+  onLike: (ISBN, uid) => {
+    dispatch(bookLike(ISBN, uid));
   },
 });
 

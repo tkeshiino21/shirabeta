@@ -63,13 +63,19 @@ export const myPageRequest = uid => dispatch => {
 
 export const likesRequest = uid => dispatch => {
   dispatch(action.collationStart());
-  const likesRef = getFirebase()
-    .firestore()
-    .collection('users')
-    .doc(uid)
-    .collection('likes');
-  likesRef
-    .get()
+  const fetchResourse = async () => {
+    const likesRef = getFirebase()
+      .firestore()
+      .collection('users')
+      .doc(uid);
+    const likesDoc = await likesRef.get();
+    if (likesDoc.exists) {
+      return likesDoc.get('likes');
+    } else {
+      console.log('No such document!');
+    }
+  };
+  fetchResourse()
     .then(doc => {
       dispatch(action.collationSuccess(doc));
     })

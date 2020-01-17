@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme, media, Container } from 'Shared';
+import { theme, media } from 'Shared';
 
 export const Table = styled.table`
   color: ${theme.light};
@@ -34,10 +34,6 @@ export const StyledTableRow = styled.tr`
   padding: 1em;
   text-align: left;
   font-size: 0.8em;
-`;
-
-export const FlexShrink = styled(Container)`
-  flex-shrink: 1;
 `;
 
 export const StyledTableCell = styled.td`
