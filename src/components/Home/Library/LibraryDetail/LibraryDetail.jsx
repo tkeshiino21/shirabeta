@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Layout from 'components/Layout';
-import { MdKeyboardBackspace } from 'react-icons/md';
+import { MdKeyboardBackspace, MdRefresh } from 'react-icons/md';
 import { ArticleTitle } from 'components/Home/Style';
 import {
   theme,
@@ -14,14 +14,18 @@ import {
 } from 'Shared';
 import { useHistory, useParams } from 'react-router-dom';
 
-const LibraryDetail = ({ onRequest, onBorrow, isLoading, library }) => {
+const LibraryDetail = ({ uid, isLoading, library, onRequest, onBorrow }) => {
   const slug = useParams();
   const ISBN = slug.id;
-  useEffect(() => onRequest(ISBN), [ISBN]);
+  useEffect(() => onRequest(ISBN), [LibraryDetail]);
   const history = useHistory();
   console.log('lib', library);
   const BookData = () => {
     if (library === '') {
+      return null;
+    } else if (library === undefined) {
+      return null;
+    } else if (library.author === undefined) {
       return null;
     } else {
       return (
@@ -32,16 +36,19 @@ const LibraryDetail = ({ onRequest, onBorrow, isLoading, library }) => {
           <Text as="p" fs="8px" color={theme.naturalDark}>
             {library.publishedDate}
           </Text>
-          {library.author.map(value => {
+          {library.author.map(name => {
             return (
-              <div key={value} style={{ display: 'inline' }}>
+              <div key={name} style={{ display: 'inline' }}>
                 <Text as="p" fs="8px" color={theme.naturalDark}>
-                  {value}
+                  {name}
                 </Text>
               </div>
             );
           })}
-          <Button onClick={() => onBorrow()}>借りる</Button>
+          {console.log(library.author)}
+          <Button onClick={() => onBorrow(ISBN, library.title, uid)}>
+            借りる
+          </Button>
           <Border bottom="1px" color={theme.naturalDark} />
         </Container>
       );
@@ -56,7 +63,7 @@ const LibraryDetail = ({ onRequest, onBorrow, isLoading, library }) => {
             <MdKeyboardBackspace />
           </button>
           <button onClick={() => onRequest(ISBN)}>
-            <MdKeyboardBackspace />
+            <MdRefresh />
           </button>
         </Spacing>
         <Container className="horizontal" style={{ alignSelf: 'center' }}>

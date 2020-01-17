@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LogIn from 'components/AuthPages/LogIn';
+import SignUp from 'components/AuthPages/SignUp';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({
@@ -7,9 +7,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDipatchToProps = dispatch => ({
-  onLogIn: userData => {
-    dispatch(authSwitch({ method: 'login', userData: userData }));
+  onSignUp: userData => {
+    dispatch(authSwitch({ method: 'signup', userData: userData }));
   },
 });
 
-export default connect(mapStateToProps, mapDipatchToProps)(LogIn);
+export default connect(mapStateToProps, mapDipatchToProps)(SignUp);

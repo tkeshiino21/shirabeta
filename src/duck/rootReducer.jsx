@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import authReducer from 'duck/auth/reducers';
 import addReducer from 'duck/bookAdd/reducers';
+import reviewReducer from 'duck/bookAdd/reducers';
 import requestReducer from 'duck/request/reducers';
 import libraryReducer from 'duck/requestLibrary/reducers';
 import { firebaseReducer } from 'react-redux-firebase';
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   firestore: firestoreReducer,
   auth: authReducer,
   add: addReducer,
+  review: reviewReducer,
   request: requestReducer,
   library: libraryReducer,
 });

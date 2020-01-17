@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import AuthForm from 'components/AuthPages/AuthForm';
 import Layout from 'components/Layout';
 import { theme, Spacing } from 'Shared';
@@ -22,7 +23,10 @@ const signupDatas = [
   },
 ];
 
-const SignUp = ({ onSubmit }) => {
+const SignUp = ({ onSignUp, authState }) => {
+  if (authState === true) {
+    return <Redirect to="/" />;
+  }
   return (
     <Layout>
       <Spacing mTop={theme.xlarge} />
@@ -40,7 +44,11 @@ const SignUp = ({ onSubmit }) => {
             .email('Invalid email address')
             .required('Required'),
         })}
-        submitHandler={onSubmit}
+        submitHandler={(userData, { setSubmitting }) => {
+          onSignUp(userData);
+          setSubmitting(false);
+          console.log(userData);
+        }}
         authAction="SignUp"
         datas={signupDatas}
       />

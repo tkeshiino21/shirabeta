@@ -1,14 +1,14 @@
-import { MdTrendingUp, MdFlag } from 'react-icons/md';
+import { MdBook, MdSearch } from 'react-icons/md';
 
 export const subMenuItems = [
   {
     name: 'qiita',
     label: 'qiita',
-    icon: MdFlag,
+    icon: MdSearch,
   },
   {
     name: 'library',
     label: 'ライブラリ',
-    icon: MdTrendingUp,
+    icon: MdBook,
   },
 ];

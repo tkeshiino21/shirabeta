@@ -1,14 +1,14 @@
-import { MdTrendingUp, MdFlag } from 'react-icons/md';
+import { MdComment, MdEventNote } from 'react-icons/md';
 
 export const listItems = [
   {
     name: 'BookLog',
-    label: '貸出履歴',
-    icon: MdFlag,
+    label: 'ブックログ',
+    icon: MdComment,
   },
   {
     name: 'Borrowed',
     label: '貸出中の本',
-    icon: MdTrendingUp,
+    icon: MdEventNote,
   },
 ];

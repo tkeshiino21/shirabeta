@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, Redirect } from 'react-router';
 import AuthForm from 'components/AuthPages/AuthForm';
 import Layout from 'components/Layout';
 import { theme, Spacing, Text } from 'Shared';
@@ -18,15 +18,18 @@ const loginDatas = [
   },
 ];
 
-const LogIn = ({ onSubmit }) => {
+const LogIn = ({ authState, onLogIn }) => {
   const location = useLocation();
   const FromMyPage = () => {
-    if (location.state) {
+    if (location.state === 'MyPage') {
       return <Text>MyPageを見るにはログインが必要です。</Text>;
     } else {
-      return null;
+      return <></>;
     }
   };
+  if (authState === true) {
+    return <Redirect to="/" />;
+  }
   return (
     <Layout>
       <Spacing mTop={theme.xlarge} />
@@ -42,7 +45,11 @@ const LogIn = ({ onSubmit }) => {
             .email('Invalid email address')
             .required('Required'),
         })}
-        submitHandler={onSubmit}
+        submitHandler={(userData, { setSubmitting }) => {
+          onLogIn(userData);
+          setSubmitting(false);
+          console.log(userData);
+        }}
         authAction="LogIn"
         datas={loginDatas}
       />

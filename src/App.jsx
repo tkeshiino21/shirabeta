@@ -6,8 +6,8 @@ import Home from 'components/Home';
 import Search from 'components/Search';
 import AddBook from 'components/AddBook';
 import MyPage from 'containers/MyPage';
-import LogIn from 'components/AuthPages/LogIn';
-import SignUp from 'components/AuthPages/SignUp';
+import LogIn from 'containers/LogIn';
+import SignUp from 'containers/SignUp';
 import NotFoundPage from 'components/NotFoundPage';
 import LibraryDetail from 'containers/LibraryDetail';
 

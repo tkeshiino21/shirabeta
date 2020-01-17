@@ -1,11 +1,9 @@
 import styled from 'styled-components';
-import { theme, Container } from 'Shared';
+import { theme, media, Container } from 'Shared';
 
-export const TableContainer = styled(Container)`
-  background-color: ${theme.light};
-`;
 export const Table = styled.table`
   color: ${theme.light};
+  table-layout: fixed;
 `;
 
 export const TableHead = styled.thead`
@@ -19,33 +17,40 @@ export const TableHeader = styled.th`
 `;
 
 export const TableBody = styled.tbody`
-  color: #fff;
   font-size: 0.85em;
   padding: 1em;
 `;
 
 export const TableRow = styled.tr`
-  background-color: #fff;
-  border-bottom: 2px solid #fff;
-  color: #fff;
+  background-color: ${theme.light};
+  border-bottom: 2px solid ${theme.naturalDark};
   padding: 1em;
   text-align: left;
   font-size: 0.8em;
 `;
 
 export const StyledTableRow = styled.tr`
-  background-color: #fff;
-  border-bottom: 2px solid #fff;
-  color: #fff;
+  border-bottom: 1px solid ${theme.naturalDark};
   padding: 1em;
   text-align: left;
   font-size: 0.8em;
-  table tr:nth-child(even) {
-    background-color: #eee;
-  }
+`;
+
+export const FlexShrink = styled(Container)`
+  flex-shrink: 1;
 `;
 
 export const StyledTableCell = styled.td`
   color: ${theme.dark};
   padding: 1em;
+
+  &.title {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    ${media.sm`
+      width:50px;
+    `}
+  }
 `;

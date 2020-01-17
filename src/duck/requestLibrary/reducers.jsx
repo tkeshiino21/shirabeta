@@ -1,9 +1,11 @@
-import * as actionTypes from 'duck/request/actionTypes';
+import * as actionTypes from 'duck/requestLibrary/actionTypes';
 
 const initState = {
   response: '',
+  listen: '',
   error: '',
   isLoading: '',
+  likes: '',
 };
 
 const requestReducer = (state = initState, action) => {
@@ -23,7 +25,41 @@ const requestReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.payload,
+        response: action.payload,
+      };
+    case actionTypes.EVENTLISTEN_START:
+      return {
+        ...state,
+        // isLoading: true,
+      };
+    case actionTypes.EVENTLISTEN_SUCCESS:
+      return {
+        ...state,
+        // isLoading: false,
+        listen: action.payload,
+      };
+    case actionTypes.EVENTLISTEN_FAIL:
+      return {
+        ...state,
+        // isLoading: false,
+        // error: action.payload,
+      };
+    case actionTypes.COLLATION_START:
+      return {
+        ...state,
+        // isLoading: true,
+      };
+    case actionTypes.COLLATION_SUCCESS:
+      return {
+        ...state,
+        // isLoading: false,
+        likes: action.payload,
+      };
+    case actionTypes.COLLATION_FAIL:
+      return {
+        ...state,
+        // isLoading: false,
+        // error: action.payload,
       };
     case actionTypes.CLEAR_STATE:
       return {

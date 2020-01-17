@@ -32,8 +32,8 @@ const LandingToSign = ({ authState }) => {
             </Text>
             <Spacing mTop={theme.medium} />
             <Text as="p" fs="1.5rem" lh="1.8" color={theme.primary}>
-              Livrioはチームのための図書管理用サービスです。お気に入りの本を会社で回し読みしたいとき、
-              あるいは他のチームメイトに推薦したいときなどにご活用ください。
+              Livrioはチームのための図書管理用サービスです。参考になる良書をみんなで共有したいとき、
+              あるいは他のチームメイトに推薦したい本があるときにご活用ください。
             </Text>
           </Container>
           <Spacing mRight="-40px" />

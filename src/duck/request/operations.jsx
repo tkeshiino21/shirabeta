@@ -2,7 +2,7 @@
 import axios from 'axios';
 import * as action from 'duck/request/actions';
 
-const postRequest = tagName => dispatch => {
+export const postRequest = tagName => dispatch => {
   // console.log('request', tagName);
   dispatch(action.requestStart());
   const fetchResource = async () => {
@@ -16,4 +16,16 @@ const postRequest = tagName => dispatch => {
   });
 };
 
-export default postRequest;
+export const bookRequest = ISBN => dispatch => {
+  dispatch(action.requestStart());
+  console.log('redux', ISBN);
+  const fetchData = async () => {
+    const baseURL = 'https://www.googleapis.com';
+    const queryURL = `${baseURL}/books/v1/volumes?q=isbn:${ISBN}`;
+    const data = await axios.get(queryURL);
+    dispatch(action.requestSuccess(data));
+  };
+  fetchData().catch(error => {
+    dispatch(action.requestFail(error));
+  });
+};

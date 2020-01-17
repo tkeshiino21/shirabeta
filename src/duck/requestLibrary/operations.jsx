@@ -1,5 +1,4 @@
-// import { selectors as userSelectors } from 'duck/postRequest/selectors';
-import * as action from 'duck/request/actions';
+import * as action from 'duck/requestLibrary/actions';
 import { getFirebase } from 'react-redux-firebase';
 
 export const librariesRequest = () => dispatch => {
@@ -15,6 +14,18 @@ export const librariesRequest = () => dispatch => {
     .catch(error => {
       dispatch(action.requestFail(error));
     });
+  // EventListner to render likesCount instantly
+  dispatch(action.eventListenStart());
+  const likesRef = getFirebase()
+    .firestore()
+    .collection('books')
+    .doc('likesCount');
+  likesRef.onSnapshot(doc => {
+    dispatch(action.eventListenSuccess(doc));
+  });
+  // .catch(error => {
+  //   dispatch(action.eventListenFail(error));
+  // });
 };
 
 export const libraryRequest = ISBN => dispatch => {
@@ -33,6 +44,36 @@ export const libraryRequest = ISBN => dispatch => {
     });
 };
 
-export default librariesRequest;
+export const myPageRequest = uid => dispatch => {
+  dispatch(action.requestStart());
+  const borrowRef = getFirebase()
+    .firestore()
+    .collection('users')
+    .doc(uid)
+    .collection('borrow');
+  borrowRef
+    .get()
+    .then(doc => {
+      dispatch(action.requestSuccess(doc));
+    })
+    .catch(error => {
+      dispatch(action.requestFail(error));
+    });
+};
 
-//  const books = querySnapshot.docs.map(doc => doc.data());
+export const likesRequest = uid => dispatch => {
+  dispatch(action.collationStart());
+  const likesRef = getFirebase()
+    .firestore()
+    .collection('users')
+    .doc(uid)
+    .collection('likes');
+  likesRef
+    .get()
+    .then(doc => {
+      dispatch(action.collationSuccess(doc));
+    })
+    .catch(error => {
+      dispatch(action.collationFail(error));
+    });
+};

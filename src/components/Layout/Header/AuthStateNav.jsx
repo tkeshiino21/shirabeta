@@ -32,7 +32,7 @@ const AuthStateNav = ({ onLogOut, authState, userName }) => {
       return (
         <>
           <Text color={theme.light} fs={theme.small}>
-            ようこそ<Strong fs={theme.medium}> {userName} </Strong> さん
+            <Strong fs="12px"> {userName} </Strong> さん
           </Text>
           <Spacing mRight={theme.small} />
           <Button

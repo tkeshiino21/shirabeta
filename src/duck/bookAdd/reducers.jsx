@@ -21,8 +21,8 @@ const addReducer = (state = initState, action) => {
     case actionTypes.BOOKADD_FAIL:
       return {
         ...state,
-        isAdding: false,
         error: action.payload,
+        isAdding: false,
       };
     case action.type.CLEAR_STATE:
       return {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { listItems } from 'components/MyPage/listItems';
 import SubMenuLayout from 'components/Layout/SubMenu/SubMenuLayout';
@@ -9,48 +9,90 @@ import {
   TableBody,
   StyledTableRow,
   StyledTableCell,
+  FlexShrink,
+  TableContainer,
 } from 'components/MyPage/Style';
 import { theme, Button, Spacing } from 'Shared';
 
-const MyPage = ({ authState }) => {
+const MyPage = ({ authState, uid, borrowData, onRequest, onReturn }) => {
+  useEffect(() => onRequest(uid), [MyPage]);
+  const ISBN = '4839925232';
+  const [activeMenu, setActiveMenu] = useState(listItems[1].name);
+  const menuHandler = e => {
+    setActiveMenu(e.target.value);
+  };
+  console.log(borrowData);
   const createData = (bookTitle, borrowDate, returnDate) => {
     return { bookTitle, borrowDate, returnDate };
   };
-  const rows = [
-    createData('CSSの教科書', 159, 6.0),
-    createData('HTMLの基本', 159, 6.0),
-    createData('入門JavaScript', 159, 6.0),
-    createData('本格JavaScript', 159, 6.0),
-    createData('丸わかりReact', 159, 6.0),
-  ];
+  const FetchedBorrowData = () => {
+    return borrowData === ''
+      ? null
+      : borrowData.docs
+          .map(queryDocumentSnapshot => {
+            console.log(queryDocumentSnapshot);
+            return queryDocumentSnapshot.data();
+          })
+          .map((doc, id, index) => {
+            return (
+              <StyledTableRow key={doc.title}>
+                <StyledTableCell className="title" component="th" scope="row">
+                  {doc.title}
+                </StyledTableCell>
+
+                <StyledTableCell align="right">
+                  {doc.borrowDate}
+                </StyledTableCell>
+                <StyledTableCell align="right">{doc.limitDate}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {doc.returnDate}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <Button
+                    disabled={doc.returnDate === undefined ? false : true}
+                    onClick={() => {
+                      onReturn(doc.ISBN, uid);
+                      onRequest(uid);
+                    }}
+                    className=" primary"
+                    style={{
+                      display:
+                        doc.returnDate === undefined ? ' primary' : 'none',
+                    }}
+                  >
+                    返却
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            );
+          });
+  };
   if (authState !== true) {
     return <Redirect to={{ pathname: 'login', state: 'MyPage' }} />;
   }
+
   return (
-    <SubMenuLayout listItems={listItems}>
+    <SubMenuLayout
+      listItems={listItems}
+      activeMenu={activeMenu}
+      menuHandler={menuHandler}
+    >
       <Spacing mTop={theme.xlarge} />
+
       <Table>
         <TableHead>
           <TableRow>
             <StyledTableCell>本のタイトル</StyledTableCell>
             <StyledTableCell align="right">貸出日</StyledTableCell>
+            <StyledTableCell align="right">期限日</StyledTableCell>
             <StyledTableCell align="right">返却日</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.bookTitle}>
-              <StyledTableCell component="th" scope="row">
-                {row.bookTitle}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.borrowDate}</StyledTableCell>
-              <StyledTableCell align="right">{row.returnDate}</StyledTableCell>
-              <StyledTableCell align="right">
-                <Button className="primary">返す</Button>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
+          <FetchedBorrowData />
         </TableBody>
+        {console.log('userID', uid)}
       </Table>
     </SubMenuLayout>
   );
