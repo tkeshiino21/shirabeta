@@ -5,8 +5,8 @@ import {
   BackDrop,
   Menu,
   AuthButtonContainer,
-} from 'components/Layout/Header/Style';
-import NavLinks from 'components/Layout/Header/NavLinks';
+} from 'Layout/Header/Style';
+import NavLinks from 'Layout/Header/NavLinks';
 import AuthStateNav from 'containers/AuthStateNav';
 
 const Header = () => {

@@ -1,11 +1,11 @@
 import React from 'react';
-import Layout from 'components/Layout';
-import SubMenu from 'components/Layout/SubMenu/MenuLinks';
+import Layout from 'Layout';
+import SubMenu from 'Layout/SubMenu/MenuLinks';
 import { Spacing, Container } from 'Shared';
 import {
   ResponsiveContainer,
   ResponsiveCard,
-} from 'components/Layout/SubMenu/Style';
+} from 'Layout/SubMenu/Style';
 import LandingToSign from 'containers/LandingToSign';
 
 const SubMenuLayout = ({ children, listItems, menuHandler, activeMenu }) => {

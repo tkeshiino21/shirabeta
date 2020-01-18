@@ -32,3 +32,4 @@ yarn-error.log*
 database.rules.json
 firestore.indexes.json
 firestore.rules
+react-app-env.d.ts

@@ -16,13 +16,16 @@ export const librariesRequest = () => dispatch => {
     });
   // EventListner to render likesCount instantly
   dispatch(action.eventListenStart());
-  const likesRef = getFirebase()
-    .firestore()
-    .collection('books')
-    .doc('likesCount');
-  likesRef.onSnapshot(doc => {
-    dispatch(action.eventListenSuccess(doc));
-  });
+  const fetchResourse = async () => {
+    const likesRef = getFirebase()
+      .firestore()
+      .collection('books')
+      .doc('likesCount');
+    const likesDoc = await likesRef.onSnapshot(doc => {
+      return dispatch(action.eventListenSuccess(doc.data()));
+    });
+  };
+  fetchResourse();
   // .catch(error => {
   //   dispatch(action.eventListenFail(error));
   // });
@@ -82,4 +85,22 @@ export const likesRequest = uid => dispatch => {
     .catch(error => {
       dispatch(action.collationFail(error));
     });
+};
+
+export const commentsRequest = ISBN => dispatch => {
+  dispatch(action.collationStart());
+  const snapshotRef = getFirebase()
+    .firestore()
+    .collectionGroup('comments')
+    .where('ISBN', '==', ISBN)
+    .get();
+  snapshotRef.then(snapshot => dispatch(action.collationSuccess(snapshot)));
+
+  // fetchResourse()
+  //   .then(doc => {
+  //
+  //   })
+  //   .catch(error => {
+  //     dispatch(action.collationFail(error));
+  //   });
 };

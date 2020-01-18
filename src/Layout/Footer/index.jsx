@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme, NaturalDarkText, LightText, Container } from 'Shared';
-import TechLog from 'components/Layout/Footer/TechLog';
-import Increments from 'components/Layout/Footer/Increments';
+import TechLog from 'Layout/Footer/TechLog';
+import Increments from 'Layout/Footer/Increments';
 
 const FooterContainer = styled.div`
   display: flex;

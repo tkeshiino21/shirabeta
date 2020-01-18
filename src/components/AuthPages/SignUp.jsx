@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthForm from 'components/AuthPages/AuthForm';
-import Layout from 'components/Layout';
+import Layout from 'Layout';
 import { theme, Spacing } from 'Shared';
 import * as Yup from 'yup';
 

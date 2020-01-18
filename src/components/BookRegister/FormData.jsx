@@ -1,24 +1,23 @@
 import React from 'react';
 import { ErrorMessage, Field } from 'formik';
-import { theme, Container, Spacing, Border } from 'Shared';
+import { theme, Border, Container, Spacing } from 'Shared';
+import { CustomInput } from 'components/AddBook/FormikConfig';
 
-const CustomInput = props => <input style={{ width: '100%' }} {...props} />;
-
-const Data = () => {
+const FormData = () => {
   const datas = [
     {
-      id: 'title',
       name: 'title',
+      as: CustomInput,
       type: 'text',
     },
     {
-      id: 'author',
       name: 'author',
+      as: CustomInput,
       type: 'text',
     },
     {
-      id: 'publishedDate',
       name: 'publishedDate',
+      as: CustomInput,
       type: 'text',
     },
   ];
@@ -30,7 +29,7 @@ const Data = () => {
           <label htmlFor={data.name} style={{ width: '100px' }}>
             {data.name}
           </label>
-          <Field as={CustomInput} name={data.name} type={data.type} />
+          <Field as={data.as} name={data.name} type={data.type} />
           <ErrorMessage
             name={data.name}
             render={msg => <p style={{ color: 'red' }}>{msg}</p>}
@@ -43,4 +42,4 @@ const Data = () => {
   });
 };
 
-export default Data;
+export default FormData;

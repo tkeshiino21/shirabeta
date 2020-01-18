@@ -1,81 +1,143 @@
-import React, { useEffect } from 'react';
-import Layout from 'components/Layout';
-import { MdKeyboardBackspace } from 'react-icons/md';
-import { ArticleTitle } from 'components/Home/Style';
+import React, { useEffect, useState } from 'react';
+import Layout from 'Layout';
+import { MdKeyboardBackspace, MdModeEdit } from 'react-icons/md';
+import BookData from 'components/Home/Library/LibraryDetail/BookData';
+import CommentForm from 'components/Home/Library/LibraryDetail/CommentForm';
+import CommentsData from 'components/Home/Library/LibraryDetail/CommentsData';
 import {
   theme,
-  Text,
+  Box,
   Button,
-  Border,
-  Card,
+  CardContainer,
   Container,
   Spacing,
+  Snackbar,
   ImgContainer,
 } from 'Shared';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import * as Yup from 'yup';
 
-const LibraryDetail = ({ uid, isLoading, library, onRequest, onBorrow }) => {
+const LibraryDetail = ({
+  uid,
+  userName,
+  isLoading,
+  library,
+  comments,
+  onRequest,
+  onBorrow,
+  onComment,
+  onCommentsRequest,
+}) => {
+  const [showSnack, setShowSnack] = useState({
+    class: 'hidden',
+    message: '',
+  });
+  // *backButton用
+  const history = useHistory();
+  // *Firestoreから選択した本のデータをFetchする
   const slug = useParams();
   const ISBN = slug.id;
-  useEffect(
-    () => onRequest(ISBN),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [LibraryDetail],
-  );
-  const history = useHistory();
-  console.log('lib', library);
-  const BookData = () => {
-    if (library === '') {
-      return null;
-    } else if (library === undefined) {
-      return null;
-    } else if (library.author === undefined) {
-      return null;
-    } else {
-      return (
-        <Container className="vertical grow" height="auto" justify="center">
-          <ArticleTitle as="h5" fs="14px" lh="1">
-            {library.title}
-          </ArticleTitle>
-          <Text as="p" fs="8px" color={theme.naturalDark}>
-            {library.publishedDate}
-          </Text>
-          {library.author.map(name => {
-            return (
-              <div key={name} style={{ display: 'inline' }}>
-                <Text as="p" fs="8px" color={theme.naturalDark}>
-                  {name}
-                </Text>
-              </div>
-            );
-          })}
-          {console.log(library.author)}
-          <Button onClick={() => onBorrow(ISBN, library.title, uid)}>
-            借りる
-          </Button>
-          <Border bottom="1px" color={theme.naturalDark} />
-        </Container>
-      );
-    }
+  useEffect(() => onRequest(ISBN), [ISBN, onRequest]);
+  useEffect(() => onCommentsRequest(ISBN), [ISBN, onCommentsRequest]);
+  // *CommentFormの送信
+  const [formIsOpen, setFormIsOpen] = useState(false);
+  const handleComment = () => setFormIsOpen(!formIsOpen);
+  const validationSchema = Yup.object({
+    comment: Yup.string()
+      .max(400, 'Must be 300 characters or less')
+      .min(8, 'Must be 8 characters or more')
+      .required('Required'),
+  });
+  const title = library === undefined ? null : library.title;
+  const handleSubmit = (comment, { setSubmitting }) => {
+    onComment(ISBN, title, uid, userName, comment.comment);
+    setSubmitting(false);
+    onCommentsRequest(ISBN);
+    handleComment();
+    setShowSnack({ class: 'show', message: 'Successfully Borrowed!' });
+    setTimeout(() => {
+      return setShowSnack({ class: 'hidden', message: '' });
+    }, 3000);
   };
+  console.log('come', comments);
+  // Borrowの処理
+  const handleBorrow = () => {
+    onBorrow(ISBN, title, uid);
+    setShowSnack({ class: 'show', message: 'Successfully Borrowed!' });
+    setTimeout(() => {
+      return history.push('/my-page');
+    }, 2000);
+  };
+  // *以下View
   if (isLoading === true) return <h1>isLoading</h1>;
   return (
     <Layout>
-      <Container className="vertical">
-        <Spacing mTop={theme.xlarge} mBottom={theme.xlarge}>
-          <Button onClick={() => history.goBack()} className="text xlarge">
-            <MdKeyboardBackspace />
-          </Button>
-        </Spacing>
-        <Container className="horizontal" style={{ alignSelf: 'center' }}>
-          <ImgContainer image="http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api" />
-          <Card>
-            <Spacing mTop={theme.medium} mBottom={theme.medium}>
-              <BookData />
-            </Spacing>
-          </Card>
+      <Box>
+        <Container className="vertical">
+          <Spacing mTop={theme.medium} mBottom={theme.medium}>
+            <Button onClick={() => history.goBack()} className="text xlarge">
+              <MdKeyboardBackspace />
+            </Button>
+          </Spacing>
+          <CardContainer
+            className="horizontal wrap"
+            style={{ alignSelf: 'center' }}
+          >
+            <ImgContainer
+              bgSize="contain"
+              height="auto"
+              style={{
+                backgroundColor: theme.light,
+                flexBasis: '300px',
+                minHeight: '200px',
+              }}
+              image="http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api"
+            />
+            <Container className="grow" style={{ flexBasis: '300px' }}>
+              <CardContainer className="vertical" padding={`0 ${theme.xlarge}`}>
+                <Spacing mTop={theme.xlarge} />
+                <BookData library={library} />
+                <Container justify="flex-end">
+                  <Button
+                    onClick={handleComment}
+                    className="text"
+                    style={{ width: '200px', marginTop: '-80px' }}
+                  >
+                    <p>
+                      <MdModeEdit
+                        style={{
+                          width: '20px',
+                          height: '20px',
+                        }}
+                      />
+                      コメントを書く
+                    </p>
+                  </Button>
+                </Container>
+
+                {formIsOpen === true ? (
+                  <CommentForm
+                    validationSchema={validationSchema}
+                    handleSubmit={handleSubmit}
+                  />
+                ) : null}
+                <CommentsData comments={comments} />
+                <Container justify="center">
+                  <Button
+                    className="primary stretch"
+                    onClick={handleBorrow}
+                    style={{ width: '80%', margin: `${theme.xlarge} auto` }}
+                  >
+                    借りる
+                  </Button>
+                </Container>
+              </CardContainer>
+            </Container>
+          </CardContainer>
         </Container>
-      </Container>
+
+        <Snackbar className={showSnack.class}>{showSnack.message}</Snackbar>
+      </Box>
     </Layout>
   );
 };

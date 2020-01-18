@@ -3,6 +3,11 @@ import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import DirectInputData from 'components/AddBook/DirectInputData';
 import {
+  TransparentInput,
+  HiddenInput,
+  CustomSelect,
+} from 'components/AddBook/FormikConfig';
+import {
   theme,
   Spacing,
   Card,
@@ -14,8 +19,6 @@ import {
   InlineButton,
 } from 'Shared';
 import bookAndGlasses from 'images/bookAndGlasses.jpg';
-
-const CustomInput = props => <input style={{ opacity: 0 }} {...props} />;
 
 const AddForm = ({
   onRequest,
@@ -38,6 +41,8 @@ const AddForm = ({
     title: fetchedBook === null ? '' : fetchedBook[0].title,
     author: fetchedBook === null ? '' : fetchedBook[0].authors,
     publishedDate: fetchedBook === null ? '' : fetchedBook[0].publishedDate,
+    image: fetchedBook === null ? '' : fetchedBook[0].image,
+    description: fetchedBook === null ? '' : fetchedBook[0].description,
   };
 
   if (isLoading === true) {
@@ -50,6 +55,7 @@ const AddForm = ({
         style={{ overflow: 'hidden' }}
         SameSite="None"
       />
+      {console.log(fetchedBook)}
       <Card>
         <Spacing mTop={theme.medium} mBottom={theme.medium}>
           <Container className="vertical grow" height="auto" justify="center">
@@ -57,17 +63,19 @@ const AddForm = ({
               initialValues={initialValues}
               validationSchema={Yup.object({
                 ISBN: Yup.string()
-                  .max(16, 'Must be 16 characters or less')
+                  .max(16, '不正なISBNコードです')
                   .required('↑Required'),
                 title: Yup.string()
-                  .max(150, 'Must be 150 characters or less')
+                  .max(150, 'タイトルが長すぎます')
                   .required('Required'),
                 author: Yup.string()
-                  .max(40, 'Must be 40 characters or less')
                   .required('Required'),
                 publishedDate: Yup.string()
                   .max(20, 'Must be 20 characters or less')
                   .required('Required'),
+                description: Yup.string(),
+                image: Yup.string(),
+                category: Yup.string().required('Required'),
               })}
               onSubmit={(values, { setSubmitting }) => {
                 onSubmit(values);
@@ -102,7 +110,9 @@ const AddForm = ({
                       />
                       <InlineButton onClick={handleClick}>SEARCH</InlineButton>
                     </Container>
-                    <Field as={CustomInput} name="ISBN" type="text" />
+                    <Field as={TransparentInput} name="ISBN" type="text" />
+                    <Field as={HiddenInput} name="description" type="text" />
+                    <Field as={HiddenInput} name="image" type="text" />
                     <ErrorMessage
                       name="ISBN"
                       render={msg => <p style={{ color: 'red' }}>{msg}</p>}
@@ -114,7 +124,8 @@ const AddForm = ({
                       style={{ minWidth: '30vw' }}
                     >
                       <DirectInputData />
-                      {/* <button onClick={handleClick}>click me</button> */}
+                      <Field as={CustomSelect} name="category" type="text" />
+                      <Spacing mBottom={theme.large} />
                       <Snackbar className={showSnack}>
                         Successfully added !
                       </Snackbar>

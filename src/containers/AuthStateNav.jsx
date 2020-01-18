@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import AuthStateNav from 'components/Layout/Header/AuthStateNav';
+import AuthStateNav from 'Layout/Header/AuthStateNav';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({

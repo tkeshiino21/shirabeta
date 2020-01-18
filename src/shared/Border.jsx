@@ -7,6 +7,14 @@ export const Border = styled.div`
   border-bottom: ${props => props.bottom} solid ${props => props.color};
   border-left: ${props => props.left} solid ${props => props.color};
   width: ${props => props.width || 'auto'};
+  padding-top: ${props => props.pTop}px;
+  padding-right: ${props => props.pRight}px;
+  padding-bottom: ${props => props.pBottom}px;
+  padding-left: ${props => props.pLeft}px;
+  margin-top: ${props => props.mTop};
+  margin-right: ${props => props.mRight};
+  margin-bottom: ${props => props.mBottom};
+  margin-left: ${props => props.mLeft};
   &.shadow {
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
   }

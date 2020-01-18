@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { theme, media } from 'Shared';
+import { theme } from './theme';
+import { media } from './media';
 
 export const Table = styled.table`
   color: ${theme.light};

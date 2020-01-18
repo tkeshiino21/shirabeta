@@ -1,26 +1,33 @@
 import React from 'react';
-import { MdHome, MdControlPoint, MdEventNote } from 'react-icons/md';
+import { MdHome } from 'react-icons/md';
 import { theme, Border } from 'Shared';
-import { MyNavLink, NavMenu } from 'components/Layout/Header/Style';
+import { MyNavLink, NavMenu } from 'Layout/Header/Style';
 
 const NavLinks = () => {
   const navItems = [
     {
       value: 'home',
+      label: 'ホーム',
       link: '/',
       icon: MdHome,
       border: theme.naturalDark,
     },
     {
+      value: 'search',
+      label: '図書検索',
+      link: '/search',
+      border: theme.naturalDark,
+    },
+    {
       value: 'BookRegister',
+      label: '本の登録',
       link: '/add-book',
-      icon: MdControlPoint,
       border: theme.naturalDark,
     },
     {
       value: 'MyPage',
+      label: '本の登録',
       link: '/my-page',
-      icon: MdEventNote,
       border: 'inherit',
     },
   ];

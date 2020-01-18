@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Qiita from 'containers/Qiita';
 import Library from 'containers/Library';
 import { subMenuItems } from 'components/Home/SubMenuItems';
-import SubMenuLayout from 'components/Layout/SubMenu/SubMenuLayout';
+import SubMenuLayout from 'Layout/SubMenu/SubMenuLayout';
 
 const Home = () => {
   const [activeMenu, setActiveMenu] = useState(subMenuItems[1].name);

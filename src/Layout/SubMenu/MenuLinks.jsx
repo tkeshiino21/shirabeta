@@ -3,7 +3,7 @@ import { theme, Spacing } from 'Shared';
 import {
   ResponsiveContainer,
   MenuButton,
-} from 'components/Layout/SubMenu/Style';
+} from 'Layout/SubMenu/Style';
 
 const MenuLinks = ({ listItems, menuHandler, activeMenu }) => {
   return (

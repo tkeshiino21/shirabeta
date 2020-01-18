@@ -17,7 +17,12 @@ export const bookAdd = book => dispatch => {
       title: book.title,
       author: author,
       publishedDate: book.publishedDate,
+      image: book.image,
+      description: book.description,
+      category: book.category,
       registerDate: registerDate,
+      likesCount: 0,
+      commentsCount: 0,
       // firebase.firestore.FieldValue.serverTimestamp()
     });
   addingData.then(response => {
@@ -36,7 +41,6 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
     1}-${today.getDate()}`;
   const limitDate = `${limitDay.getFullYear()}-${limitDay.getMonth() +
     1}-${limitDay.getDate()}`;
-  console.log(limitDay, today);
   const addingData = firebase
     .firestore()
     .collection('users')
@@ -48,8 +52,6 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
       title: title,
       borrowDate: borrowDate,
       limitDate: limitDate,
-      likesCount: 0,
-      commentsCount: 0,
     });
   addingData.then(response => {
     dispatch(action.bookAddSuccess(response));

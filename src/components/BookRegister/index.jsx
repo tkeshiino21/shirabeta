@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Layout from 'components/Layout';
+import Layout from 'Layout';
 import AddForm from 'containers/AddForm';
 import { theme, Container, Spacing } from 'Shared';
 

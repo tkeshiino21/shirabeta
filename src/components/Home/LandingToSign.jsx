@@ -2,7 +2,7 @@ import React from 'react';
 import ContactForm from 'containers/ContactForm';
 import * as Yup from 'yup';
 import { theme, Text, Spacing, Container } from 'Shared';
-import HeroHeader from 'components/Layout/HeroHeader';
+import HeroHeader from 'Layout/HeroHeader';
 
 const LandingToSign = ({ authState }) => {
   console.log(authState);

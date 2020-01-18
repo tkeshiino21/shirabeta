@@ -15,6 +15,8 @@ const getFormatData = state => {
           subtitle: item.volumeInfo.subtitle,
           authors: [item.volumeInfo.authors],
           publishedDate: item.volumeInfo.publishedDate,
+          image: item.volumeInfo.imageLinks.thumbnail,
+          description: item.volumeInfo.description,
         };
       })
     : null;

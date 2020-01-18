@@ -1,9 +1,9 @@
 export { Border, Shadow } from 'Shared/Border';
 export { Button, LinkButton, InlineButton } from 'Shared/Button';
-export { Card } from 'Shared/Card';
+export { Card, CardContainer } from 'Shared/Card';
 export { Container, ImgContainer, MainWrapper, Box } from 'Shared/Container';
 export { GlobalStyle } from 'Shared/GlobalStyle';
-export { Input } from 'Shared/Input';
+export { Input,Textarea } from 'Shared/Input';
 export { Loading } from 'Shared/Loading';
 export { Select, SelectWrapper, Option } from 'Shared/Select';
 export { Spacing } from 'Shared/Spacing';

@@ -18,6 +18,7 @@ const HeroHeader = () => {
           image={heroImage}
           width="100vw"
           height="58vh"
+          opacity="0.7"
         />
       </Border>
     </Wrapper>

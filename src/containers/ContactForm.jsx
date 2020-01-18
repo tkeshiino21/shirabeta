@@ -6,19 +6,9 @@ const mapDispatchToProps = dispatch => ({
   onSignUp: userData => {
     dispatch(authSwitch({ method: 'signup', userData: userData }));
   },
+  onLogIn: userData => {
+    dispatch(authSwitch({ method: 'login', userData: userData }));
+  },
 });
 
 export default connect(null, mapDispatchToProps)(ContactForm);
-
-//  const dispatch = useDispatch();
-//    dispatch(
-//      authAction({
-//        payload: {
-//          email: inputForm.email,
-//          password: inputForm.password,
-//          name: inputForm.name,
-//          method: 'signup',
-//        },
-//      }),
-//    );
-//  };

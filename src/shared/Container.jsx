@@ -35,7 +35,7 @@ export const ImgContainer = styled.div`
   background-repeat: no-repeat;
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
-  opacity: ${props => props.opacity || '0.7'};
+  opacity: ${props => props.opacity || '1'};
 `;
 
 const MainContainer = styled.div`

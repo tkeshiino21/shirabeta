@@ -30,7 +30,7 @@ export const Select = styled.select`
   color: ${theme.naturalDark};
   width: ${props => props.width || '100%'};
   margin-right: ${props => props.mRight || '5px'};
-  border-radius: 3px;
+  border-radius: 4px;
   appearance: none;
 `;
 export const Option = styled.option`

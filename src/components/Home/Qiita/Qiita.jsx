@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { theme, Container, Spacing, Text } from 'Shared';
+import { theme, Button, Container, Spacing, Text } from 'Shared';
 import Filter from 'components/Home/Qiita/Filter';
 import {
   ArticleTitle,
@@ -68,7 +68,11 @@ const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
             >
               <Container className="vertical" width="85%">
                 <Spacing mTop={theme.large} />
-                <a href={`https://qiita.com/items/${post.id}`}>
+                <a
+                  href={`https://qiita.com/items/${post.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ArticleTitle as="h5" fs="14px" lh="1">
                     {post.title}
                   </ArticleTitle>
@@ -80,10 +84,10 @@ const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
                 </Text>
               </Container>
               <FavoriteIconContainer>
-                <button style={{ border: 'none', cursor: 'default' }}>
+                <Button className="text" style={{ cursor: 'default' }}>
                   <NotFavoriteIcon />
                   {post.likes_count}
-                </button>
+                </Button>
               </FavoriteIconContainer>
             </Container>
           );

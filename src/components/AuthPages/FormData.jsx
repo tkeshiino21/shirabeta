@@ -5,7 +5,7 @@ import { theme, Container, Spacing, Border } from 'Shared';
 
 const CustomInput = props => <input style={{ width: '100%' }} {...props} />;
 
-const InputData = ({ datas }) => {
+const FormData = ({ datas }) => {
   return datas.map(data => {
     return (
       <div key={data.name}>
@@ -26,4 +26,4 @@ const InputData = ({ datas }) => {
   });
 };
 
-export default InputData;
+export default FormData;

@@ -21,12 +21,10 @@ src
 
 フレームワーク: React  
 状態管理: Redux  
-ミドルウェア: redux-thunk  
 データベース: Firebase Cloudstore  
 認証: Firebase Authentication  
-Redux 関連ツール: react-redux react-redux-firebase
 スタイリングライブラリ: styled-components  
-テスト: Jest and Enzyme
+(テスト: Jest and Enzyme)
 
 ## 今回の課題点
 
