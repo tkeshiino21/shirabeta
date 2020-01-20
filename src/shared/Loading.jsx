@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ImgContainer } from 'Shared';
+import { ImgContainer } from 'shared';
 import loader from 'images/loader.gif';
 
 export const Loading = styled(ImgContainer)`

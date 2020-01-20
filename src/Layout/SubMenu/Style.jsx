@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { media, theme, Card, Container, Button } from 'Shared';
+import { media, theme, Card, Container, Button } from 'shared';
 
 export const MenuButton = styled(Button)`
   border: none;

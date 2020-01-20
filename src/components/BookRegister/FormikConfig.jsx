@@ -1,5 +1,5 @@
 import React from 'react';
-import { SelectWrapper, Select, Option } from 'Shared';
+import { SelectWrapper, Select, Option } from 'shared';
 
 export const CustomInput = props => (
   <input style={{ width: '100%' }} {...props} />

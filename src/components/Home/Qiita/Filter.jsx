@@ -1,6 +1,6 @@
 import React from 'react';
-import { Spacing } from 'Shared';
-import { TagSelect } from 'components/Home/Style';
+import { Spacing } from 'shared';
+import { TagSelect } from 'components/Home/style';
 
 const Filter = ({ tag, handleClick }) => {
   const tagItems = ['本', '書籍', '技術書'];

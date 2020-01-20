@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
-import { theme, Container } from 'Shared';
+import { theme, Container } from 'shared';
 
 // forHeader
 export const HeaderContainer = styled.div`

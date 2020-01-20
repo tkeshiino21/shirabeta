@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { theme } from 'Shared/theme';
-import { media } from 'Shared/media';
+import { theme } from 'shared/theme';
+import { media } from 'shared/media';
 
 export const Text = styled.span`
   display: ${props => props.display};

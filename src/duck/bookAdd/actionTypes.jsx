@@ -1,4 +1,0 @@
-export const BOOKADD_START = 'BOOKADD_START';
-export const BOOKADD_SUCCESS = 'BOOKADD_SUCCESS';
-export const BOOKADD_FAIL = 'BOOKADD_FAIL';
-export const CLEAR_STATE = 'CLEAR_STATE';

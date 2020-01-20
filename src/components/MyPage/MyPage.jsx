@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { listItems } from 'components/MyPage/listItems';
 import BorrowData from 'components/MyPage/BorrowData';
-import SubMenuLayout from 'Layout/SubMenu/SubMenuLayout';
+import SubMenuLayout from 'layout/SubMenu/SubMenuLayout';
 import {
   Table,
   TableHead,
   TableRow,
   TableBody,
   StyledTableCell,
-} from 'Shared/Table';
-import { theme, Spacing } from 'Shared';
+} from 'shared/Table';
+import { theme, Spacing } from 'shared';
 
 const MyPage = ({ authState, uid, borrowData, onRequest, onReturn }) => {
   useEffect(

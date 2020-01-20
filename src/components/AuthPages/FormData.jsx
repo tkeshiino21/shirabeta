@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ErrorMessage, Field } from 'formik';
-import { theme, Container, Spacing, Border } from 'Shared';
+import { theme, Container, Spacing, Border } from 'shared';
 
 const CustomInput = props => <input style={{ width: '100%' }} {...props} />;
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { MainWrapper, Text, Spacing, Container } from 'Shared';
-import Header from 'Layout/Header';
-import Footer from 'Layout/Footer/index';
-import GlobalStyles from 'Shared/GlobalStyle';
+import { MainWrapper, Text, Spacing, Container } from 'shared';
+import Header from 'layout/Header';
+import Footer from 'layout/Footer/index';
+import GlobalStyles from 'shared/GlobalStyle';
 const Layout = ({ children }) => {
   return (
     <>

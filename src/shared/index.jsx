@@ -1,13 +1,13 @@
-export { Border, Shadow } from 'Shared/Border';
-export { Button, LinkButton, InlineButton } from 'Shared/Button';
-export { Card, CardContainer } from 'Shared/Card';
-export { Container, ImgContainer, MainWrapper, Box } from 'Shared/Container';
-export { GlobalStyle } from 'Shared/GlobalStyle';
-export { Input,Textarea } from 'Shared/Input';
-export { Loading } from 'Shared/Loading';
-export { Select, SelectWrapper, Option } from 'Shared/Select';
-export { Spacing } from 'Shared/Spacing';
-export { Snackbar } from 'Shared/Snackbar';
+export { Border, Shadow } from 'shared/Border';
+export { Button, LinkButton, InlineButton } from 'shared/Button';
+export { Card, CardContainer } from 'shared/Card';
+export { Container, ImgContainer, MainWrapper, Box } from 'shared/Container';
+export { GlobalStyle } from 'shared/GlobalStyle';
+export { Input,Textarea } from 'shared/Input';
+export { Loading } from 'shared/Loading';
+export { Select, SelectWrapper, Option } from 'shared/Select';
+export { Spacing } from 'shared/Spacing';
+export { Snackbar } from 'shared/Snackbar';
 export {
   Table,
   TableHead,
@@ -16,9 +16,9 @@ export {
   TableRow,
   StyledTableRow,
   StyledTableCell,
-} from 'Shared/Table';
-export { Text, Strong, NaturalDarkText, LightText } from 'Shared/Typography';
+} from 'shared/Table';
+export { Text, Strong, NaturalDarkText, LightText } from 'shared/Typography';
 
 // important
-export { theme } from 'Shared/theme';
-export { media } from 'Shared/media';
+export { theme } from 'shared/theme';
+export { media } from 'shared/media';

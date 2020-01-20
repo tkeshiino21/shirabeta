@@ -1,12 +1,9 @@
 import React from 'react';
-import Layout from 'Layout';
-import SubMenu from 'Layout/SubMenu/MenuLinks';
-import { Spacing, Container } from 'Shared';
-import {
-  ResponsiveContainer,
-  ResponsiveCard,
-} from 'Layout/SubMenu/Style';
-import LandingToSign from 'containers/LandingToSign';
+import Layout from 'layout';
+import SubMenu from 'layout/SubMenu/MenuLinks';
+import { Spacing, Container } from 'shared';
+import { ResponsiveContainer, ResponsiveCard } from 'layout/SubMenu/Style';
+import LandingToSign from 'containers/Home/LandingToSign';
 
 const SubMenuLayout = ({ children, listItems, menuHandler, activeMenu }) => {
   return (

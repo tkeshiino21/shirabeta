@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorMessage, Field } from 'formik';
-import { theme, Border, Container, Spacing } from 'Shared';
-import { CustomInput } from 'components/AddBook/FormikConfig';
+import { theme, Border, Container, Spacing } from 'shared';
+import { CustomInput } from 'components/BookRegister/FormikConfig';
 
 const FormData = () => {
   const datas = [

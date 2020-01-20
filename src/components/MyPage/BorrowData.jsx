@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyledTableRow, StyledTableCell } from 'Shared/Table';
-import { Button } from 'Shared';
+import { StyledTableRow, StyledTableCell } from 'shared/Table';
+import { Button } from 'shared';
 
 const BorrowData = ({ borrowData, onReturn, onRequest, uid }) => {
   return borrowData === null

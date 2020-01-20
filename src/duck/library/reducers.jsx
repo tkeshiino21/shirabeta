@@ -1,0 +1,38 @@
+import * as actionTypes from 'duck/library/actionTypes';
+
+const initState = {
+  response: '',
+  error: '',
+  isAdding: '',
+};
+
+const reviewReducer = (state = initState, action) => {
+  switch (action.type) {
+    case actionTypes.COMMENTADD_START:
+      return {
+        ...state,
+        isAdding: true,
+      };
+    case actionTypes.COMMENTADD_SUCCESS:
+      return {
+        ...state,
+        isAdding: false,
+      };
+    case actionTypes.COMMENTADD_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+        isAdding: false,
+      };
+    case action.type.CLEAR_STATE:
+      return {
+        response: '',
+        error: '',
+        isAdding: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export default reviewReducer;

@@ -1,9 +1,6 @@
 import React from 'react';
-import { theme, Spacing } from 'Shared';
-import {
-  ResponsiveContainer,
-  MenuButton,
-} from 'Layout/SubMenu/Style';
+import { theme, Spacing } from 'shared';
+import { ResponsiveContainer, MenuButton } from 'layout/SubMenu/Style';
 
 const MenuLinks = ({ listItems, menuHandler, activeMenu }) => {
   return (

@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme, NaturalDarkText, LightText, Container } from 'Shared';
-import TechLog from 'Layout/Footer/TechLog';
-import Increments from 'Layout/Footer/Increments';
+import { theme, NaturalDarkText, LightText, Container } from 'shared';
+import { links, techLog } from 'layout/Footer/footerLinks';
 
 const FooterContainer = styled.div`
   display: flex;
@@ -46,13 +45,13 @@ const Footer = () => {
             <LightText as="h5" fs={theme.medium}>
               TechLog
             </LightText>
-            <LinkItemMapping linkItems={TechLog} />
+            <LinkItemMapping linkItems={techLog} />
           </Container>
           <Container className="vertical" width="50%">
             <LightText as="h5" fs={theme.medium}>
               Links
             </LightText>
-            <LinkItemMapping linkItems={Increments} />
+            <LinkItemMapping linkItems={links} />
           </Container>
         </Container>
       </Container>

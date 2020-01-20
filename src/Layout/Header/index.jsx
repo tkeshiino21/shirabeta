@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { theme, MainWrapper, Container, Text, LinkButton } from 'Shared';
+import { theme, MainWrapper, Container, Text, LinkButton } from 'shared';
 import {
   HeaderContainer,
   BackDrop,
   Menu,
   AuthButtonContainer,
-} from 'Layout/Header/Style';
-import NavLinks from 'Layout/Header/NavLinks';
-import AuthStateNav from 'containers/AuthStateNav';
+} from 'layout/Header/Style';
+import NavLinks from 'layout/Header/NavLinks';
+import AuthStateNav from 'containers/AuthPages/AuthStateNav';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

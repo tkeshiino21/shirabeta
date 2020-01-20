@@ -1,6 +1,6 @@
-import React from 'react';
-import { configure, shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import React from 'layout/Header/node_modules/react';
+import { configure, shallow } from 'layout/Header/node_modules/enzyme';
+import Adapter from 'layout/Header/node_modules/enzyme-adapter-react-16';
 import { Tested } from './Tested';
 
 configure({ adapter: new Adapter() });

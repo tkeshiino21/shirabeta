@@ -1,4 +1,4 @@
-import { media, Container } from 'Shared';
+import { media, Container } from 'shared';
 import styled from 'styled-components';
 
 export const ResponsiveVanish = styled(Container)`

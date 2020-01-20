@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Option, Select, SelectWrapper } from 'Shared';
+import { Container, Option, Select, SelectWrapper } from 'shared';
 
 const Filter = ({ tag, handleClick }) => {
   const categoryItems = [

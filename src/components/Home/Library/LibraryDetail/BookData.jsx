@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme, Container, Text } from 'Shared';
+import { theme, Container, Text } from 'shared';
 
 const BookData = ({ library }) => {
   if (library === '') {

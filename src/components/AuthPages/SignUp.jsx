@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import AuthForm from 'components/AuthPages/AuthForm';
-import Layout from 'Layout';
-import { theme, Spacing } from 'Shared';
+import Layout from 'layout';
+import { theme, Spacing } from 'shared';
 import * as Yup from 'yup';
 
 const signupDatas = [

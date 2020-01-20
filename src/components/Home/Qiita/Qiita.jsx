@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { theme, Button, Container, Spacing, Text } from 'Shared';
+import { theme, Button, Container, Spacing, Text } from 'shared';
 import Filter from 'components/Home/Qiita/Filter';
 import {
   ArticleTitle,
@@ -8,7 +8,7 @@ import {
   FavoriteIconContainer,
   NotFavoriteIcon,
   SortButton,
-} from 'components/Home/Style';
+} from 'components/Home/style';
 
 const Qiita = ({ onRequest, fetchedPost, isLoading }) => {
   const [tag, setTag] = useState({ tagName: '本' });

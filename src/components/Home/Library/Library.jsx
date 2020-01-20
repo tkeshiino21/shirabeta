@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Filter from 'components/Home/Library/Filter';
-import { theme, Button, Container, Spacing, Text } from 'Shared';
+import { theme, Button, Container, Spacing, Text } from 'shared';
 import {
   ArticleTitle,
   FavoriteIconContainer,
   NotFavoriteIcon,
   FavoriteIcon,
-} from 'components/Home/Style';
+} from 'components/Home/style';
 
 const Library = ({
   onRequest,
-  onLikesRequest,
-  onLike,
+  // onLikesRequest,
   isLoading,
   uid,
   likes,
@@ -24,9 +23,9 @@ const Library = ({
     return setTag({ tagName: e.target.value });
   };
   useEffect(() => {
-    onRequest();
-    onLikesRequest(uid);
-  }, [onRequest, onLikesRequest, uid]);
+    onRequest(uid);
+    // onLikesRequest(uid);
+  }, [onRequest, uid]);
   if (isLoading === true) return <h1>isLoading</h1>;
   if (library === '') {
     return null;
@@ -79,7 +78,7 @@ const Library = ({
                 <FavoriteIconContainer>
                   <Button
                     value={id}
-                    onClick={() => onLike(doc.ISBN, uid)}
+                    // onClick={() => onLike(doc.ISBN, uid)}
                     className="text"
                   >
                     {likes === undefined ||

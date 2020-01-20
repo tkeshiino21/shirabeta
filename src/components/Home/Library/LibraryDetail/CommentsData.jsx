@@ -1,5 +1,5 @@
 import React from 'react';
-import { theme, Spacing, Container, Text } from 'Shared';
+import { theme, Spacing, Container, Text } from 'shared';
 
 const CommentsData = ({ comments }) => {
   if (comments === null) {

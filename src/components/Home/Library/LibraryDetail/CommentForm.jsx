@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Formik, ErrorMessage, Field } from 'formik';
-import { Container, Button, Textarea } from 'Shared';
+import { Container, Button, Textarea } from 'shared';
 
 const CommentForm = ({ validationSchema, handleSubmit }) => {
   const CustomTextarea = props => <Textarea className="outlined" {...props} />;

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import DirectInputData from 'components/AddBook/DirectInputData';
+import FormData from 'components/BookRegister/FormData';
 import {
   TransparentInput,
   HiddenInput,
   CustomSelect,
-} from 'components/AddBook/FormikConfig';
+} from 'components/BookRegister/FormikConfig';
 import {
   theme,
   Spacing,
@@ -17,17 +17,10 @@ import {
   ImgContainer,
   Input,
   InlineButton,
-} from 'Shared';
+} from 'shared';
 import bookAndGlasses from 'images/bookAndGlasses.jpg';
 
-const AddForm = ({
-  onRequest,
-  fetchedBook,
-  isLoading,
-  onSubmit,
-  setLoading,
-  setClear,
-}) => {
+const AddForm = ({ onRequest, fetchedBook, isLoading, onSubmit }) => {
   const [ISBN, setISBN] = useState('');
   const handleChange = e => {
     return setISBN(e.target.value);
@@ -68,10 +61,10 @@ const AddForm = ({
                 title: Yup.string()
                   .max(150, 'タイトルが長すぎます')
                   .required('Required'),
-                author: Yup.string()
-                  .required('Required'),
+                author: Yup.string().required('Required'),
                 publishedDate: Yup.string()
                   .max(20, 'Must be 20 characters or less')
+                  .matches(/[a-z0-9_-]+/, '半角英数字と記号のみ')
                   .required('Required'),
                 description: Yup.string(),
                 image: Yup.string(),
@@ -80,8 +73,6 @@ const AddForm = ({
               onSubmit={(values, { setSubmitting }) => {
                 onSubmit(values);
                 setSubmitting(false);
-                setLoading();
-                setClear();
                 setISBN('');
                 setShowSnack('show');
                 setTimeout(() => {
@@ -123,7 +114,7 @@ const AddForm = ({
                       justify="stretch"
                       style={{ minWidth: '30vw' }}
                     >
-                      <DirectInputData />
+                      <FormData />
                       <Field as={CustomSelect} name="category" type="text" />
                       <Spacing mBottom={theme.large} />
                       <Snackbar className={showSnack}>

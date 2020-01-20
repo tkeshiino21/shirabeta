@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // router components
 import Home from 'components/Home';
 // import LibraryDetail from 'components/Home/Library/LibraryDetail/LibraryDetail';
-import Search from 'components/Search';
-import AddBook from 'components/AddBook';
-import MyPage from 'containers/MyPage';
-import LogIn from 'containers/LogIn';
-import SignUp from 'containers/SignUp';
+import BookRegister from 'components/BookRegister/BookRegister';
+import MyPage from 'containers/MyPage/MyPage';
+import LogIn from 'containers/AuthPages/LogIn';
+import SignUp from 'containers/AuthPages/SignUp';
 import NotFoundPage from 'components/NotFoundPage';
-import LibraryDetail from 'containers/LibraryDetail';
+import LibraryDetail from 'containers/Home/LibraryDetail';
 
 const App = () => {
   return (
@@ -17,8 +16,7 @@ const App = () => {
       <Switch>
         <Route path="/my-page" component={MyPage} />
         <Route path="/" exact component={Home} />
-        <Route path="/search" component={Search} />
-        <Route path="/add-book" component={AddBook} />
+        <Route path="/book-register" component={BookRegister} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/library/:id" component={LibraryDetail} />

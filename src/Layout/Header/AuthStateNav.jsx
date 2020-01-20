@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { theme, Text, Button, Spacing, Strong } from 'Shared';
+import { theme, Text, Button, Spacing, Strong } from 'shared';
 
 const AuthStateNav = ({ onLogOut, authState, userName }) => {
   console.log('Headerauth:', authState);

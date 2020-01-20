@@ -9,10 +9,10 @@ import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import configureStore from 'duck/configureStore';
 import App from 'App';
-import { Loading } from 'Shared';
-import GlobalStyles from 'Shared/GlobalStyle';
+import { Loading } from 'shared';
+import GlobalStyles from 'shared/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'Shared';
+import { theme } from 'shared';
 
 const fbConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,

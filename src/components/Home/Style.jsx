@@ -1,9 +1,22 @@
 import styled from 'styled-components';
-import { theme, Button, Container, Text } from 'Shared';
+import { theme, Button, Container, Text } from 'shared';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-
+import { MdBook, MdSearch } from 'react-icons/md';
 // TODO: 重複箇所のリファクタリング
 // Libraryとの重複がある
+
+export const subMenuItems = [
+  {
+    name: 'qiita',
+    label: 'qiita',
+    icon: MdSearch,
+  },
+  {
+    name: 'library',
+    label: 'ライブラリ',
+    icon: MdBook,
+  },
+];
 
 export const FavoriteIconContainer = styled.div`
   display: flex;

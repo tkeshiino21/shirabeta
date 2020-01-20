@@ -1,7 +1,7 @@
 import React from 'react';
 import { MdHome } from 'react-icons/md';
-import { theme, Border } from 'Shared';
-import { MyNavLink, NavMenu } from 'Layout/Header/Style';
+import { theme, Border } from 'shared';
+import { MyNavLink, NavMenu } from 'layout/Header/Style';
 
 const NavLinks = () => {
   const navItems = [

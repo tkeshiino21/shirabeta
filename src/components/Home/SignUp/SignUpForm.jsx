@@ -3,11 +3,11 @@ import { Form, Formik } from 'formik';
 import {
   ResponsiveVanish,
   ContactContainer,
-} from 'components/Home/Contact/Style';
-import InputData from 'components/Home/Contact/InputData';
-import { theme, Button, Card, Container } from 'Shared';
+} from 'components/Home/SignUp/style';
+import FormData from 'components/Home/SignUp/FormData';
+import { theme, Button, Card, Container } from 'shared';
 
-const ContactForm = ({ onSignUp, onLogIn, validationSchema }) => {
+const SignUpForm = ({ onSignUp, onLogIn, validationSchema }) => {
   console.log(onSignUp);
   const handleTestUser = () => {
     onLogIn({ email: 'test@gmail.com', password: 'test1234' });
@@ -32,7 +32,7 @@ const ContactForm = ({ onSignUp, onLogIn, validationSchema }) => {
             {() => (
               <Container width="240px">
                 <Form>
-                  <InputData />
+                  <FormData />
                   <Button
                     type="submit"
                     className="gradation"
@@ -58,4 +58,4 @@ const ContactForm = ({ onSignUp, onLogIn, validationSchema }) => {
   );
 };
 
-export default ContactForm;
+export default SignUpForm;

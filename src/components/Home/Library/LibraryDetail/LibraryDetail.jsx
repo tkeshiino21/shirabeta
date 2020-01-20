@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Layout from 'Layout';
+import Layout from 'layout';
 import { MdKeyboardBackspace, MdModeEdit } from 'react-icons/md';
 import BookData from 'components/Home/Library/LibraryDetail/BookData';
 import CommentForm from 'components/Home/Library/LibraryDetail/CommentForm';
@@ -13,7 +13,7 @@ import {
   Spacing,
   Snackbar,
   ImgContainer,
-} from 'Shared';
+} from 'shared';
 import { useParams, useHistory } from 'react-router-dom';
 import * as Yup from 'yup';
 
