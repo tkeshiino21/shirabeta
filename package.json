@@ -35,7 +35,8 @@
     "eject": "react-scripts eject",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --verbose --coverage"
+    "test:coverage": "jest --verbose --coverage",
+    "storybook": "start-storybook"
   },
   "lint-staged": {
     "*.css": [
@@ -64,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/react": "^5.3.8",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
     "enzyme": "^3.11.0",

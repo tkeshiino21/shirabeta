@@ -1,4 +1,4 @@
-import MyPage from 'components/MyPage/MyPage';
+import MyPage from 'components/pages/MyPage';
 import { connect } from 'react-redux';
 import { bookReturn } from 'duck/bookRegister/operations';
 import { myPageRequest } from 'duck/myPage/operations';

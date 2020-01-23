@@ -9,7 +9,8 @@ export const libraryRequest = uid => dispatch => {
       .firestore()
       .collection('books');
     const querySnapshot = await booksRef.get();
-    dispatch(action.libraryRequestSuccess(querySnapshot));
+    await dispatch(action.libraryRequestSuccess(querySnapshot));
+    console.log(querySnapshot);
   };
   requestLibraryData().catch(error => {
     dispatch(action.libraryRequestFail(error));

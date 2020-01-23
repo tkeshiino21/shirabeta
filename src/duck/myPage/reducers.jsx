@@ -1,4 +1,4 @@
-import * as actionTypes from 'duck/qiita/actionTypes';
+import * as actionTypes from 'duck/myPage/actionTypes';
 
 const initState = {
   response: '',
@@ -8,18 +8,18 @@ const initState = {
 
 const requestReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.REQUEST_START:
+    case actionTypes.MYPAGE_REQUEST_START:
       return {
         ...state,
         isLoading: true,
       };
-    case actionTypes.REQUEST_SUCCESS:
+    case actionTypes.MYPAGE_REQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
         response: action.payload,
       };
-    case actionTypes.REQUEST_FAIL:
+    case actionTypes.MYPAGE_REQUEST_FAIL:
       return {
         ...state,
         isLoading: false,

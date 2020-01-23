@@ -1,13 +1,13 @@
 import * as actionTypes from 'duck/library/actionTypes';
 
 export const libraryRequestStart = () => {
-  return { type: actionTypes.REQUEST_START };
+  return { type: actionTypes.LIBRARY_REQUEST_START };
 };
 export const libraryRequestSuccess = response => {
-  return { type: actionTypes.REQUEST_SUCCESS, payload: response };
+  return { type: actionTypes.LIBRARY_REQUEST_SUCCESS, payload: response };
 };
 export const libraryRequestFail = error => {
-  return { type: actionTypes.REQUEST_FAIL, payload: error };
+  return { type: actionTypes.LIBRARY_REQUEST_FAIL, payload: error };
 };
 
 export const collationStart = () => {

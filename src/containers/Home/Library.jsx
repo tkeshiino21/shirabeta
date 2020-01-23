@@ -1,19 +1,11 @@
 import { connect } from 'react-redux';
-import Library from 'components/Home/Library/Library';
+import Library from 'components/pages/Library';
 import { libraryRequest, likesRequest } from 'duck/library/operations';
 
 const formatData = state => {
   return state.library.response.docs === undefined
     ? null
     : state.library.response.docs.map(queryDocumentSnapshot => {
-        return queryDocumentSnapshot.data();
-      });
-};
-
-const formattingData = state => {
-  return state.library.listen === undefined
-    ? null
-    : state.library.listen.map(queryDocumentSnapshot => {
         return queryDocumentSnapshot.data();
       });
 };

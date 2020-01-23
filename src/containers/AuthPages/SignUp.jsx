@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SignUp from 'components/AuthPages/SignUp';
+import SignUp from 'components/pages/SignUp';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({

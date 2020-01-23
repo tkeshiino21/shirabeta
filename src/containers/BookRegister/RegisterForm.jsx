@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RegisterForm from 'components/BookRegister/RegisterForm';
+import RegisterForm from 'components/templates/RegisterForm';
 import { bookRegister } from 'duck/bookRegister/operations';
 import { bookRequest } from 'duck/bookRegister/operations';
 

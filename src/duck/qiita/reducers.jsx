@@ -8,18 +8,18 @@ const initState = {
 
 const requestReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.REQUEST_START:
+    case actionTypes.POST_REQUEST_START:
       return {
         ...state,
         isLoading: true,
       };
-    case actionTypes.REQUEST_SUCCESS:
+    case actionTypes.POST_REQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
         response: action.payload,
       };
-    case actionTypes.REQUEST_FAIL:
+    case actionTypes.POST_REQUEST_FAIL:
       return {
         ...state,
         isLoading: false,

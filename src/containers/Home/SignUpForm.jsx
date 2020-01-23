@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SignUpForm from 'components/Home/SignUp/SignUpForm';
+import LandingAuthForm from 'components/organisms/LandingAuthForm';
 import authSwitch from 'duck/auth/operations';
 
 const mapDispatchToProps = dispatch => ({
@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(SignUpForm);
+export default connect(null, mapDispatchToProps)(LandingAuthForm);

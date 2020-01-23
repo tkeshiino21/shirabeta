@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LibraryDetail from 'components/Home/Library/LibraryDetail/LibraryDetail';
+import LibraryDetail from 'components/pages/LibraryDetail';
 import {
   libraryDetailRequest,
   commentsRequest,

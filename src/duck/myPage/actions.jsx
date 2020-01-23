@@ -1,13 +1,13 @@
-import * as actionTypes from 'duck/qiita/actionTypes';
+import * as actionTypes from 'duck/myPage/actionTypes';
 
-export const requestStart = () => {
-  return { type: actionTypes.REQUEST_START };
+export const myPageRequestStart = () => {
+  return { type: actionTypes.MYPAGE_REQUEST_START };
 };
 
-export const requestSuccess = response => {
-  return { type: actionTypes.REQUEST_SUCCESS, payload: response };
+export const myPageRequestSuccess = response => {
+  return { type: actionTypes.MYPAGE_REQUEST_SUCCESS, payload: response };
 };
 
-export const requestFail = error => {
-  return { type: actionTypes.REQUEST_FAIL, payload: error };
+export const myPageRequestFail = error => {
+  return { type: actionTypes.MYPAGE_REQUEST_FAIL, payload: error };
 };
