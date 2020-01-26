@@ -2,21 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { MdHome, MdControlPoint, MdEventNote } from 'react-icons/md';
 import styled from 'styled-components';
-import { theme, Divider } from 'components/atoms';
-
-const CustomNavLink = styled(NavLink)`
-  color: ${theme.secondary};
-  margin: 0 ${theme.large};
-  line-height: 2.5;
-  :hover {
-    text-decoration-color: ${theme.secondary};
-  }
-`;
+import { theme, Divider, Text, Container } from 'components/atoms';
 
 const NavMenu = styled.div`
   position: absolute;
-  top: 35px;
-  width: 200px;
+  top: 40px;
+  width: 160px;
   background: white;
   z-index: 1500;
   box-shadow: 0px 0px 7px 2px rgba(0, 0, 0, 0.2);
@@ -28,37 +19,42 @@ const Menu = () => {
       value: 'home',
       link: '/',
       icon: MdHome,
-      border: theme.naturalDark,
+      border: theme.light,
     },
     {
       value: 'BookRegister',
       link: '/book-register',
       icon: MdControlPoint,
-      border: theme.naturalDark,
+      border: theme.light,
     },
     {
       value: 'MyPage',
       link: '/my-page',
       icon: MdEventNote,
-      border: 'inherit',
+      border: theme.light,
     },
   ];
   return (
     <NavMenu>
-      {navItems.map(navItem => {
-        return (
-          <li key={navItem.link}>
-            <CustomNavLink
-              exact
-              activeStyle={{ color: theme.naturalDark }}
-              to={navItem.link}
-            >
-              {navItem.value}
-            </CustomNavLink>
-            <Divider bottom="1px" color={navItem.border} />
-          </li>
-        );
-      })}
+      <Container padding={`${theme.small} ${theme.small}`}>
+        {navItems.map(navItem => {
+          return (
+            <li key={navItem.link}>
+              <Text
+                className="body1"
+                color={theme.secondary}
+                as={NavLink}
+                exact
+                activeStyle={{ color: theme.naturalDark, cursor: 'default' }}
+                to={navItem.link}
+              >
+                {navItem.value}
+              </Text>
+              <Divider color={navItem.border} />
+            </li>
+          );
+        })}
+      </Container>
     </NavMenu>
   );
 };

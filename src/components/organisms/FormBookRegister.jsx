@@ -1,16 +1,41 @@
 import React from 'react';
+import * as Yup from 'yup';
+import bookAndGlasses from 'images/bookAndGlasses.jpg';
 import FormFormat from 'components/molecules/FormFormat';
-import { CustomInput, CustomSelect } from 'components/molecules/FormCustom';
+import LayoutWithImage from 'components/organisms/Layout/LayoutWithImage';
+import {
+  theme,
+  Box,
+  Container,
+  Card,
+  Button,
+  Loader,
+  Snackbar,
+} from 'components/atoms';
+import {
+  CustomInput,
+  CustomSelect,
+  SelectCategory,
+} from 'components/molecules/FormCustom';
+import FormISBN from 'containers/organisms/FormISBN';
 
-const BookRegisterForm = ({ fetchedBook }) => {
+const BookRegisterForm = ({
+  isLoading,
+  isAdding,
+  fetchedBook,
+  inputISBN,
+  onRegister,
+  showSnack,
+}) => {
   const formDatas = {
     initialValues: {
-      ISBN: ISBN,
+      ISBN: inputISBN === null ? '' : inputISBN,
       title: fetchedBook === null ? '' : fetchedBook[0].title,
       author: fetchedBook === null ? '' : fetchedBook[0].authors,
       publishedDate: fetchedBook === null ? '' : fetchedBook[0].publishedDate,
       image: fetchedBook === null ? '' : fetchedBook[0].image,
       description: fetchedBook === null ? '' : fetchedBook[0].description,
+      category: '',
     },
     validationSchema: Yup.object({
       ISBN: Yup.string()
@@ -28,64 +53,72 @@ const BookRegisterForm = ({ fetchedBook }) => {
       image: Yup.string(),
       category: Yup.string().required('Required'),
     }),
-    onSubmit: (values, { setSubmitting }) => {
-      onSubmit(values);
-      setSubmitting(false);
-      setISBN('');
-      setShowSnack('show');
-      setTimeout(() => {
-        return setShowSnack('hidden');
-      }, 3000);
+    onSubmit: bookDatas => {
+      onRegister(bookDatas);
     },
     action: 'SUBMIT',
     items: [
       {
-        name: 'ISBN',
-        input: CustomInput,
-        type: 'text',
-      },
-      {
         name: 'title',
+        label: 'title',
         input: CustomInput,
         type: 'text',
       },
       {
         name: 'author',
+        label: 'author',
         input: CustomInput,
         type: 'text',
       },
       {
         name: 'publishedDate',
+        label: 'issueDate',
         input: CustomInput,
         type: 'text',
       },
       {
         name: 'category',
-        input: CustomSelect,
-        type: 'text',
-      },
-      {
-        name: 'description',
-        input: HiddenInput,
-        type: 'text',
-      },
-      {
-        name: 'image',
-        input: HiddenInput,
+        label: 'category',
+        input: SelectCategory,
         type: 'text',
       },
     ],
   };
+  console.log(formDatas.initialValues);
   return (
-    <Card width="auto">
-      <Container className="vertical" justify="center">
-        <FormFormat formDatas={formDatas} />
-        <Spacing mTop={theme.xlarge} />
-        <Button className="primary" type="submit">
-          {authAction}
-        </Button>
-      </Container>
-    </Card>
+    <LayoutWithImage
+      image={
+        fetchedBook === null || undefined
+          ? bookAndGlasses
+          : fetchedBook[0].image
+      }
+      basis="52%"
+    >
+      <Card style={{ width: '100%' }}>
+        <Box justify="center">
+          <Container
+            style={{
+              width: '100%',
+              maxWidth: '400px',
+            }}
+          >
+            <Box className="vertical" justify="center">
+              {isAdding === true ? null : <FormISBN />}
+              {isLoading === true ? (
+                <Loader />
+              ) : (
+                <>
+                  <FormFormat formDatas={formDatas} />
+                </>
+              )}
+            </Box>
+          </Container>
+        </Box>
+      </Card>
+      <Snackbar className={showSnack === true ? 'show' : 'hidden'}>
+        Successfully Added!
+      </Snackbar>
+    </LayoutWithImage>
   );
 };
 

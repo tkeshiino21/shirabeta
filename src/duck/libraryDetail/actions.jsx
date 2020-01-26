@@ -1,13 +1,13 @@
 import * as actionTypes from 'duck/libraryDetail/actionTypes';
 
 export const detailRequestStart = () => {
-  return { type: actionTypes.REQUEST_START };
+  return { type: actionTypes.DETAILREQUEST_START };
 };
 export const detailRequestSuccess = response => {
-  return { type: actionTypes.REQUEST_SUCCESS, payload: response };
+  return { type: actionTypes.DETAILREQUEST_SUCCESS, payload: response };
 };
 export const detailRequestFail = error => {
-  return { type: actionTypes.REQUEST_FAIL, payload: error };
+  return { type: actionTypes.DETAILREQUEST_FAIL, payload: error };
 };
 
 export const likeAddStart = () => {
@@ -19,6 +19,15 @@ export const likeAddSuccess = () => {
 export const likeAddFail = error => {
   return { type: actionTypes.LIKEADD_FAIL, payload: error };
 };
+export const likeIncStart = () => {
+  return { type: actionTypes.LIKEINC_START };
+};
+export const likeIncSuccess = () => {
+  return { type: actionTypes.LIKEINC_SUCCESS };
+};
+export const likeIncFail = error => {
+  return { type: actionTypes.LIKEINC_FAIL, payload: error };
+};
 
 export const commentAddStart = () => {
   return { type: actionTypes.COMMENTADD_START };
@@ -28,6 +37,16 @@ export const commentAddSuccess = () => {
 };
 export const commentAddFail = error => {
   return { type: actionTypes.COMMENTADD_FAIL, payload: error };
+};
+
+export const borrowStart = () => {
+  return { type: actionTypes.BORROW_START };
+};
+export const borrowSuccess = () => {
+  return { type: actionTypes.BORROW_SUCCESS };
+};
+export const borrowFail = error => {
+  return { type: actionTypes.BORROW_FAIL, payload: error };
 };
 
 // LikesCountEventListener
@@ -41,12 +60,29 @@ export const countListenFail = error => {
   return { type: actionTypes.EVENTLISTEN_FAIL, payload: error };
 };
 
-export const collationStart = () => {
-  return { type: actionTypes.COLLATION_START };
+export const commentRequestStart = () => {
+  return { type: actionTypes.COMMENTREQUEST_START };
 };
-export const collationSuccess = data => {
-  return { type: actionTypes.COLLATION_SUCCESS, payload: data };
+export const commentRequestSuccess = comment => {
+  return { type: actionTypes.COMMENTREQUEST_SUCCESS, payload: comment };
 };
-export const collationFail = error => {
-  return { type: actionTypes.COLLATION_FAIL, payload: error };
+export const commentRequestFail = error => {
+  return { type: actionTypes.COMMENTREQUEST_FAIL, payload: error };
+};
+
+export const commentIncStart = comment => {
+  return { type: actionTypes.COMMENTINC_START };
+};
+export const commentIncSuccess = comment => {
+  return { type: actionTypes.COMMENTINC_SUCCESS };
+};
+export const commentIncFail = error => {
+  return { type: actionTypes.COMMENTINC_FAIL, payload: error };
+};
+
+export const setShowSnack = () => {
+  return { type: actionTypes.SETSHOW_SNACK };
+};
+export const setHideSnack = () => {
+  return { type: actionTypes.SETHIDE_SNACK };
 };

@@ -16,13 +16,13 @@ const ArticleSearch = ({ searchItems }) => {
         <Box className="grow">
           {searchItems.selects.map(select => {
             return (
-              <>
+              <Spacing key={select.title} mRight={theme.xsmall}>
                 <SelectWrapper>
                   <Select
                     key={select.title}
                     id={select.title}
                     className="small"
-                    onClick={select.onClick}
+                    onChange={select.onChange}
                   >
                     <option value="" hidden>
                       {select.title}
@@ -36,8 +36,7 @@ const ArticleSearch = ({ searchItems }) => {
                     })}
                   </Select>
                 </SelectWrapper>
-                <Spacing mRight={theme.xsmall} />
-              </>
+              </Spacing>
             );
           })}
         </Box>
@@ -46,7 +45,7 @@ const ArticleSearch = ({ searchItems }) => {
             id="sort"
             name="sort"
             className="small"
-            onClick={searchItems.order.onClick}
+            onChange={searchItems.order.onChange}
           >
             <option value="" hidden>
               {searchItems.order.title}

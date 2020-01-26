@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
-import { theme, Spacing, Box, Paper } from 'components/atoms';
+import { theme, Container, Spacing, Box, Paper } from 'components/atoms';
 import * as Yup from 'yup';
 import { CustomInput } from 'components/molecules/FormCustom';
 import FormFormat from 'components/molecules/FormFormat';
@@ -35,16 +35,19 @@ const SignUp = ({ authState, onSignUp }) => {
     items: [
       {
         name: 'name',
+        label: 'name',
         type: 'text',
         input: CustomInput,
       },
       {
         name: 'email',
+        label: 'email',
         type: 'email',
         input: CustomInput,
       },
       {
         name: 'password',
+        label: 'password',
         type: 'password',
         input: CustomInput,
       },
@@ -55,10 +58,11 @@ const SignUp = ({ authState, onSignUp }) => {
   }
   return (
     <LayoutCommon>
-      <Box style={{ alignSelf: 'center', flexBasis: '400px' }}>
-        <Paper>
-          <Spacing mTop={theme.xlarge} />
-          <FormFormat formDatas={formDatas} />
+      <Box justify="center" align="center" height="400px">
+        <Paper style={{ width: '30%', minWidth: '300px' }}>
+          <Container padding={`${theme.xlarge} ${theme.large}`}>
+            <FormFormat formDatas={formDatas} />
+          </Container>
         </Paper>
       </Box>
     </LayoutCommon>

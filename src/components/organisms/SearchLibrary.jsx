@@ -2,17 +2,15 @@ import React from 'react';
 import ArticleSearch from 'components/molecules/ArticleSearch';
 
 const SearchLibrary = ({ handles }) => {
-  // const handleCategory = handles.handleCategory;
-  const handleCategory = e => {
-    console.log(e.target.value);
-  };
+  const handleCategory = handles.handleCategory;
   const handleFilter = handles.handleFilter;
   const handleOrder = handles.handleOrder;
+  console.log(handleOrder);
   const searchItems = {
     selects: [
       {
         title: 'カテゴリ',
-        onClick: handleCategory,
+        onChange: handleCategory,
         items: [
           'すべて',
           'インフラ',
@@ -24,18 +22,13 @@ const SearchLibrary = ({ handles }) => {
       },
       {
         title: '絞り込み',
-        onClick: handleFilter,
-        items: [
-          'すべて',
-          'お気に入りのみ',
-          '貸出可能のみ',
-          'お気に入りかつ貸出可能',
-        ],
+        onChange: handleFilter,
+        items: ['すべて', '貸出可能のみ'],
       },
     ],
     order: {
       title: '並び替え',
-      onClick: handleOrder,
+      onChange: handleOrder,
       items: ['新着順', '人気順'],
     },
   };

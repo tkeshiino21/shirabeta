@@ -3,7 +3,8 @@ import * as Yup from 'yup';
 import FormFormat from 'components/molecules/FormFormat';
 import { CustomTextarea } from 'components/molecules/FormCustom';
 
-const FormComment = ({ bookData, userData, onSubmit }) => {
+const FormComment = ({ fetchedDetail, userData, onComment }) => {
+  console.log();
   const formDatas = {
     initialValues: {
       comment: '',
@@ -15,15 +16,18 @@ const FormComment = ({ bookData, userData, onSubmit }) => {
         .required('Required'),
     }),
     action: 'POST',
-    onSubmit: onSubmit(
-      bookData.ISBN,
-      bookData.title,
-      userData.name,
-      userData.uid,
-    ),
+    onSubmit: comment =>
+      onComment(
+        fetchedDetail.ISBN,
+        fetchedDetail.title,
+        userData.uid,
+        userData.userName,
+        comment.comment,
+      ),
     items: [
       {
         name: 'comment',
+        label: 'comment',
         type: 'text',
         input: CustomTextarea,
       },

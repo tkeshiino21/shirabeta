@@ -21,7 +21,7 @@ export const Button = styled.button`
   /* /ボタンデザイン */
   &.primary {
     background-color: ${theme.primary};
-    border: 1px solid ${theme.light};
+    border: none;
     color: ${theme.light};
   }
   &.secondary {
@@ -29,6 +29,17 @@ export const Button = styled.button`
     background-color: inherit;
     border: 1px solid ${theme.primary};
     color: ${theme.primary};
+  }
+  &.outlined {
+    padding: 5px 15px;
+    background-color: inherit;
+    border: 1px solid ${theme.light};
+    color: ${theme.light};
+  }
+  &.grey {
+    background-color: ${theme.naturalDark};
+    border: none;
+    color: ${theme.light};
   }
   &.text {
     background-color: transparent;
@@ -54,4 +65,11 @@ export const Button = styled.button`
     line-height: 1.75;
     letter-spacing: 0.02857em;
   }
+  &.middle {
+    width: 80%;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  text-align: center;
 `;

@@ -22,7 +22,7 @@ const ResponsiveTab = styled(Box)`
   flex-direction: column;
   width: 160px;
   height: 100%;
-  ${media.md`
+  ${media.sm`
     flex-direction: row;
     width: 95vw;
     min-width: none;
@@ -38,17 +38,16 @@ const SubMenu = ({ listItems, menuHandler, activeMenu }) => {
             key={listItem.name}
             value={listItem.name}
             className={listItem.name === activeMenu ? 'primary' : 'text'}
-            style={{ width: '100%' }}
+            style={{ width: '100%', verticalAlign: 'middle' }}
             onClick={menuHandler}
           >
             <listItem.icon
               style={{
                 fontSize: '12px',
                 display: 'inline',
-                verticalAlign: 'middle',
               }}
             />
-            <span style={{ verticalAlign: 'middle' }}>{listItem.name}</span>
+            {listItem.name}
           </MenuButton>
         );
       })}

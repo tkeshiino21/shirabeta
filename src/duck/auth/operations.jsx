@@ -16,7 +16,7 @@ const authSwitch = ({ method, userData }) => dispatch => {
               .firestore()
               .collection('users')
               .doc(res.user.uid)
-              .set({ name: userData.name })
+              .set({ name: userData.name, likes: [], comments: [] })
               .catch(err => dispatch(action.authFail(err)));
           })
       );

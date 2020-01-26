@@ -8,9 +8,7 @@ const HeaderAuth = ({ onLogOut, authState, userName }) => {
       return (
         <>
           <Link to="/signup">
-            <Button className="primary" style={{ padding: '5px 10px' }}>
-              Signup
-            </Button>
+            <Button className="outlined">Signup</Button>
           </Link>
           <Spacing mRight={theme.small} />
           <Link to="/login">
@@ -23,8 +21,8 @@ const HeaderAuth = ({ onLogOut, authState, userName }) => {
     case true:
       return (
         <>
-          <Text color={theme.light} fs={theme.small}>
-            <Strong fs="12px"> {userName} </Strong> さん
+          <Text className="caption" as="p" color={theme.light}>
+            <Strong> {userName} </Strong> さん
           </Text>
           <Spacing mRight={theme.small} />
           <Button className="text" color={theme.light} onClick={onLogOut}>

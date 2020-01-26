@@ -30,3 +30,29 @@ export const CustomSelect = (props, { option }) => (
     </Select>
   </SelectWrapper>
 );
+export const SelectCategory = props => {
+  const option = [
+    'フロント',
+    'バック',
+    'インフラ',
+    'セキュリティ',
+    'デザイン',
+    'その他',
+  ];
+  return (
+    <SelectWrapper style={{ width: '100%' }}>
+      <Select {...props}>
+        <option value="" hidden>
+          カテゴリ
+        </option>
+        {option.map(name => {
+          return (
+            <Option key={name} name="category" value={name}>
+              {name}
+            </Option>
+          );
+        })}
+      </Select>
+    </SelectWrapper>
+  );
+};

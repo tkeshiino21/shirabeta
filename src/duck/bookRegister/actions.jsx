@@ -4,8 +4,14 @@ import * as actionTypes from 'duck/bookRegister/actionTypes';
 export const bookRequestStart = () => {
   return { type: actionTypes.BOOK_REQUEST_START };
 };
-export const bookRequestSuccess = data => {
-  return { type: actionTypes.BOOK_REQUEST_SUCCESS, payload: data };
+export const bookRequestSuccess = (response, ISBN) => {
+  return {
+    type: actionTypes.BOOK_REQUEST_SUCCESS,
+    payload: {
+      response: response,
+      inputISBN: ISBN,
+    },
+  };
 };
 export const bookRequestFail = error => {
   return { type: actionTypes.BOOK_REQUEST_FAIL, payload: error };

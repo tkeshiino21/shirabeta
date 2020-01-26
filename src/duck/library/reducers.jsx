@@ -4,6 +4,9 @@ const initState = {
   response: '',
   error: '',
   isAdding: '',
+  colloationComments: [],
+  colloationLikes: [],
+  showSnack: false,
 };
 
 const reviewReducer = (state = initState, action) => {
@@ -29,6 +32,7 @@ const reviewReducer = (state = initState, action) => {
       return {
         ...state,
         isAdding: true,
+        showSnack: false,
       };
     case actionTypes.COMMENTADD_SUCCESS:
       return {

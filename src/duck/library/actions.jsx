@@ -10,12 +10,9 @@ export const libraryRequestFail = error => {
   return { type: actionTypes.LIBRARY_REQUEST_FAIL, payload: error };
 };
 
-export const collationStart = () => {
-  return { type: actionTypes.COLLATION_START };
+export const setShowSnack = () => {
+  return { type: actionTypes.SETSHOW_SNACK };
 };
-export const collationSuccess = data => {
-  return { type: actionTypes.COLLATION_SUCCESS, payload: data };
-};
-export const collationFail = error => {
-  return { type: actionTypes.COLLATION_FAIL, payload: error };
+export const setHideSnack = () => {
+  return { type: actionTypes.SETHIDE_SNACK };
 };

@@ -1,30 +1,30 @@
 import { connect } from 'react-redux';
-import LibraryDetail from 'components/pages/LibraryDetail';
+import FetchedComments from 'components/organisms/FetchedComments';
 import {
   libraryDetailRequest,
-  commentsRequest,
+  commentRequest,
 } from 'duck/libraryDetail/operations';
 
 const formatData = state => {
-  return state.libraryDetail.likes.docs === undefined
+  return state.libraryDetail.comment.docs === undefined
     ? null
-    : state.libraryDetail.likes.docs.map(queryDocumentSnapshot => {
+    : state.libraryDetail.comment.docs.map(queryDocumentSnapshot => {
         return queryDocumentSnapshot.data();
       });
 };
 
 const mapStateToProps = state => ({
   comments: formatData(state),
-  isLoading: state.libraryDetail.isLoading,
+  isFetching: state.libraryDetail.isFetching,
 });
 
 const mapDispatchToProps = dispatch => ({
   onRequest: ISBN => {
     dispatch(libraryDetailRequest(ISBN));
   },
-  onCommentsRequest: ISBN => {
-    dispatch(commentsRequest(ISBN));
+  onCommentRequest: ISBN => {
+    dispatch(commentRequest(ISBN));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LibraryDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(FetchedComments);

@@ -1,16 +1,15 @@
 import React from 'react';
 import { useLocation, Redirect } from 'react-router';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
-import { theme, Spacing, Text } from 'components/atoms';
+import { theme, Box, Container, Paper, Button, Text } from 'components/atoms';
 import * as Yup from 'yup';
-import AuthPagesTemplate from 'components/templates/AuthPagesTemplate';
-import { logInValidation } from 'components/molecules/Validation';
 import { CustomInput } from 'components/molecules/FormCustom';
+import FormFormat from 'components/molecules/FormFormat';
 
 const LogIn = ({ authState, onLogIn }) => {
   const formDatas = {
     initialValues: {
-      emai: '',
+      email: '',
       password: '',
     },
     validationShema: Yup.object({
@@ -31,20 +30,32 @@ const LogIn = ({ authState, onLogIn }) => {
     items: [
       {
         name: 'email',
+        label: 'email',
         type: 'email',
         input: CustomInput,
       },
       {
         name: 'password',
+        label: 'password',
         type: 'password',
         input: CustomInput,
       },
     ],
   };
   const location = useLocation();
-  const FromMyPage = () => {
+  const FromGuardPages = () => {
     if (location.state === '/my-page') {
-      return <Text>MyPageを見るにはログインが必要です。</Text>;
+      return (
+        <Text className="caption" as="p">
+          MyPageを見るにはログインが必要です。
+        </Text>
+      );
+    } else if (location.state === '/library') {
+      return (
+        <Text className="caption" as="p">
+          本の詳細ページを見るにはログインが必要です。
+        </Text>
+      );
     } else {
       return null;
     }
@@ -53,9 +64,25 @@ const LogIn = ({ authState, onLogIn }) => {
     return <Redirect to="/" />;
   }
   return (
-    <AuthPagesTemplate>
-      <FromMyPage />
-    </AuthPagesTemplate>
+    <LayoutCommon>
+      <Box justify="center" align="center" height="400px">
+        <Paper style={{ width: '30%', minWidth: '300px' }}>
+          <Container padding={`${theme.xlarge} ${theme.large}`}>
+            <FromGuardPages />
+            <FormFormat formDatas={formDatas} />
+            <Button
+              onClick={() => {
+                onLogIn({ email: 'test@gmail.com', password: 'test1234' });
+              }}
+              className="text stretch"
+              color={theme.secondary}
+            >
+              or テストユーザーでログイン
+            </Button>
+          </Container>
+        </Paper>
+      </Box>
+    </LayoutCommon>
   );
 };
 

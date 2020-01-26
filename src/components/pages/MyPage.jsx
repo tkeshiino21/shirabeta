@@ -1,20 +1,44 @@
-import React, { useEffect } from 'react';
-import BorrowData from 'components/organisms/FetchedBorrowData';
-import MyPageTemplate from 'components/templates/MyPageTemplate';
-import Auth from 'components/organisms/Auth';
+import React, { useState } from 'react';
+import BorrowData from 'containers/organisms/FetchedBorrowData';
+import LayoutWithSubMenu from 'components/organisms/Layout/LayoutWithSubMenu';
+import { MdComment, MdEventNote } from 'react-icons/md';
+import { Paper, Container, Spacing, theme } from 'components/atoms';
+import BookLog from 'containers/organisms/BookLog';
 
-const MyPage = ({ borrowData, onReturn, onRequest, uid }) => {
-  useEffect(() => onRequest(uid), [onRequest, uid]);
+const MyPage = ({ onReturn }) => {
+  const listItems = [
+    {
+      name: 'BookLog',
+      label: 'ブックログ',
+      icon: MdComment,
+    },
+    {
+      name: 'Borrowed',
+      label: '貸出中の本',
+      icon: MdEventNote,
+    },
+  ];
+  const [activeMenu, setActiveMenu] = useState(listItems[1].name);
+  const menuHandler = e => {
+    setActiveMenu(e.target.value);
+  };
   return (
-    <MyPageTemplate>
-      <Auth />
-      <BorrowData
-        borrowData={borrowData}
-        onReturn={onReturn}
-        onRequest={onRequest}
-        uid={uid}
-      />
-    </MyPageTemplate>
+    <LayoutWithSubMenu
+      listItems={listItems}
+      activeMenu={activeMenu}
+      menuHandler={menuHandler}
+    >
+      <Paper>
+        <Container>
+          {activeMenu === 'Borrowed' ? (
+            <BorrowData handleClick={onReturn} />
+          ) : (
+            <BookLog />
+          )}
+          <Spacing mTop={theme.small} />
+        </Container>
+      </Paper>
+    </LayoutWithSubMenu>
   );
 };
 

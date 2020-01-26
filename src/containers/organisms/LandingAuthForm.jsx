@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import LandingAuthForm from 'components/organisms/LandingAuthForm';
+import LandingAuthForm from 'components/organisms/LandingToSign';
 import authSwitch from 'duck/auth/operations';
 
 const mapDipatchToProps = dispatch => ({

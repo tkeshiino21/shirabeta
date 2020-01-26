@@ -13,7 +13,7 @@ const LayoutWithSubMenu = ({
   return (
     <LayoutCommon>
       <Spacing mTop={theme.large} />
-      <Box className="wrap">
+      <Box className="wrap-sm" style={{ border: '1px solid grey' }}>
         <Box className="vertical" basis="160px">
           <Spacing mTop={theme.small} />
           <SubMenu
@@ -23,7 +23,7 @@ const LayoutWithSubMenu = ({
           />
           <Spacing mBottom={theme.small} />
         </Box>
-        <Box basis="440px" grow={1} style={{ border: '1px solid grey' }}>
+        <Box grow={1} minWidth="0" style={{ border: '1px solid grey' }}>
           {children}
         </Box>
       </Box>

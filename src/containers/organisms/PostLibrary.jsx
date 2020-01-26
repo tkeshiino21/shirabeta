@@ -14,11 +14,15 @@ const mapStateToProps = state => ({
   uid: state.firebase.auth.uid,
   library: formatData(state),
   isLoading: state.library.isLoading,
+  collations: {
+    collationLikes: state.firebase.profile.likes,
+    collationComments: state.firebase.profile.comments,
+  },
 });
 
 const mapDispatchToProps = dispatch => ({
-  onRequest: uid => {
-    dispatch(libraryRequest(uid));
+  onRequest: (category, filter) => {
+    dispatch(libraryRequest(category, filter));
   },
 });
 

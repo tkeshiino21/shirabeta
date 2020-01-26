@@ -1,46 +1,42 @@
 import * as action from 'duck/libraryDetail/actions';
 import { getFirebase } from 'react-redux-firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/functions';
 
-export const libraryDetailRequest = ISBN => dispatch => {
+export const libraryDetailRequest = (ISBN, uid) => dispatch => {
   dispatch(action.detailRequestStart());
-  const fetchResourse = async () => {
-    const bookRef = getFirebase()
-      .firestore()
-      .collection('books')
-      .doc(ISBN);
-    const doc = await bookRef.get();
-    dispatch(action.detailRequestSuccess(doc.data()));
+  const bookRef = getFirebase()
+    .firestore()
+    .collection('books')
+    .doc(ISBN);
+  const asyncFunc = async doc => {
+    const data = await doc.data();
+    dispatch(action.detailRequestSuccess(data));
   };
-  fetchResourse().catch(error => {
-    dispatch(action.detailRequestFail(error));
-  });
-  // EventListner to render likesCount instantly
-  dispatch(action.countListenStart());
-  const likesCountListen = async () => {
-    const likesRef = getFirebase()
-      .firestore()
-      .collection('books')
-      .doc('likesCount');
-    const doc = await likesRef.onSnapshot;
-    dispatch(action.countListenSuccess(doc.data()));
+  const fetcheResourse = async () => {
+    await bookRef.onSnapshot(asyncFunc);
   };
-  likesCountListen.catch(error => {
+  fetcheResourse().catch(error => {
     dispatch(action.detailRequestFail(error));
   });
 };
 
-export const commentsRequest = ISBN => dispatch => {
-  dispatch(action.collationStart());
+export const commentRequest = ISBN => dispatch => {
+  dispatch(action.commentRequestStart());
   const fetchResourse = async () => {
     const snapshotRef = getFirebase()
       .firestore()
       .collectionGroup('comments')
       .where('ISBN', '==', ISBN);
     const snapshot = await snapshotRef.get();
-    dispatch(action.collationSuccess(snapshot));
+    await dispatch(action.commentRequestSuccess(snapshot));
+    // await dispatch(action.setShowSnack());
+    // await setTimeout(() => dispatch(action.setHideSnack()), 3000);
   };
   fetchResourse().catch(error => {
-    dispatch(action.collationFail(error));
+    dispatch(action.commentRequestFail(error));
   });
 };
 
@@ -71,10 +67,18 @@ export const bookComment = (
       commentDate: commentDate,
       comment: comment,
     });
-    await dispatch(action.commentAddSuccess(response));
+    const arrayCommentsRef = getFirebase()
+      .firestore()
+      .collection('users')
+      .doc(uid);
+    await arrayCommentsRef.update({
+      comments: firebase.firestore.FieldValue.arrayUnion(ISBN),
+    });
+    await dispatch(action.commentAddSuccess());
   };
-  pushUserData().catch(error => dispatch.commentAddFail(error));
+  pushUserData().catch(error => action.commentAddFail(error));
   const commentsIncrement = async () => {
+    dispatch(action.commentIncStart());
     const bookCommentsRef = getFirebase()
       .firestore()
       .collection('books')
@@ -82,10 +86,10 @@ export const bookComment = (
     await bookCommentsRef.update({
       commentsCount: firebase.firestore.FieldValue.increment(1),
     });
-    await dispatch(action.commentAddSuccess(response));
+    await dispatch(action.commentIncSuccess());
   };
   commentsIncrement().catch(error => {
-    dispatch(action.commentAddFail(error));
+    dispatch(action.commentIncFail(error));
   });
 };
 
@@ -99,12 +103,13 @@ export const bookLike = (ISBN, uid) => dispatch => {
     await userLikesRef.update({
       likes: firebase.firestore.FieldValue.arrayUnion(ISBN),
     });
-    await dispatch(action.likeAddSuccess(response));
+    await dispatch(action.likeAddSuccess());
   };
   pushUserData().catch(error => {
     dispatch(action.likeAddFail(error));
   });
   const likesIncrement = async () => {
+    dispatch(action.likeIncSuccess());
     const bookLikesRef = getFirebase()
       .firestore()
       .collection('books')
@@ -112,9 +117,44 @@ export const bookLike = (ISBN, uid) => dispatch => {
     await bookLikesRef.update({
       likesCount: firebase.firestore.FieldValue.increment(1),
     });
-    await dispatch(action.likeAddSuccess(response));
+    await dispatch(action.likeIncSuccess());
   };
   likesIncrement().catch(error => {
-    dispatch(action.likeAddFail(error));
+    dispatch(action.likeIncFail(error));
+  });
+};
+
+export const bookBorrow = (ISBN, title, uid) => dispatch => {
+  const today = new Date();
+  const todayCopy = new Date();
+  const limitDay = new Date(todayCopy.setDate(todayCopy.getDate() + 14));
+  const borrowDate = `${today.getFullYear()}-${today.getMonth() +
+    1}-${today.getDate()}`;
+  const limitDate = `${limitDay.getFullYear()}-${limitDay.getMonth() +
+    1}-${limitDay.getDate()}`;
+  dispatch(action.borrowStart());
+
+  const pushData = async () => {
+    const userBorrowRef = getFirebase()
+      .firestore()
+      .collection('users')
+      .doc(uid)
+      .collection('borrow')
+      .doc(ISBN);
+    const bookRef = getFirebase()
+      .firestore()
+      .colleciton('books')
+      .doc(ISBN);
+    bookRef.update({ borrow: true });
+    const response = await userBorrowRef.set({
+      ISBN: ISBN,
+      title: title,
+      borrowDate: borrowDate,
+      limitDate: limitDate,
+    });
+    await dispatch(action.borrowSuccess(response));
+  };
+  pushData().catch(error => {
+    dispatch(action.borrowFail(error));
   });
 };

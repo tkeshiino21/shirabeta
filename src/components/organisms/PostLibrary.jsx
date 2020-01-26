@@ -10,23 +10,53 @@ import {
   theme,
 } from 'components/atoms';
 
-const PostLibrary = ({ uid, onRequest, isLoading, library }) => {
-  const [category, setCategory] = useState('');
-  const handleCategory = e => {
-    setCategory(e.target.value);
-  };
-  console.log(library);
-  const [filter, setFilter] = useState('本');
-  const handleFilter = e => {
-    setFilter(e.target.value);
-  };
-  const [order, setOrder] = useState('本');
-  const handleOrder = e => {
-    setOrder(e.target.value);
-  };
+const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
+  const [category, setCategory] = useState('すべて');
+  const [filter, setFilter] = useState('すべて');
+  const [order, setOrder] = useState('新着順');
+  console.log(collations, 'that');
+  const handleCategory = e => setCategory(e.target.value);
+  const handleFilter = e => setFilter(e.target.value);
+  const handleOrder = e => setOrder(e.target.value);
   useEffect(() => {
-    onRequest(uid);
-  }, [category]);
+    onRequest(category, filter);
+  }, [category, filter]);
+  const Posts = () => {
+    const copiedLibrary = library.concat();
+    const sortedLibrary = copiedLibrary.sort((a, b) => {
+      return b.likesCount - a.likesCount;
+    });
+    const libraryItems = order === '人気順' ? sortedLibrary : library;
+    return libraryItems.map(fetchedPost => {
+      console.log(fetchedPost.ISBN, 'it');
+      const post = {
+        title: fetchedPost.title,
+        author: fetchedPost.author,
+        date: fetchedPost.publishedDate,
+        link: `/library/${fetchedPost.ISBN}`,
+        outer: false,
+      };
+      const counts = {
+        likesCount: fetchedPost.likesCount,
+        commentsCount: fetchedPost.commentsCount,
+      };
+      const reactions = {
+        myLikes:
+          collations === undefined || collations.collationLikes === undefined
+            ? []
+            : collations.collationLikes.includes(fetchedPost.ISBN),
+        myComments:
+          collations === undefined || collations.collationComments === undefined
+            ? []
+            : collations.collationComments.includes(fetchedPost.ISBN),
+      };
+      return (
+        <li key={fetchedPost.ISBN}>
+          <Article post={post} reactions={reactions} counts={counts} />
+        </li>
+      );
+    });
+  };
   if (isLoading !== false) {
     return <Loader />;
   } else {
@@ -42,18 +72,9 @@ const PostLibrary = ({ uid, onRequest, isLoading, library }) => {
               }}
             />
           </Block>
-          <Spacing mTop={theme.small} />
-          {library.map(fetchedPost => {
-            return (
-              <Article
-                post={fetchedPost}
-                counts={{
-                  likesCount: fetchedPost.likes_count,
-                  commentsCount: fetchedPost.comments_count,
-                }}
-              />
-            );
-          })}
+          <Spacing mTop={theme.medium} />
+          <Posts />
+          {console.log(collations)}
         </Container>
       </Paper>
     );

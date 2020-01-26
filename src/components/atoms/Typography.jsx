@@ -17,6 +17,7 @@ export const Text = styled.span`
     cursor: pointer;
     text-decoration: none;
     &:hover {
+      text-decoration-color: ${props => props.color};
       text-decoration: underline;
     }
   }
@@ -103,6 +104,9 @@ export const Text = styled.span`
     line-height: 2.66;
     letter-spacing: 0.08333em;
     text-transform: uppercase;
+  }
+  &.japanese {
+    line-height: 2;
   }
 `;
 

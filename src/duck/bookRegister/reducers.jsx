@@ -2,6 +2,7 @@ import * as actionTypes from 'duck/bookRegister/actionTypes';
 
 const initState = {
   response: '',
+  inputISBN: '',
   error: '',
   isLoading: '',
   isAdding: '',
@@ -19,7 +20,8 @@ const registerReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        response: action.payload,
+        response: action.payload.response,
+        inputISBN: action.payload.inputISBN,
       };
     case actionTypes.BOOK_REQUEST_FAIL:
       return {
@@ -32,6 +34,7 @@ const registerReducer = (state = initState, action) => {
       return {
         ...state,
         isAdding: true,
+        showSnack: true,
       };
     case actionTypes.REGISTER_SUCCESS:
       return {
@@ -50,11 +53,13 @@ const registerReducer = (state = initState, action) => {
         ...state,
         isLoading: true,
         response: '',
+        inputISBN: '',
       };
     case actionTypes.RELOAD_PAGE:
       return {
         ...state,
         isLoading: '',
+        showSnack: false,
       };
     default:
       return state;

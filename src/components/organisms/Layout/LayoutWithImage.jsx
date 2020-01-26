@@ -1,15 +1,22 @@
 import React from 'react';
-import { Box, Image } from 'components/atoms';
+import { Box, Image, Snackbar } from 'components/atoms';
 import { LayoutCommon } from 'components/organisms/Layout/LayoutCommon';
 
-const LayoutWithImage = ({ children, image }) => {
+const LayoutWithImage = ({ children, image, basis }) => {
   return (
-    <LayoutCommon>
-      <Box>
-        <Image src={image} minWidth="320px" maxWidth="500px" />
-        <Box className="grow wrap">{children}</Box>
+    <Box className="wrap-sm">
+      <Image
+        basis={basis ? basis : '40%'}
+        bgSize="contain"
+        grow={1}
+        image={image}
+        height="auto"
+        style={{ minHeight: '300px' }}
+      />
+      <Box grow={1} width="500px">
+        {children}
       </Box>
-    </LayoutCommon>
+    </Box>
   );
 };
 

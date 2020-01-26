@@ -8,7 +8,7 @@ import 'firebase/functions';
 import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import configureStore from 'duck/configureStore';
-import App from 'App';
+import App from 'containers/App';
 import { Loader } from 'components/atoms';
 import GlobalStyles from 'components/atoms/GlobalStyle';
 import { ThemeProvider } from 'styled-components';

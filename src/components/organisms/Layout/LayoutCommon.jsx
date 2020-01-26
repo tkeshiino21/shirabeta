@@ -3,23 +3,24 @@ import { useLocation } from 'react-router-dom';
 import { Box, Block, Spacing, Container } from 'components/atoms';
 import Header from 'components/organisms/Layout/Header';
 import Footer from 'components/organisms/Layout/Footer';
-import LandingView from 'components/organisms/LandingView';
+import LandingView from 'containers/organisms/LandingView';
 import MainWrapper from 'components/molecules/MainWrapper';
 
 const LayoutCommon = ({ children }) => {
   return (
     <>
-      {console.log(useLocation())}
       <Header />
+      <Spacing mTop="40px" />
       {useLocation().pathname === '/' ? (
         <>
-          <Spacing mTop="40px" />
           <LandingView />
         </>
       ) : null}
-      <Spacing mTop="40px" />
-      <Box justify="center">
-        <MainWrapper>{children}</MainWrapper>
+      <Box className="vertical">
+        <Spacing mTop="40px" />
+        <Box justify="center" minHeight="50vh">
+          <MainWrapper>{children}</MainWrapper>
+        </Box>
       </Box>
       <Footer />
     </>

@@ -4,9 +4,11 @@ const initState = {
   response: '',
   error: '',
   isLoading: '',
+  userComments: '',
+  userLikes: '',
 };
 
-const requestReducer = (state = initState, action) => {
+const myPageReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.MYPAGE_REQUEST_START:
       return {
@@ -25,6 +27,56 @@ const requestReducer = (state = initState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    case actionTypes.RETURN_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionTypes.RETURN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case actionTypes.RETURN_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case actionTypes.USERLIKES_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionTypes.USERLIKES_SUCCESS:
+      return {
+        ...state,
+        userLikes: action.payload,
+        isLoading: false,
+      };
+    case actionTypes.USERLIKES_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
+    case actionTypes.USERCOMMENTS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case actionTypes.USERCOMMENTS_SUCCESS:
+      return {
+        ...state,
+        userComments: action.payload,
+        isLoading: false,
+      };
+    case actionTypes.USERCOMMENTS_FAIL:
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     // case actionTypes.CLEAR_STATE:
     //   return {
     //     ...state,
@@ -37,4 +89,4 @@ const requestReducer = (state = initState, action) => {
   }
 };
 
-export default requestReducer;
+export default myPageReducer;

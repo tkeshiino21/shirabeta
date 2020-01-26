@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from './theme';
+import { media } from './media';
 
 // the containers for layout
 // Don't set Margin or Padding this components
@@ -41,6 +42,8 @@ export const Box = styled.div`
   min-width: ${props => props.minWidth || 'initial'};
   max-width: ${props => props.maxWidth || 'initial'};
   height: ${props => props.height || '100%'};
+  min-height: ${props => props.minHeight};
+  max-height: ${props => props.maxHeight};
 
   &.fill {
     width: 100%;
@@ -55,22 +58,31 @@ export const Box = styled.div`
   &.wrap {
     flex-wrap: wrap;
   }
+  &.wrap-sm {
+    ${media.sm`
+      flex-wrap: wrap;
+    `}
+  }
+  &.wrap-md {
+    ${media.md`
+      flex-wrap: wrap;
+    `}
+  }
 `;
 
 export const Image = styled(Box)`
-  display: ${props => props.width || 'flex'};
+  display: ${props => props.display || 'flex'};
   background-image: url(${props => props.image || null});
   background-size: ${props => props.bgSize || 'cover'};
   background-repeat: no-repeat;
   opacity: ${props => props.opacity || '1'};
-
+  background-color: #ffffff;
   width: ${props => props.width || '100%'};
   height: ${props => props.height};
+  background-position: top center;
 `;
 
 export const Block = styled.div`
-  display: block;
-  width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -87,8 +99,12 @@ export const Spacing = styled.div`
   margin-left: ${props => props.mLeft};
 `;
 
-export const Divider = styled.div`
-  background-color: ${props => props.color || theme.naturalDark};
+export const Divider = styled.hr`
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid ${props => props.color || theme.naturalDark};
   &.middle {
     margin-left: ${theme.small};
     margin-right: ${theme.small};

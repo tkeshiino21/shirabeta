@@ -1,4 +1,4 @@
-export { Button } from 'components/atoms/Button';
+export { Button, ButtonWrapper } from 'components/atoms/Button';
 export { Card, Paper } from 'components/atoms/Card';
 export {
   Container,

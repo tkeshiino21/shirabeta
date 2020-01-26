@@ -1,8 +1,12 @@
 import React from 'react';
 import { Loader } from 'components/atoms';
 
-const NowOnLoading = ({ isLoading, children }) => {
-  return isLoading === false ? <>{children}</> : <Loader />;
+const ShouldLoading = ({ isLoading, children }) => {
+  if (isLoading !== false) {
+    return <Loader />;
+  } else {
+    return children;
+  }
 };
 
-export default NowOnLoading;
+export default ShouldLoading;

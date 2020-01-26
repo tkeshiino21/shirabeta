@@ -1,56 +1,75 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { theme, Box, Block, Spacing, Span, Text } from 'components/atoms';
+import {
+  theme,
+  Box,
+  Block,
+  Spacing,
+  Span,
+  Text,
+  Divider,
+} from 'components/atoms';
 import CounterReactions from 'components/molecules/CounterReactions';
 
-const Article = ({ post, counts }) => {
+const Article = ({ post, counts, reactions }) => {
+  const link = post.link;
+  const outer = post.outer;
+  const title = post.title;
+  const author = post.author;
+  const date = post.date;
   return (
-    <Block>
+    <div style={{ width: 'auto' }}>
       <Spacing mTop={theme.small} />
       <Box>
-        <Box className="vertical" width="70%">
+        <Box className="vertical" grow={1} width="70%">
           <Block>
-            <Text
-              as={Link}
-              className="body2 link"
-              to={post.link}
-              target={post.outer ? '_blank' : ''}
-              rel={post.outer ? 'noopener noreferrer' : ''}
-            >
-              <Span>{post.title} </Span>
-            </Text>
+            {outer === true ? (
+              <Text
+                as="a"
+                className="body2 link"
+                // to={outer === false ? link : null}
+                href={link}
+                target={'_blank'}
+                rel={'noopener noreferrer'}
+              >
+                <Span>{title} </Span>
+              </Text>
+            ) : (
+              <Text as={Link} className="body2 link" to={link}>
+                <Span>{title} </Span>
+              </Text>
+            )}
+
             <div>
-              {post.author === undefined
-                ? null
-                : post.author.map(name => {
-                    return (
-                      <Text
-                        key={name}
-                        as="p"
-                        className="caption"
-                        color={theme.naturalDark}
-                        style={{ display: 'inline' }}
-                      >
-                        {name}　
-                      </Text>
-                    );
-                  })}
+              {author.map(name => {
+                return (
+                  <Text
+                    key={name}
+                    as="p"
+                    className="caption"
+                    color={theme.naturalDark}
+                    style={{ display: 'inline' }}
+                  >
+                    {name}　
+                  </Text>
+                );
+              })}
             </div>
             <Text as="p" className="caption" color={theme.naturalDark}>
-              {post.date}
+              {date}
             </Text>
           </Block>
         </Box>
         <Box
-          basis="74px"
+          basis="68px"
           justify="flex-end"
           style={{ border: '1px solid grey' }}
         >
-          <CounterReactions counts={counts} />
+          <CounterReactions reactions={reactions} counts={counts} />
         </Box>
       </Box>
-      <hr />
-    </Block>
+      <Divider />
+    </div>
   );
 };
 

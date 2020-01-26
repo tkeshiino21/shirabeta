@@ -3,13 +3,13 @@ import { theme } from './theme';
 import { Image } from './Layout';
 import loader from 'images/loader.gif';
 
-export const Loader = styled(Image)`
+export const Loader = styled.div`
   display: absolute;
   background-position: center;
   background-image: url(${loader});
   background-repeat: no-repeat;
-  width: 200px;
-  height: auto;
+  width: 1000px;
+  height: 200px;
 `;
 
 /* The snackbar */
@@ -36,7 +36,6 @@ export const Snackbar = styled.button`
 
   &.show {
     visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
     animation: ${fadein} 0.5s, ${fadeout} 0.5s 2.5s;
   }
   &.hidden {

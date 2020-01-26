@@ -5,61 +5,49 @@ const initState = {
   listen: '',
   error: '',
   isLoading: '',
+  isFetching: '', //comment
   likes: '',
+  showSnack: false,
+  comment: '',
+  colloationComments: [],
+  colloationLikes: [],
 };
 
 const requestReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionTypes.REQUEST_START:
+    case actionTypes.DETAILREQUEST_START:
       return {
         ...state,
         isLoading: true,
       };
-    case actionTypes.REQUEST_SUCCESS:
+    case actionTypes.DETAILREQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
         response: action.payload,
       };
-    case actionTypes.REQUEST_FAIL:
+    case actionTypes.DETAILREQUEST_FAIL:
       return {
         ...state,
         isLoading: false,
-        response: action.payload,
+        error: action.payload,
       };
-    case actionTypes.EVENTLISTEN_START:
+    case actionTypes.COMMENTREQUEST_START:
       return {
         ...state,
-        // isLoading: true,
+        isFetching: true,
       };
-    case actionTypes.EVENTLISTEN_SUCCESS:
+    case actionTypes.COMMENTREQUEST_SUCCESS:
       return {
         ...state,
-        // isLoading: false,
-        listen: action.payload,
+        isFetching: false,
+        comment: action.payload,
       };
-    case actionTypes.EVENTLISTEN_FAIL:
+    case actionTypes.COMMENTREQUEST_FAIL:
       return {
         ...state,
-        // isLoading: false,
-        // error: action.payload,
-      };
-    case actionTypes.COLLATION_START:
-      return {
-        ...state,
-        // isLoading: true,
-      };
-    case actionTypes.COLLATION_SUCCESS:
-      return {
-        ...state,
-        // isLoading: false,
-        likes: action.payload,
-      };
-    case actionTypes.COLLATION_FAIL:
-      return {
-        ...state,
-        // isLoading: false,
-        // error: action.payload,
+        isFetching: false,
+        error: action.payload,
       };
     case actionTypes.CLEAR_STATE:
       return {
@@ -67,6 +55,16 @@ const requestReducer = (state = initState, action) => {
         // response: '',
         error: '',
         isLoading: false,
+      };
+    case actionTypes.SETSHOW_SNACK:
+      return {
+        ...state,
+        showSnack: true,
+      };
+    case actionTypes.SETHIDE_SNACK:
+      return {
+        ...state,
+        showSnack: false,
       };
     default:
       return state;

@@ -9,11 +9,11 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  margin-left: ${theme.small};
   width: 100%;
   &.outlined {
     outline: 1px solid ${theme.naturalDark};
     background: ${theme.natural};
+    text-indent: 2px;
   }
   &.underlined {
     border-bottom: 1px solid ${theme.naturalDark};
@@ -21,13 +21,14 @@ export const Input = styled.input`
 `;
 
 export const Textarea = styled.textarea`
-  margin-left: ${theme.small};
   height: 200px;
   width: 100%;
 
   &.outlined {
-    outline: 1px solid ${theme.naturalDark};
-    background: ${theme.natural};
+    outline: none;
+    background-color: ${theme.light};
+    border: 1px solid ${theme.naturalDark};
+    border-radius: 4px;
   }
 
   &.underlined {
@@ -38,7 +39,7 @@ export const Textarea = styled.textarea`
 // select
 export const SelectWrapper = styled.div`
   position: relative;
-  &::after {
+  &::before {
     position: absolute;
     top: 0.8em;
     right: 0.8em;
@@ -49,7 +50,8 @@ export const SelectWrapper = styled.div`
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 6px solid ${theme.naturalDark};
-    cursor: pointer;
+    z-index: 1;
+    pointer-events: none;
   }
 `;
 export const Select = styled.select`
@@ -65,6 +67,7 @@ export const Select = styled.select`
   width: ${props => props.width || '100%'};
   border-radius: 4px;
   appearance: none;
+  cursor: pointer;
 
   &.small {
     width: 120px;
@@ -73,6 +76,7 @@ export const Select = styled.select`
     `}
   }
 `;
+
 export const Option = styled.option`
   background-color: ${theme.light};
   color: ${theme.naturalDark};

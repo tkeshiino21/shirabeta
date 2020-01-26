@@ -8,16 +8,17 @@ const FormFormat = ({ formDatas }) => {
     return formDatas.items.map(data => {
       return (
         <li key={data.name}>
-          <Box height="20px">
+          <Box>
             <Label htmlFor={data.name} style={{ width: '80px' }}>
-              {data.name}
+              {data.label}
             </Label>
             <Field as={data.input} name={data.name} type={data.type} />
-            <ErrorMessage
-              name={data.name}
-              render={msg => <p style={{ color: 'red' }}>{msg}</p>}
-            />
           </Box>
+          <ErrorMessage
+            name={data.name}
+            render={msg => <p style={{ color: 'red' }}>{msg}</p>}
+          />
+
           <Spacing mBottom={theme.large} />
         </li>
       );
@@ -31,7 +32,7 @@ const FormFormat = ({ formDatas }) => {
     >
       <Form>
         <FormDatasItemsMap />
-        <Button className="primary stretch" type="submit">
+        <Button className="primary large stretch" type="submit">
           {formDatas.action}
         </Button>
       </Form>

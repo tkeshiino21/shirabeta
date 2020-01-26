@@ -6,7 +6,7 @@ import { theme, Box, Button, Card, Container, Spacing } from 'components/atoms';
 import { CustomInput } from 'components/molecules/FormCustom';
 import { Collapse } from 'components/atoms/media';
 
-const LandingAuthForm = ({ onSignUp, onLogIn }) => {
+const LandingToSign = ({ onSignUp, onLogIn }) => {
   const formDatas = {
     initialValues: {
       name: '',
@@ -34,16 +34,19 @@ const LandingAuthForm = ({ onSignUp, onLogIn }) => {
     items: [
       {
         name: 'name',
+        label: 'name',
         type: 'text',
         input: CustomInput,
       },
       {
         name: 'email',
+        label: 'email',
         type: 'email',
         input: CustomInput,
       },
       {
         name: 'password',
+        label: 'password',
         type: 'password',
         input: CustomInput,
       },
@@ -83,4 +86,4 @@ const LandingAuthForm = ({ onSignUp, onLogIn }) => {
   );
 };
 
-export default LandingAuthForm;
+export default LandingToSign;
