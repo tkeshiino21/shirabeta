@@ -29,7 +29,7 @@ export {
   StyledTableCell,
 } from 'components/atoms/Table';
 export { Text, Strong, Span } from 'components/atoms/Typography';
-export { BackDrop } from 'components/atoms/Utils';
+export { BackDrop, Tag, TagWrapper } from 'components/atoms/Utils';
 
 // important
 export { theme } from 'components/atoms/theme';

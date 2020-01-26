@@ -7,10 +7,10 @@ export const myPageRequest = uid => dispatch => {
     .firestore()
     .collection('users')
     .doc(uid)
-    .collection('borrow');
+    .collection('borrow')
+    .orderBy('borrowDate', 'desc');
   const fetchResourse = async () => {
     const documentSnapshot = await borrowRef.get();
-    await console.log(documentSnapshot.docs);
     await dispatch(action.myPageRequestSuccess(documentSnapshot.docs));
   };
   fetchResourse().catch(error => {
@@ -34,14 +34,14 @@ export const bookReturn = (ISBN, uid) => dispatch => {
       .doc(ISBN);
     const bookRef = getFirebase()
       .firestore()
-      .colleciton('books')
+      .collection('books')
       .doc(ISBN);
-    bookRef.update({ borrow: false });
-    await userBorrowRef.update({
+    const response = await userBorrowRef.update({
       returnDate: returnDate,
-      borrow: false,
+      borrowing: false,
     });
-    await dispatch(action.returnSuccess());
+    await bookRef.update({ borrowing: false });
+    await dispatch(action.returnSuccess(response));
     await dispatch(myPageRequest(uid));
   };
   pushData()
@@ -60,7 +60,6 @@ export const userComments = uid => dispatch => {
     .collection('comments');
   const fetchResourse = async () => {
     const documentSnapshot = await commentsRef.get();
-    await console.log(documentSnapshot.docs);
     await dispatch(action.userCommentsSuccess(documentSnapshot.docs));
   };
   fetchResourse().catch(error => {

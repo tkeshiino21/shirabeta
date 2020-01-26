@@ -8,11 +8,11 @@ import {
 // route components
 import Home from 'components/pages/Home';
 import Register from 'components/pages/Register';
-import MyPage from 'containers/MyPage/MyPage';
-import LogIn from 'containers/AuthPages/LogIn';
-import SignUp from 'containers/AuthPages/SignUp';
+import MyPage from 'containers/pages/MyPage';
+import LogIn from 'containers/pages/LogIn';
+import SignUp from 'containers/pages/SignUp';
 import NotFoundPage from 'components/pages/NotFoundPage';
-import LibraryDetail from 'containers/Home/LibraryDetail';
+import LibraryDetail from 'containers/pages/LibraryDetail';
 
 const App = ({ authState }) => {
   return (

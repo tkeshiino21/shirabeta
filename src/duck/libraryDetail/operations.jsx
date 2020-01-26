@@ -13,7 +13,7 @@ export const libraryDetailRequest = (ISBN, uid) => dispatch => {
     .doc(ISBN);
   const asyncFunc = async doc => {
     const data = await doc.data();
-    dispatch(action.detailRequestSuccess(data));
+    await dispatch(action.detailRequestSuccess(data));
   };
   const fetcheResourse = async () => {
     await bookRef.onSnapshot(asyncFunc);
@@ -32,8 +32,6 @@ export const commentRequest = ISBN => dispatch => {
       .where('ISBN', '==', ISBN);
     const snapshot = await snapshotRef.get();
     await dispatch(action.commentRequestSuccess(snapshot));
-    // await dispatch(action.setShowSnack());
-    // await setTimeout(() => dispatch(action.setHideSnack()), 3000);
   };
   fetchResourse().catch(error => {
     dispatch(action.commentRequestFail(error));
@@ -87,6 +85,9 @@ export const bookComment = (
       commentsCount: firebase.firestore.FieldValue.increment(1),
     });
     await dispatch(action.commentIncSuccess());
+    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+    await sleep(1000);
+    await dispatch(action.clearState());
   };
   commentsIncrement().catch(error => {
     dispatch(action.commentIncFail(error));
@@ -143,15 +144,16 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
       .doc(ISBN);
     const bookRef = getFirebase()
       .firestore()
-      .colleciton('books')
+      .collection('books')
       .doc(ISBN);
-    bookRef.update({ borrow: true });
     const response = await userBorrowRef.set({
       ISBN: ISBN,
       title: title,
       borrowDate: borrowDate,
       limitDate: limitDate,
+      returnDate: '',
     });
+    await bookRef.update({ borrowing: true });
     await dispatch(action.borrowSuccess(response));
   };
   pushData().catch(error => {

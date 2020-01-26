@@ -11,11 +11,11 @@ export const TableHead = styled.thead`
 `;
 export const TableHeader = styled.th`
   color: ${theme.light};
-  font-size: 0.85em;
+  font-size: 1em;
   padding: 1em;
 `;
 export const TableBody = styled.tbody`
-  font-size: 0.85em;
+  font-size: 1em;
   padding: 1em;
 `;
 export const TableRow = styled.tr`
@@ -23,7 +23,7 @@ export const TableRow = styled.tr`
   border-bottom: 1px solid ${theme.naturalDark};
   padding: 1em;
   text-align: left;
-  font-size: 0.8em;
+  font-size: 1em;
 `;
 
 export const StyledTableRow = styled.tr`
@@ -34,6 +34,7 @@ export const StyledTableRow = styled.tr`
 `;
 export const StyledTableCell = styled.td`
   color: ${theme.dark};
+  line-height: 2.4;
   padding: 1em;
 
   &.title {
@@ -42,7 +43,7 @@ export const StyledTableCell = styled.td`
     text-overflow: ellipsis;
     white-space: nowrap;
     ${media.sm`
-      width:50px;
+      width:60px;
     `}
   }
 `;

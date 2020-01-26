@@ -8,9 +8,10 @@ export const Button = styled.button`
   border-radius: ${theme.radius};
   cursor: pointer;
 
-  font-size: 0.75rem;
-  line-height: 1.66;
-  letter-spacing: 0.03333em;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
 
   /* できるだけボタンそのものにmarginをもたせない */
   margin-top: ${props => props.mTop || '0px'};
@@ -19,6 +20,10 @@ export const Button = styled.button`
   margin-left: ${props => props.mLeft || '0px'};
 
   /* /ボタンデザイン */
+  &.gradation {
+    background-image: linear-gradient(45deg, #ffc107 0%, #ff8b5f 100%);
+    color: ${props => props.color || theme.light};
+  }
   &.primary {
     background-color: ${theme.primary};
     border: none;
@@ -40,6 +45,12 @@ export const Button = styled.button`
     background-color: ${theme.naturalDark};
     border: none;
     color: ${theme.light};
+  }
+  &.disabled {
+    padding: 5px 15px;
+    background-color: inherit;
+    border: 1px solid ${theme.naturalDark};
+    color: ${theme.naturalDark};
   }
   &.text {
     background-color: transparent;

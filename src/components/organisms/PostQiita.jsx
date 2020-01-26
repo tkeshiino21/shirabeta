@@ -4,7 +4,6 @@ import SearchQiita from 'components/organisms/SearchQiita';
 import {
   Loader,
   Block,
-  Box,
   Paper,
   Container,
   Spacing,
@@ -14,7 +13,6 @@ import moment from 'moment';
 
 const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
   const [tagName, setTagName] = useState('本');
-  // const [title, setTitle] = useState('本');
   const [order, setOrder] = useState('新着順');
   const handleTag = e => setTagName(e.target.value);
   const handleTitle = e => setTagName(e.target.value);
@@ -65,7 +63,6 @@ const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
           </Block>
           <Spacing mTop={theme.medium} />
           <Posts />
-          {console.log(fetchedPosts)}
         </Container>
       </Paper>
     );

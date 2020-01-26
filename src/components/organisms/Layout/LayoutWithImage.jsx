@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Image, Snackbar } from 'components/atoms';
-import { LayoutCommon } from 'components/organisms/Layout/LayoutCommon';
+import { Box, Image } from 'components/atoms';
 
 const LayoutWithImage = ({ children, image, basis }) => {
   return (

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   StyledTableRow,
   StyledTableCell,
   Table,
   TableHead,
-  TableHeader,
   TableBody,
   TableRow,
 } from 'components/atoms/Table';
@@ -26,11 +26,14 @@ const FetchedBorrowData = ({
     return borrowData === undefined
       ? null
       : borrowData.map(snapshot => {
-          console.log('data', snapshot.data());
           const data = snapshot.data();
           return (
             <StyledTableRow key={data.ISBN}>
-              <StyledTableCell className="title" component="th" scope="row">
+              <StyledTableCell
+                className="title"
+                as={Link}
+                to={`/library/${data.ISBN}`}
+              >
                 {data.title}
               </StyledTableCell>
               <StyledTableCell align="right">{data.borrowDate}</StyledTableCell>
@@ -38,13 +41,13 @@ const FetchedBorrowData = ({
               <StyledTableCell align="right">{data.returnDate}</StyledTableCell>
               <StyledTableCell align="right">
                 <Button
-                  disabled={data.returnDate === undefined ? false : true}
+                  disabled={data.returnDate === '' ? false : true}
                   onClick={() => {
                     onReturn(data.ISBN, uid);
                   }}
                   className="primary"
                   style={{
-                    display: data.returnDate === undefined ? 'primary' : 'none',
+                    display: data.returnDate === '' ? 'primary' : 'none',
                   }}
                 >
                   返却
@@ -65,7 +68,6 @@ const FetchedBorrowData = ({
         <Table>
           <TableHead>
             <TableRow>
-              {console.log('b', borrowData)}
               <StyledTableCell>本のタイトル</StyledTableCell>
               <StyledTableCell align="right">貸出日</StyledTableCell>
               <StyledTableCell align="right">期限日</StyledTableCell>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Box, Block, Spacing, Container } from 'components/atoms';
+import { Box, Spacing } from 'components/atoms';
 import Header from 'components/organisms/Layout/Header';
 import Footer from 'components/organisms/Layout/Footer';
 import LandingView from 'containers/organisms/LandingView';

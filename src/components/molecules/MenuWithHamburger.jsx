@@ -7,7 +7,7 @@ import Menu from 'components/molecules/Menu';
 const Hamburger = styled(MdMenu)`
   color: ${theme.secondary};
   font-weight: bold;
-  font-size: ${theme.large};
+  font-size: ${theme.xlarge};
   cursor: pointer;
 `;
 

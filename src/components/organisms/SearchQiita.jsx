@@ -8,15 +8,15 @@ const SearchQiita = ({ handles }) => {
   const searchItems = {
     selects: [
       {
-        title: 'タグ',
+        title: 'タグ1',
         onChange: handleTag,
         items: ['技術書', '書籍', '本'],
       },
       {
-        title: '技術書典',
+        title: 'タグ2',
         onChange: handleTitle,
         items: [
-          '技術書',
+          '技術書典1',
           '技術書典2',
           '技術書典3',
           '技術書典4',

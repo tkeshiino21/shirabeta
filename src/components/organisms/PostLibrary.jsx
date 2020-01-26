@@ -14,7 +14,6 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
   const [category, setCategory] = useState('すべて');
   const [filter, setFilter] = useState('すべて');
   const [order, setOrder] = useState('新着順');
-  console.log(collations, 'that');
   const handleCategory = e => setCategory(e.target.value);
   const handleFilter = e => setFilter(e.target.value);
   const handleOrder = e => setOrder(e.target.value);
@@ -28,7 +27,6 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
     });
     const libraryItems = order === '人気順' ? sortedLibrary : library;
     return libraryItems.map(fetchedPost => {
-      console.log(fetchedPost.ISBN, 'it');
       const post = {
         title: fetchedPost.title,
         author: fetchedPost.author,
@@ -63,6 +61,7 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
     return (
       <Paper>
         <Container>
+          <Spacing mTop={theme.small} />
           <Block>
             <SearchLibrary
               handles={{
@@ -74,7 +73,6 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
           </Block>
           <Spacing mTop={theme.medium} />
           <Posts />
-          {console.log(collations)}
         </Container>
       </Paper>
     );

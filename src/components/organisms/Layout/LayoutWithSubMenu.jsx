@@ -1,8 +1,7 @@
 import React from 'react';
 import SubMenu from 'components/molecules/SubMenu';
-import { Box, theme, Spacing, Container } from 'components/atoms';
+import { Box, theme, Spacing } from 'components/atoms';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
-import LandingView from '../LandingView';
 
 const LayoutWithSubMenu = ({
   children,
@@ -13,7 +12,7 @@ const LayoutWithSubMenu = ({
   return (
     <LayoutCommon>
       <Spacing mTop={theme.large} />
-      <Box className="wrap-sm" style={{ border: '1px solid grey' }}>
+      <Box className="wrap-sm">
         <Box className="vertical" basis="160px">
           <Spacing mTop={theme.small} />
           <SubMenu
@@ -23,7 +22,7 @@ const LayoutWithSubMenu = ({
           />
           <Spacing mBottom={theme.small} />
         </Box>
-        <Box grow={1} minWidth="0" style={{ border: '1px solid grey' }}>
+        <Box grow={1} minWidth="0">
           {children}
         </Box>
       </Box>

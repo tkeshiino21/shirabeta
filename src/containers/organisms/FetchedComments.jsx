@@ -15,7 +15,7 @@ const formatData = state => {
 
 const mapStateToProps = state => ({
   comments: formatData(state),
-  isFetching: state.libraryDetail.isFetching,
+  isFetching: state.libraryDetail.isAdding,
 });
 
 const mapDispatchToProps = dispatch => ({

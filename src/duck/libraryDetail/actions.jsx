@@ -50,16 +50,6 @@ export const borrowFail = error => {
 };
 
 // LikesCountEventListener
-export const countListenStart = () => {
-  return { type: actionTypes.EVENTLISTEN_START };
-};
-export const countListenSuccess = response => {
-  return { type: actionTypes.EVENTLISTEN_SUCCESS, payload: response };
-};
-export const countListenFail = error => {
-  return { type: actionTypes.EVENTLISTEN_FAIL, payload: error };
-};
-
 export const commentRequestStart = () => {
   return { type: actionTypes.COMMENTREQUEST_START };
 };
@@ -70,19 +60,16 @@ export const commentRequestFail = error => {
   return { type: actionTypes.COMMENTREQUEST_FAIL, payload: error };
 };
 
-export const commentIncStart = comment => {
+export const commentIncStart = () => {
   return { type: actionTypes.COMMENTINC_START };
 };
-export const commentIncSuccess = comment => {
+export const commentIncSuccess = () => {
   return { type: actionTypes.COMMENTINC_SUCCESS };
 };
 export const commentIncFail = error => {
   return { type: actionTypes.COMMENTINC_FAIL, payload: error };
 };
 
-export const setShowSnack = () => {
-  return { type: actionTypes.SETSHOW_SNACK };
-};
-export const setHideSnack = () => {
-  return { type: actionTypes.SETHIDE_SNACK };
+export const clearState = () => {
+  return { type: actionTypes.CLEAR_STATE };
 };

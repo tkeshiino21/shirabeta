@@ -21,7 +21,7 @@ const HeaderAuth = ({ onLogOut, authState, userName }) => {
     case true:
       return (
         <>
-          <Text className="caption" as="p" color={theme.light}>
+          <Text className="subtitle1" as="p" color={theme.light}>
             <Strong> {userName} </Strong> さん
           </Text>
           <Spacing mRight={theme.small} />

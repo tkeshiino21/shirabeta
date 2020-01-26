@@ -8,21 +8,20 @@ const CounterReactions = ({ reactions, counts }) => {
   return (
     <Box>
       <Text
-        className="outline"
+        className="body2"
         as="p"
         color={myLikes === true ? theme.primary : theme.naturalDark}
-        style={{ cursor: 'pointer' }}
       >
-        <MdFavorite style={{ verticalAlign: 'middle', marginRight: '1px' }} />
+        <MdFavorite style={{ verticalAlign: 'middle', marginRight: '3px' }} />
         <span style={{ verticalAlign: 'middle' }}>{counts.likesCount}</span>
       </Text>
       <Spacing mRight="6px" />
       <Text
-        className="outline"
+        className="body2"
         as="p"
         color={myComments === true ? theme.primary : theme.naturalDark}
       >
-        <MdComment style={{ verticalAlign: 'middle', marginRight: '1px' }} />
+        <MdComment style={{ verticalAlign: 'middle', marginRight: '3px' }} />
         <span style={{ verticalAlign: 'middle' }}> {counts.commentsCount}</span>
       </Text>
     </Box>

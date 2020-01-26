@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { theme, Box, Spacing, Text } from 'components/atoms';
+import { theme, Spacing, Text } from 'components/atoms';
 import ShouldLoading from 'components/molecules/ShouldLoading';
 
 const FetchedComments = ({ ISBN, onCommentRequest, isFetching, comments }) => {
   useEffect(() => onCommentRequest(ISBN), [ISBN, onCommentRequest]);
   return (
     <ShouldLoading isLoading={isFetching}>
-      {console.log(comments)}
       <>
         {comments === null
           ? null

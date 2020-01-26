@@ -63,7 +63,7 @@ export const Select = styled.select`
   height: 32px;
   padding: 4px 8px;
   border: 1px solid ${theme.naturalDark};
-  color: ${theme.naturalDark};
+  color: ${theme.dark};
   width: ${props => props.width || '100%'};
   border-radius: 4px;
   appearance: none;

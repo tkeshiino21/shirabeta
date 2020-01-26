@@ -22,6 +22,8 @@ const mapStateToProps = state => ({
   fetchedDetail: state.libraryDetail.response,
   comments: formatData(state),
   isLoading: state.libraryDetail.isLoading,
+  isAdding: state.libraryDetail.isAdding,
+  showSnack: state.libraryDetail.showSnack,
   userData: {
     uid: state.firebase.auth.uid,
     userName: state.firebase.profile.name,

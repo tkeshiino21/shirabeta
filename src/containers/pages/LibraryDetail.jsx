@@ -7,17 +7,8 @@ import {
 import { bookBorrow } from 'duck/libraryDetail/operations';
 import { bookComment } from 'duck/libraryDetail/operations';
 
-// const formatData = state => {
-//   return state.libraryDetail.likes.docs === undefined
-//     ? null
-//     : state.libraryDetail.likes.docs.map(queryDocumentSnapshot => {
-//         return queryDocumentSnapshot.data();
-//       });
-// };
-
 const mapStateToProps = state => ({
   library: state.libraryDetail.response,
-  // comments: formatData(state),
   isLoading: state.libraryDetail.isLoading,
   uid: state.firebase.auth.uid,
   userName: state.firebase.profile.name,

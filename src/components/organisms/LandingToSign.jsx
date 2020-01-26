@@ -29,6 +29,7 @@ const LandingToSign = ({ onSignUp, onLogIn }) => {
     action: 'SIGN UP',
     onSubmit: (userData, { setSubmitting }) => {
       onSignUp(userData);
+      setSubmitting(false);
       console.log(userData);
     },
     items: [
@@ -57,20 +58,16 @@ const LandingToSign = ({ onSignUp, onLogIn }) => {
   };
   return (
     <Collapse className="md">
-      <Card className="shadow" style={{ width: '300px', height: '300px' }}>
-        <Container>
+      <Card className="shadow" style={{ width: '400px', height: '350px' }}>
+        <Container padding={`${theme.xlarge} ${theme.xlarge}`}>
           <Box
             className="vertical"
             justify="center"
             aligns="center"
             self="center"
             height="100%"
-            style={{ border: '1px solid grey' }}
           >
-            <FormFormat
-              formDatas={formDatas}
-              style={{ width: '240px', height: '240px' }}
-            />
+            <FormFormat formDatas={formDatas} gradation="gradation" />
             <Spacing mTop={theme.small} />
             <Button
               onClick={handleTestUser}

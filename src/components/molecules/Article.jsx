@@ -19,14 +19,14 @@ const Article = ({ post, counts, reactions }) => {
   const date = post.date;
   return (
     <div style={{ width: 'auto' }}>
-      <Spacing mTop={theme.small} />
+      <Spacing mTop={theme.medium} />
       <Box>
-        <Box className="vertical" grow={1} width="70%">
+        <Box className="vertical" grow={1} width="68%">
           <Block>
             {outer === true ? (
               <Text
                 as="a"
-                className="body2 link"
+                className="h6 link"
                 // to={outer === false ? link : null}
                 href={link}
                 target={'_blank'}
@@ -35,7 +35,7 @@ const Article = ({ post, counts, reactions }) => {
                 <Span>{title} </Span>
               </Text>
             ) : (
-              <Text as={Link} className="body2 link" to={link}>
+              <Text as={Link} className="h6 link" to={link}>
                 <Span>{title} </Span>
               </Text>
             )}
@@ -46,7 +46,7 @@ const Article = ({ post, counts, reactions }) => {
                   <Text
                     key={name}
                     as="p"
-                    className="caption"
+                    className="body1"
                     color={theme.naturalDark}
                     style={{ display: 'inline' }}
                   >
@@ -60,11 +60,7 @@ const Article = ({ post, counts, reactions }) => {
             </Text>
           </Block>
         </Box>
-        <Box
-          basis="68px"
-          justify="flex-end"
-          style={{ border: '1px solid grey' }}
-        >
+        <Box basis="80px" justify="flex-end">
           <CounterReactions reactions={reactions} counts={counts} />
         </Box>
       </Box>

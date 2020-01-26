@@ -10,8 +10,8 @@ export const Container = styled.div`
   margin-right: auto;
   padding-top: ${props => props.pTop || theme.large};
   padding-bottom: ${props => props.pBottom || theme.large};
-  padding-right: ${props => props.pBottom || theme.medium};
-  padding-left: ${props => props.pTop || theme.medium};
+  padding-right: ${props => props.pBottom || theme.large};
+  padding-left: ${props => props.pTop || theme.large};
   padding: ${props => props.padding};
   width: ${props => props.width};
   min-width: ${props => props.minWidth};

@@ -3,18 +3,14 @@ import { Link } from 'react-router-dom';
 import {
   theme,
   Box,
+  Button,
   Block,
-  Spacing,
   Span,
   Text,
-  Divider,
+  Tag,
+  TagWrapper,
 } from 'components/atoms';
 import CounterReactions from 'components/molecules/CounterReactions';
-
-const collationFunc = ({ ISBN, collation }) => {
-  const myLikes = collation.likes.include(ISBN);
-  const myComments = collation.likes.include(ISBN);
-};
 
 const BookDetail = ({ fetchedDetail, collation, counts }) => {
   const title = fetchedDetail.title;
@@ -34,14 +30,9 @@ const BookDetail = ({ fetchedDetail, collation, counts }) => {
   };
   console.log(reactions);
   return (
-    <Box height="auto" style={{ border: '1px solid grey' }}>
-      <Box
-        className="vertical"
-        basis="auto"
-        style={{ border: '1px solid grey' }}
-      >
+    <Box height="auto">
+      <Box className="vertical" basis="auto">
         <CounterReactions reactions={reactions} counts={counts} />
-        {console.log(title)}
         <Text as="h2" className="h6">
           <Span>{title} </Span>
         </Text>
@@ -53,7 +44,7 @@ const BookDetail = ({ fetchedDetail, collation, counts }) => {
                   <Text
                     key={name}
                     as="p"
-                    className="caption"
+                    className="subtitle2"
                     color={theme.naturalDark}
                     style={{ display: 'inline' }}
                   >
@@ -65,14 +56,10 @@ const BookDetail = ({ fetchedDetail, collation, counts }) => {
         <Text as="p" className="caption" color={theme.naturalDark}>
           {date}
         </Text>
-        <Text as="p" className="caption" color={theme.naturalDark}>
-          {catergory}
-        </Text>
-        <Text
-          as="p"
-          className="body2 japanese"
-          style={{ border: '1px solid grey' }}
-        >
+        <TagWrapper>
+          <Tag>{catergory}</Tag>
+        </TagWrapper>
+        <Text as="p" className="body2 japanese">
           {description}
         </Text>
       </Box>

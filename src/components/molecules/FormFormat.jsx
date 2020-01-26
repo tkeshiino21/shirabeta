@@ -3,7 +3,7 @@ import { Form, Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import { theme, Box, Button, Spacing, Label } from 'components/atoms';
 
-const FormFormat = ({ formDatas }) => {
+const FormFormat = ({ formDatas, gradation }) => {
   const FormDatasItemsMap = () => {
     return formDatas.items.map(data => {
       return (
@@ -32,7 +32,7 @@ const FormFormat = ({ formDatas }) => {
     >
       <Form>
         <FormDatasItemsMap />
-        <Button className="primary large stretch" type="submit">
+        <Button className={`primary large stretch ${gradation}`} type="submit">
           {formDatas.action}
         </Button>
       </Form>

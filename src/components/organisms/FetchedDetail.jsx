@@ -4,8 +4,15 @@ import ShouldLoading from 'components/molecules/ShouldLoading';
 import LayoutWithImage from './Layout/LayoutWithImage';
 import FormComment from 'containers/organisms/FormComment';
 import BookDetail from 'components/molecules/BookDetail';
-import bookAndGlasses from 'images/bookAndGlasses.jpg';
-import { theme, Button, Card, Spacing, Container } from 'components/atoms';
+import noimage from 'images/noimage.png';
+import {
+  theme,
+  Button,
+  Card,
+  Spacing,
+  Container,
+  Snackbar,
+} from 'components/atoms';
 import FetchedComments from 'containers/organisms/FetchedComments';
 
 const FetchedDetail = ({
@@ -14,8 +21,10 @@ const FetchedDetail = ({
   onLike,
   onRequest,
   isLoading,
+  isAdding,
   fetchedDetail,
   collation,
+  showSnack,
 }) => {
   const ISBN = useParams().id;
   const history = useHistory();
@@ -29,16 +38,16 @@ const FetchedDetail = ({
   useEffect(() => onRequest(ISBN, userData.uid), []);
   return (
     <ShouldLoading isLoading={isLoading}>
+      {console.log(fetchedDetail)}
       <LayoutWithImage
         image={
-          fetchedDetail === null || undefined
-            ? bookAndGlasses
+          fetchedDetail === undefined || fetchedDetail.image === ''
+            ? noimage
             : fetchedDetail.image
         }
       >
-        {console.log(fetchedDetail)}
         <Card style={{ width: '100%' }}>
-          <Container>
+          <Container padding={`${theme.xxlarge} ${theme.xlarge}`}>
             <BookDetail
               fetchedDetail={fetchedDetail}
               collation={collation}
@@ -49,17 +58,22 @@ const FetchedDetail = ({
             />
             <Spacing mTop={theme.small} />
             <Button className="grey stretch large" onClick={handleLike}>
-              Like
+              LIKE
             </Button>
             <Spacing mTop={theme.small} />
             <Button className="secondary stretch large" onClick={handleBorrow}>
-              Borrow
+              BORROW
             </Button>
             <Spacing mTop={theme.small} />
-            <FetchedComments ISBN={fetchedDetail.ISBN} />
+            <ShouldLoading isLoading={isAdding}>
+              <FetchedComments ISBN={fetchedDetail.ISBN} />
+            </ShouldLoading>
             <Spacing mTop={theme.xlarge} />
             <FormComment fetchedDetail={fetchedDetail} userData={userData} />
           </Container>
+          <Snackbar className={showSnack === true ? 'show' : 'hidden'}>
+            Successfully commented!
+          </Snackbar>
         </Card>
       </LayoutWithImage>
     </ShouldLoading>
