@@ -39,6 +39,10 @@
     "storybook": "start-storybook"
   },
   "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ],
     "*.css": [
       "stylelint --fix",
       "git add"
@@ -46,11 +50,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "*.{js,jsx,ts,tsx}": [
-        "eslint --fix",
-        "git add"
-      ]
+      "pre-commit": "lint-staged"
     }
   },
   "eslintConfig": {
