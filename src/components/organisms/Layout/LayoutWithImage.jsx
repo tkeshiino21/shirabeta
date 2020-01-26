@@ -5,7 +5,7 @@ const LayoutWithImage = ({ children, image, basis }) => {
   return (
     <Box className="wrap-sm">
       <Image
-        basis={basis ? basis : '40%'}
+        basis={basis || '40%'}
         bgSize="contain"
         grow={1}
         image={image}

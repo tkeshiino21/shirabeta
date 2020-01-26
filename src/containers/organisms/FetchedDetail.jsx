@@ -2,9 +2,6 @@ import { connect } from 'react-redux';
 import FetchedDetail from 'components/organisms/FetchedDetail';
 import {
   libraryDetailRequest,
-  commentRequest,
-} from 'duck/libraryDetail/operations';
-import {
   bookBorrow,
   bookComment,
   bookLike,

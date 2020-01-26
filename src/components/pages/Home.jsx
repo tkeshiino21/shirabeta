@@ -19,6 +19,7 @@ const Home = () => {
   const menuHandler = e => {
     setActiveMenu(e.target.value);
   };
+
   return (
     <LayoutWithSubMenu
       listItems={subMenuItems}

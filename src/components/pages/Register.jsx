@@ -1,6 +1,6 @@
 import React from 'react';
-import { theme, Spacing } from 'components/atoms';
-import { Box } from 'components/atoms';
+import { theme, Spacing, Box } from 'components/atoms';
+
 import FormBookRegister from 'containers/organisms/FormBookRegister';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
 

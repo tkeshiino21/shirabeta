@@ -12,11 +12,12 @@ import {
 import CounterReactions from 'components/molecules/CounterReactions';
 
 const Article = ({ post, counts, reactions }) => {
-  const link = post.link;
-  const outer = post.outer;
-  const title = post.title;
-  const author = post.author;
-  const date = post.date;
+  const { link } = post;
+  const { outer } = post;
+  const { title } = post;
+  const { author } = post;
+  const { date } = post;
+
   return (
     <div style={{ width: 'auto' }}>
       <Spacing mTop={theme.medium} />
@@ -29,8 +30,8 @@ const Article = ({ post, counts, reactions }) => {
                 className="h6 link"
                 // to={outer === false ? link : null}
                 href={link}
-                target={'_blank'}
-                rel={'noopener noreferrer'}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Span>{title} </Span>
               </Text>
@@ -50,7 +51,7 @@ const Article = ({ post, counts, reactions }) => {
                     color={theme.naturalDark}
                     style={{ display: 'inline' }}
                   >
-                    {name}　
+                    {name}&emsp;
                   </Text>
                 );
               })}

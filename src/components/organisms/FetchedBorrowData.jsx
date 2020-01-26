@@ -8,9 +8,8 @@ import {
   TableBody,
   TableRow,
 } from 'components/atoms/Table';
-import { Button } from 'components/atoms';
+import { Button, Loader } from 'components/atoms';
 import ShouldLoading from 'components/molecules/ShouldLoading';
-import { Loader } from 'components/atoms';
 
 const FetchedBorrowData = ({
   uid,
@@ -27,6 +26,7 @@ const FetchedBorrowData = ({
       ? null
       : borrowData.map(snapshot => {
           const data = snapshot.data();
+
           return (
             <StyledTableRow key={data.ISBN}>
               <StyledTableCell
@@ -41,7 +41,7 @@ const FetchedBorrowData = ({
               <StyledTableCell align="right">{data.returnDate}</StyledTableCell>
               <StyledTableCell align="right">
                 <Button
-                  disabled={data.returnDate === '' ? false : true}
+                  disabled={data.returnDate !== ''}
                   onClick={() => {
                     onReturn(data.ISBN, uid);
                   }}
@@ -60,28 +60,28 @@ const FetchedBorrowData = ({
 
   if (isLoading !== false) {
     return <Loader />;
-  } else {
-    return borrowData === null ? (
-      <h1>貸出履歴なし</h1>
-    ) : (
-      <ShouldLoading isLoading={isLoading}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell>本のタイトル</StyledTableCell>
-              <StyledTableCell align="right">貸出日</StyledTableCell>
-              <StyledTableCell align="right">期限日</StyledTableCell>
-              <StyledTableCell align="right">返却日</StyledTableCell>
-              <StyledTableCell align="right"></StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <BorrowDataMapping />
-          </TableBody>
-        </Table>
-      </ShouldLoading>
-    );
   }
+
+  return borrowData === null ? (
+    <h1>貸出履歴なし</h1>
+  ) : (
+    <ShouldLoading isLoading={isLoading}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <StyledTableCell>本のタイトル</StyledTableCell>
+            <StyledTableCell align="right">貸出日</StyledTableCell>
+            <StyledTableCell align="right">期限日</StyledTableCell>
+            <StyledTableCell align="right">返却日</StyledTableCell>
+            <StyledTableCell align="right" />
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <BorrowDataMapping />
+        </TableBody>
+      </Table>
+    </ShouldLoading>
+  );
 };
 
 export default FetchedBorrowData;

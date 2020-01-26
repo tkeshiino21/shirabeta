@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { theme, media, Button, Box, Spacing } from 'components/atoms';
+import { theme, media, Button, Box } from 'components/atoms';
 
 const MenuButton = styled(Button)`
   border: none;

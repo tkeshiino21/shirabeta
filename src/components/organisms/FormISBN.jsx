@@ -1,21 +1,14 @@
-import React, { useState, useMemo } from 'react';
-import {
-  theme,
-  Container,
-  Spacing,
-  Loader,
-  Label,
-  Block,
-} from 'components/atoms';
-import { Button, Box, Snackbar, Image, Input } from 'components/atoms';
+import React, { useState } from 'react';
+import { theme, Spacing, Label, Button, Box, Input } from 'components/atoms';
 
 const FormISBN = ({ ISBNSearch }) => {
   const [ISBN, setISBN] = useState('');
   const handleChange = e => setISBN(e.target.value);
   const handleClick = () => ISBNSearch(ISBN);
+
   return (
     <div>
-      <Box className="wrap" className="vertical">
+      <Box className="vertical wrap">
         <Box>
           <Label style={{ width: '90px' }}>ISBN</Label>
           <Input

@@ -4,9 +4,9 @@ import { Loader } from 'components/atoms';
 const ShouldLoading = ({ isLoading, children }) => {
   if (isLoading !== false) {
     return <Loader />;
-  } else {
-    return children;
   }
+
+  return children;
 };
 
 export default ShouldLoading;

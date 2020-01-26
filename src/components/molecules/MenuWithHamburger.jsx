@@ -16,6 +16,7 @@ const MenuWithHamburger = () => {
   const onClick = () => {
     return setIsOpen(!isOpen);
   };
+
   return (
     <>
       <Hamburger onClick={onClick} />

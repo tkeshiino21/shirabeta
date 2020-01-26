@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { Box } from 'components/atoms';
 
 export const media = {
   xs: (...args) => css`

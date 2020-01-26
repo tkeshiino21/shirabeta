@@ -17,8 +17,8 @@ export const libraryRequest = (category, filter) => dispatch => {
                 .collection('books')
                 .where('category', '==', category)
                 .orderBy('registerDate', 'desc');
-        const querySnapshot = await booksRef.get();
-        await dispatch(action.libraryRequestSuccess(querySnapshot));
+        const doc = await booksRef.get();
+        await dispatch(action.libraryRequestSuccess(doc));
       };
       requestLibraryData().catch(error => {
         dispatch(action.libraryRequestFail(error));
@@ -40,27 +40,14 @@ export const libraryRequest = (category, filter) => dispatch => {
                 .where('category', '==', category)
                 .where('borrowing', '==', false)
                 .orderBy('registerDate', 'desc');
-        const querySnapshot = await booksRef.get();
-        await dispatch(action.libraryRequestSuccess(querySnapshot));
+        const doc = await booksRef.get();
+        await dispatch(action.libraryRequestSuccess(doc));
       };
       requestBorrowAble().catch(error => {
         dispatch(action.libraryRequestFail(error));
       });
+      break;
+    default:
+      dispatch(action.libraryRequestFail('unpredictable error occur'));
   }
 };
-
-// export const libraryRequest = order => dispatch => {
-//   // EventListner to render likesCount instantly
-//   dispatch(action.libraryRequestStart());
-//   const requestLibraryData = async () => {
-//     const booksRef = getFirebase()
-//       .firestore()
-//       .collection('books')
-//       .where('category', '==', 'インフラ');
-//     const querySnapshot = await booksRef.get();
-//     await dispatch(action.libraryRequestSuccess(querySnapshot));
-//   };
-//   requestLibraryData().catch(error => {
-//     dispatch(action.libraryRequestFail(error));
-//   });
-// };

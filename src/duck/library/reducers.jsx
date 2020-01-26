@@ -26,30 +26,7 @@ const reviewReducer = (state = initState, action) => {
       return {
         ...state,
         isLoading: false,
-        response: action.payload,
-      };
-    case actionTypes.COMMENTADD_START:
-      return {
-        ...state,
-        isAdding: true,
-        showSnack: false,
-      };
-    case actionTypes.COMMENTADD_SUCCESS:
-      return {
-        ...state,
-        isAdding: false,
-      };
-    case actionTypes.COMMENTADD_FAIL:
-      return {
-        ...state,
         error: action.payload,
-        isAdding: false,
-      };
-    case action.type.CLEAR_STATE:
-      return {
-        response: '',
-        error: '',
-        isAdding: false,
       };
     default:
       return state;

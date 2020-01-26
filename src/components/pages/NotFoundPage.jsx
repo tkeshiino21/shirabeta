@@ -3,7 +3,7 @@ import { Route, useLocation } from 'react-router-dom';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
 
 const NotFoundPage = () => {
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <Route

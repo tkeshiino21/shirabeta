@@ -34,6 +34,7 @@ const Menu = () => {
       border: theme.light,
     },
   ];
+
   return (
     <NavMenu>
       <Container padding={`${theme.small} ${theme.small}`}>

@@ -19,7 +19,6 @@ export const myPageRequest = uid => dispatch => {
 };
 
 export const bookReturn = (ISBN, uid) => dispatch => {
-  console.log(ISBN, uid);
   const today = new Date();
   const returnDate = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate()}`;
@@ -37,7 +36,7 @@ export const bookReturn = (ISBN, uid) => dispatch => {
       .collection('books')
       .doc(ISBN);
     const response = await userBorrowRef.update({
-      returnDate: returnDate,
+      returnDate,
       borrowing: false,
     });
     await bookRef.update({ borrowing: false });

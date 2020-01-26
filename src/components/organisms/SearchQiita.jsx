@@ -2,9 +2,9 @@ import React from 'react';
 import ArticleSearch from 'components/molecules/ArticleSearch';
 
 const SearchQiita = ({ handles }) => {
-  const handleTag = handles.handleTag;
-  const handleTitle = handles.handleTitle;
-  const handleOrder = handles.handleOrder;
+  const { handleTag } = handles;
+  const { handleTitle } = handles;
+  const { handleOrder } = handles;
   const searchItems = {
     selects: [
       {
@@ -33,6 +33,7 @@ const SearchQiita = ({ handles }) => {
       items: ['新着順', '人気順'],
     },
   };
+
   return <ArticleSearch searchItems={searchItems} />;
 };
 

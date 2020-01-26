@@ -4,6 +4,7 @@ import ShouldLoading from 'components/molecules/ShouldLoading';
 
 const FetchedComments = ({ ISBN, onCommentRequest, isFetching, comments }) => {
   useEffect(() => onCommentRequest(ISBN), [ISBN, onCommentRequest]);
+
   return (
     <ShouldLoading isLoading={isFetching}>
       <>

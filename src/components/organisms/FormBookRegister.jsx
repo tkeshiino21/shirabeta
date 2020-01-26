@@ -3,20 +3,8 @@ import * as Yup from 'yup';
 import bookAndGlasses from 'images/bookAndGlasses.jpg';
 import FormFormat from 'components/molecules/FormFormat';
 import LayoutWithImage from 'components/organisms/Layout/LayoutWithImage';
-import {
-  theme,
-  Box,
-  Container,
-  Card,
-  Button,
-  Loader,
-  Snackbar,
-} from 'components/atoms';
-import {
-  CustomInput,
-  CustomSelect,
-  SelectCategory,
-} from 'components/molecules/FormCustom';
+import { Box, Container, Card, Loader, Snackbar } from 'components/atoms';
+import { CustomInput, SelectCategory } from 'components/molecules/FormCustom';
 import FormISBN from 'containers/organisms/FormISBN';
 
 const BookRegisterForm = ({
@@ -84,7 +72,7 @@ const BookRegisterForm = ({
       },
     ],
   };
-  console.log(formDatas.initialValues);
+
   return (
     <LayoutWithImage
       image={

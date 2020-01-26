@@ -3,8 +3,9 @@ import { MdFavorite, MdComment } from 'react-icons/md';
 import { Box, Text, Spacing, theme } from 'components/atoms';
 
 const CounterReactions = ({ reactions, counts }) => {
-  const myLikes = reactions.myLikes;
-  const myComments = reactions.myComments;
+  const { myLikes } = reactions;
+  const { myComments } = reactions;
+
   return (
     <Box>
       <Text

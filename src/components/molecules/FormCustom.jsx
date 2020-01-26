@@ -32,13 +32,14 @@ export const CustomSelect = (props, { option }) => (
 );
 export const SelectCategory = props => {
   const option = [
-    'フロント',
-    'バック',
     'インフラ',
     'セキュリティ',
+    'バックエンド',
+    'フロントエンド',
     'デザイン',
     'その他',
   ];
+
   return (
     <SelectWrapper style={{ width: '100%' }}>
       <Select {...props}>

@@ -1,20 +1,9 @@
 import MyPage from 'components/pages/MyPage';
 import { connect } from 'react-redux';
-import { bookReturn } from 'duck/myPage/operations';
-import { myPageRequest } from 'duck/myPage/operations';
-
-const formatData = state => {
-  console.log(state.myPage.response.docs);
-  const snapshotRef = state.myPage.response.docs;
-  return state.myPage.response.docs === undefined
-    ? null
-    : state.myPage.response.docs.map(queryDocumentSnapshot => {
-        return queryDocumentSnapshot.data();
-      });
-};
+import { bookReturn, myPageRequest } from 'duck/myPage/operations';
 
 const mapStateToProps = state => ({
-  authState: state.firebase.auth.uid === undefined ? false : true,
+  authState: state.firebase.auth.uid !== undefined,
   uid: state.firebase.auth.uid,
 });
 

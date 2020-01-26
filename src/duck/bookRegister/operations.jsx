@@ -15,7 +15,6 @@ export const bookRequest = ISBN => dispatch => {
 };
 
 export const bookRegister = book => dispatch => {
-  console.log(book.author);
   const author =
     Array.isArray(book.author) === true ? book.author[0] : [book.author];
   const today = new Date();
@@ -29,14 +28,15 @@ export const bookRegister = book => dispatch => {
       .collection('books')
       .doc(book.ISBN);
     await bookRef.set({
+      author,
+      registerDate,
       ISBN: book.ISBN,
       title: book.title,
-      author: author,
       publishedDate: book.publishedDate,
       image: book.image,
       description: book.description,
       category: book.category,
-      registerDate: registerDate,
+      borrowing: false,
       likesCount: 0,
       commentsCount: 0,
     });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, Redirect } from 'react-router';
+import { useLocation, Redirect } from 'react-router-dom';
 import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
 import {
   theme,
@@ -57,19 +57,21 @@ const LogIn = ({ authState, onLogIn }) => {
           MyPageを見るにはログインが必要です。
         </Text>
       );
-    } else if (location.state === '/library') {
+    }
+    if (location.state === '/library') {
       return (
         <Text className="body1" as="p" color="red">
           本の詳細ページを見るにはログインが必要です。
         </Text>
       );
-    } else {
-      return null;
     }
+
+    return null;
   };
   if (authState === true) {
     return <Redirect to="/" />;
   }
+
   return (
     <LayoutCommon>
       <Box justify="center" align="center" height="500px">

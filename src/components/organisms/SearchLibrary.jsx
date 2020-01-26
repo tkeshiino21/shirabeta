@@ -2,10 +2,9 @@ import React from 'react';
 import ArticleSearch from 'components/molecules/ArticleSearch';
 
 const SearchLibrary = ({ handles }) => {
-  const handleCategory = handles.handleCategory;
-  const handleFilter = handles.handleFilter;
-  const handleOrder = handles.handleOrder;
-  console.log(handleOrder);
+  const { handleCategory } = handles;
+  const { handleFilter } = handles;
+  const { handleOrder } = handles;
   const searchItems = {
     selects: [
       {
@@ -32,6 +31,7 @@ const SearchLibrary = ({ handles }) => {
       items: ['新着順', '人気順'],
     },
   };
+
   return <ArticleSearch searchItems={searchItems} />;
 };
 

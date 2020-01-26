@@ -1,39 +1,9 @@
 import React from 'react';
-import { Button, LinkButton } from 'components/atoms/Button';
+import { Button } from 'components/atoms/Button';
 import { Card, Paper } from 'components/atoms/Card';
-import {
-  Container,
-  Box,
-  Spacing,
-  Divider,
-  Image,
-  Block,
-} from 'components/atoms/Layout';
-import { GlobalStyle } from 'components/atoms/GlobalStyle';
-import {
-  Input,
-  Label,
-  Textarea,
-  Select,
-  SelectWrapper,
-  Option,
-} from 'components/atoms/Inputs';
-import { Loader, Snackbar } from 'components/atoms/Feedback';
-import {
-  Table,
-  TableHead,
-  TableHeader,
-  TableBody,
-  TableRow,
-  StyledTableRow,
-  StyledTableCell,
-} from 'components/atoms/Table';
-import { Text, Strong } from 'components/atoms/Typography';
+import { Box } from 'components/atoms/Layout';
+import { Text } from 'components/atoms/Typography';
 import { BackDrop } from 'components/atoms/Utils';
-
-// important
-import { theme } from 'components/atoms/theme';
-import { media } from 'components/atoms/media';
 
 export default { title: 'ATOMS' };
 

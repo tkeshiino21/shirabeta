@@ -4,7 +4,6 @@ import FormFormat from 'components/molecules/FormFormat';
 import { CustomTextarea } from 'components/molecules/FormCustom';
 
 const FormComment = ({ fetchedDetail, userData, onComment }) => {
-  console.log();
   const formDatas = {
     initialValues: {
       comment: '',
@@ -33,6 +32,7 @@ const FormComment = ({ fetchedDetail, userData, onComment }) => {
       },
     ],
   };
+
   return <FormFormat formDatas={formDatas} />;
 };
 

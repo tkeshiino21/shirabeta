@@ -8,7 +8,7 @@ export const bookRequestSuccess = (response, ISBN) => {
   return {
     type: actionTypes.BOOK_REQUEST_SUCCESS,
     payload: {
-      response: response,
+      response,
       inputISBN: ISBN,
     },
   };

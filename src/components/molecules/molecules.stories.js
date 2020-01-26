@@ -11,7 +11,6 @@ import CounterReactions from 'components/molecules/CounterReactions';
 import {
   CustomInput,
   CustomHidden,
-  CustomSelect,
   CustomTextarea,
 } from 'components/molecules/FormCustom';
 import Article from 'components/molecules/Article';
@@ -66,7 +65,7 @@ export const SubMenusSt = () => (
     ]}
   />
 );
-export const CounterLikesSt = () => <CounterLikes likesCount={'1'} />;
+export const CounterLikesSt = () => <CounterLikes likesCount="1" />;
 export const CounterReactionsSt = () => (
   <CounterReactions counts={{ likesCount: '1', commentsCount: '5' }} />
 );

@@ -55,6 +55,7 @@ const SignUp = ({ authState, onSignUp }) => {
   if (authState === true) {
     return <Redirect to="/" />;
   }
+
   return (
     <LayoutCommon>
       <Box justify="center" align="center" height="500px">

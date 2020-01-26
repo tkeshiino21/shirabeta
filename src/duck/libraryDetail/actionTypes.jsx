@@ -7,7 +7,7 @@ export const BORROW_START = 'BORROW_START';
 export const BORROW_SUCCESS = 'BORROW_SUCCESS';
 export const BORROW_FAIL = 'BORROW_FAIL';
 
-//LIKES
+// LIKES
 export const LIKEINC_START = 'LIKEINC_START';
 export const LIKEINC_SUCCESS = 'LIKEINC_SUCCESS';
 export const LIKEINC_FAIL = 'LIKEINC_FAIL';

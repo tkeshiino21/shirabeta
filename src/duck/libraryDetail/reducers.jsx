@@ -6,7 +6,7 @@ const initState = {
   error: '',
   isLoading: '',
   isAdding: false,
-  isFetching: '', //comment
+  isFetching: '', // comment
   likes: '',
   showSnack: false,
   comment: '',

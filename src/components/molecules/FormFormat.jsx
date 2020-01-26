@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Formik, ErrorMessage, Field } from 'formik';
-import * as Yup from 'yup';
 import { theme, Box, Button, Spacing, Label } from 'components/atoms';
 
 const FormFormat = ({ formDatas, gradation }) => {
@@ -24,6 +23,7 @@ const FormFormat = ({ formDatas, gradation }) => {
       );
     });
   };
+
   return (
     <Formik
       initialValues={formDatas.initialValues}

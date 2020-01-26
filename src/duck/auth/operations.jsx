@@ -6,7 +6,6 @@ const authSwitch = ({ method, userData }) => dispatch => {
     case 'signup':
       return (
         dispatch(action.authStart()),
-        console.log('operations:', userData),
         getFirebase()
           .auth()
           .createUserWithEmailAndPassword(userData.email, userData.password)

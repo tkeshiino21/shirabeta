@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme } from './theme';
-import { Container } from './Layout';
 
 export const Paper = styled.div`
   background-color: ${theme.light};
@@ -11,9 +10,6 @@ export const Paper = styled.div`
   }
 `;
 
-// almost same as Card
-// In many case, Paper is larger than Card and just includes list or article
-// in contrast to card also includes media.
 export const Card = styled.div`
   background-color: ${theme.light};
   overflow: hidden;

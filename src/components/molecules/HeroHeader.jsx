@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import heroImage from 'images/heroImage.jpg';
-import { Image, Divider } from 'components/atoms';
+import { Image } from 'components/atoms';
 
 const Wrapper = styled.div`
   position: absolute;

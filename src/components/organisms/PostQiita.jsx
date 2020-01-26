@@ -25,6 +25,7 @@ const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
       return b.likes_count - a.likes_count;
     });
     const postItems = order === '人気順' ? sortedPosts : fetchedPosts;
+
     return postItems.map(fetchedPost => {
       const post = {
         title: fetchedPost.title,
@@ -37,8 +38,10 @@ const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
         likesCount: fetchedPost.likes_count,
         commentsCount: fetchedPost.comments_count,
       };
+
       return (
         <Article
+          key={post.title}
           post={post}
           reactions={{ myLikes: false, myComments: false }}
           counts={counts}
@@ -48,25 +51,25 @@ const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
   };
   if (isLoading !== false) {
     return <Loader />;
-  } else {
-    return (
-      <Paper>
-        <Container>
-          <Block>
-            <SearchQiita
-              handles={{
-                handleTag: handleTag,
-                handleTitle: handleTitle,
-                handleOrder: handleOrder,
-              }}
-            />
-          </Block>
-          <Spacing mTop={theme.medium} />
-          <Posts />
-        </Container>
-      </Paper>
-    );
   }
+
+  return (
+    <Paper>
+      <Container>
+        <Block>
+          <SearchQiita
+            handles={{
+              handleTag,
+              handleTitle,
+              handleOrder,
+            }}
+          />
+        </Block>
+        <Spacing mTop={theme.medium} />
+        <Posts />
+      </Container>
+    </Paper>
+  );
 };
 
 export default PostQiita;

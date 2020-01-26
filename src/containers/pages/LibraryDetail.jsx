@@ -3,9 +3,9 @@ import LibraryDetail from 'components/pages/LibraryDetail';
 import {
   libraryDetailRequest,
   commentRequest,
+  bookBorrow,
+  bookComment,
 } from 'duck/libraryDetail/operations';
-import { bookBorrow } from 'duck/libraryDetail/operations';
-import { bookComment } from 'duck/libraryDetail/operations';
 
 const mapStateToProps = state => ({
   library: state.libraryDetail.response,

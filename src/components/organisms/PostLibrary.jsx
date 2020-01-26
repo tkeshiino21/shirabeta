@@ -19,13 +19,14 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
   const handleOrder = e => setOrder(e.target.value);
   useEffect(() => {
     onRequest(category, filter);
-  }, [category, filter]);
+  }, [category, filter, onRequest]);
   const Posts = () => {
     const copiedLibrary = library.concat();
     const sortedLibrary = copiedLibrary.sort((a, b) => {
       return b.likesCount - a.likesCount;
     });
     const libraryItems = order === '人気順' ? sortedLibrary : library;
+
     return libraryItems.map(fetchedPost => {
       const post = {
         title: fetchedPost.title,
@@ -48,6 +49,7 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
             ? []
             : collations.collationComments.includes(fetchedPost.ISBN),
       };
+
       return (
         <li key={fetchedPost.ISBN}>
           <Article post={post} reactions={reactions} counts={counts} />
@@ -57,26 +59,26 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
   };
   if (isLoading !== false) {
     return <Loader />;
-  } else {
-    return (
-      <Paper>
-        <Container>
-          <Spacing mTop={theme.small} />
-          <Block>
-            <SearchLibrary
-              handles={{
-                handleCategory: handleCategory,
-                handleFilter: handleFilter,
-                handleOrder: handleOrder,
-              }}
-            />
-          </Block>
-          <Spacing mTop={theme.medium} />
-          <Posts />
-        </Container>
-      </Paper>
-    );
   }
+
+  return (
+    <Paper>
+      <Container>
+        <Spacing mTop={theme.small} />
+        <Block>
+          <SearchLibrary
+            handles={{
+              handleCategory,
+              handleFilter,
+              handleOrder,
+            }}
+          />
+        </Block>
+        <Spacing mTop={theme.medium} />
+        <Posts />
+      </Container>
+    </Paper>
+  );
 };
 
 export default PostLibrary;

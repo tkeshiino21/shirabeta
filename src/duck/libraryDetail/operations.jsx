@@ -5,7 +5,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
 
-export const libraryDetailRequest = (ISBN, uid) => dispatch => {
+export const libraryDetailRequest = ISBN => dispatch => {
   dispatch(action.detailRequestStart());
   const bookRef = getFirebase()
     .firestore()
@@ -58,12 +58,12 @@ export const bookComment = (
       .collection('comments')
       .doc(ISBN);
     await userCommentsRef.set({
-      uid: uid,
-      userName: userName,
-      ISBN: ISBN,
-      title: title,
-      commentDate: commentDate,
-      comment: comment,
+      uid,
+      userName,
+      ISBN,
+      title,
+      commentDate,
+      comment,
     });
     const arrayCommentsRef = getFirebase()
       .firestore()
@@ -147,10 +147,10 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
       .collection('books')
       .doc(ISBN);
     const response = await userBorrowRef.set({
-      ISBN: ISBN,
-      title: title,
-      borrowDate: borrowDate,
-      limitDate: limitDate,
+      ISBN,
+      title,
+      borrowDate,
+      limitDate,
       returnDate: '',
     });
     await bookRef.update({ borrowing: true });

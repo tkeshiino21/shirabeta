@@ -9,10 +9,9 @@ import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import configureStore from 'duck/configureStore';
 import App from 'containers/App';
-import { Loader } from 'components/atoms';
+import { Loader, theme } from 'components/atoms';
 import GlobalStyles from 'components/atoms/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'components/atoms';
 
 const fbConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
@@ -44,6 +43,7 @@ const rrfProps = {
 function AuthIsLoaded({ children }) {
   const auth = useSelector(state => state.firebase.auth);
   if (!isLoaded(auth)) return <Loader />;
+
   return children;
 }
 

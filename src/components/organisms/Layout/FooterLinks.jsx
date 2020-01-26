@@ -49,6 +49,7 @@ const FooterLinks = () => {
       },
     ],
   };
+
   return (
     <Box className="fill">
       <Box grow={1} basis="200px" className="vertical">

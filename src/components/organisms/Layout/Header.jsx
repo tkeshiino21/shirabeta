@@ -18,6 +18,7 @@ const HeaderContainer = styled.div`
 
 const Header = () => {
   const location = useLocation();
+
   return (
     <HeaderContainer>
       <MainWrapper>

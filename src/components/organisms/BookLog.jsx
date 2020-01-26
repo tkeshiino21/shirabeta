@@ -14,6 +14,7 @@ const BookLog = ({
 }) => {
   useEffect(() => onUserComments(uid), [uid, onUserComments]);
   useEffect(() => onUserLikes(ISBNS), [ISBNS, onUserLikes]);
+
   return (
     <ShouldLoading isLoading={isLoading}>
       <>
@@ -27,13 +28,14 @@ const BookLog = ({
               const borrowStatus =
                 bookData.borrowing === true ? (
                   <Text className="caption" as="p" color={theme.naturalDark}>
-                    　貸出中
+                    &emsp;貸出中
                   </Text>
                 ) : (
                   <Text className="caption" as="p" color={theme.primary}>
-                    　貸出可能
+                    &emsp;貸出可能
                   </Text>
                 );
+
               return (
                 <div key={bookData.ISBN}>
                   <Spacing mTop={theme.medium} />
@@ -45,7 +47,7 @@ const BookLog = ({
                     {bookData.title}
                   </Text>
                   <Text className="caption" as="p" color={theme.naturalDark}>
-                    　　{borrowStatus}
+                    &emsp;{borrowStatus}
                   </Text>
                 </div>
               );
@@ -58,6 +60,7 @@ const BookLog = ({
           ? null
           : userComments.map(documentSnapshot => {
               const commentData = documentSnapshot.data();
+
               return (
                 <li key={commentData.ISBN}>
                   <Spacing mTop={theme.medium} />

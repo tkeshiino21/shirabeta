@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Yup from 'yup';
-import { Form, Formik, ErrorMessage, Field } from 'formik';
 import FormFormat from 'components/molecules/FormFormat';
 import { theme, Box, Button, Card, Container, Spacing } from 'components/atoms';
 import { CustomInput } from 'components/molecules/FormCustom';
@@ -30,7 +29,6 @@ const LandingToSign = ({ onSignUp, onLogIn }) => {
     onSubmit: (userData, { setSubmitting }) => {
       onSignUp(userData);
       setSubmitting(false);
-      console.log(userData);
     },
     items: [
       {
@@ -56,6 +54,7 @@ const LandingToSign = ({ onSignUp, onLogIn }) => {
   const handleTestUser = () => {
     onLogIn({ email: 'test@gmail.com', password: 'test1234' });
   };
+
   return (
     <Collapse className="md">
       <Card className="shadow" style={{ width: '400px', height: '350px' }}>

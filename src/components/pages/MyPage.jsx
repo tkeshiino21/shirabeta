@@ -22,6 +22,7 @@ const MyPage = ({ onReturn }) => {
   const menuHandler = e => {
     setActiveMenu(e.target.value);
   };
+
   return (
     <LayoutWithSubMenu
       listItems={listItems}

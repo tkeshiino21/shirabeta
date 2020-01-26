@@ -5,7 +5,7 @@ import { theme } from 'components/atoms/theme';
 export const GlobalStyle = createGlobalStyle`
   ${reset}
 
-  ${'' /*----------- basis ----------- */}
+  ${'' /* ----------- basis ----------- */}
   *{
     font-family:  'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans CJK JP", "Original Yu Gothic", "Yu Gothic", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Sans Emoji" !important
   }
@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
-  ${'' /*----------- cutomReset -----------*/}
+  ${'' /* ----------- cutomReset -----------*/}
   a {
     &:link,
     &:visited {

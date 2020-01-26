@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ShouldLoading from 'components/molecules/ShouldLoading';
-import LayoutWithImage from './Layout/LayoutWithImage';
 import FormComment from 'containers/organisms/FormComment';
 import BookDetail from 'components/molecules/BookDetail';
 import noimage from 'images/noimage.png';
@@ -14,6 +13,7 @@ import {
   Snackbar,
 } from 'components/atoms';
 import FetchedComments from 'containers/organisms/FetchedComments';
+import LayoutWithImage from './Layout/LayoutWithImage';
 
 const FetchedDetail = ({
   userData,
@@ -35,10 +35,14 @@ const FetchedDetail = ({
   const handleLike = () => {
     onLike(ISBN, userData.uid);
   };
-  useEffect(() => onRequest(ISBN, userData.uid), []);
+  useEffect(() => onRequest(ISBN, userData.uid), [
+    ISBN,
+    onRequest,
+    userData.uid,
+  ]);
+
   return (
     <ShouldLoading isLoading={isLoading}>
-      {console.log(fetchedDetail)}
       <LayoutWithImage
         image={
           fetchedDetail === undefined || fetchedDetail.image === ''

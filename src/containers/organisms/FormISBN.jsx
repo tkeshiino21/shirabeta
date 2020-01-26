@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import FormISBN from 'components/organisms/FormISBN';
-import { bookRegister } from 'duck/bookRegister/operations';
 import { bookRequest } from 'duck/bookRegister/operations';
 
 const mapStateToProps = state => {

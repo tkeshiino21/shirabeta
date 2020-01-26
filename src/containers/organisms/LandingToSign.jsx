@@ -4,10 +4,10 @@ import authSwitch from 'duck/auth/operations';
 
 const mapDipatchToProps = dispatch => ({
   onSignUp: userData => {
-    dispatch(authSwitch({ method: 'signup', userData: userData }));
+    dispatch(authSwitch({ method: 'signup', userData }));
   },
   onLogIn: userData => {
-    dispatch(authSwitch({ method: 'login', userData: userData }));
+    dispatch(authSwitch({ method: 'login', userData }));
   },
 });
 

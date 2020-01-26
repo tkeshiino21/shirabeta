@@ -3,7 +3,7 @@ import HeaderAuth from 'components/organisms/Layout/HeaderAuth';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({
-  authState: state.firebase.auth.uid === undefined ? false : true,
+  authState: state.firebase.auth.uid !== undefined,
   userName: state.firebase.profile.name,
 });
 
