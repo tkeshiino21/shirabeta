@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, useLocation } from 'react-router-dom';
-import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
+import LayoutCommon from 'components/organisms/LayoutCommon';
 
 const NotFoundPage = () => {
   const location = useLocation();

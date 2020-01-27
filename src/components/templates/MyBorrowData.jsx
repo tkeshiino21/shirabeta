@@ -11,13 +11,7 @@ import {
 import { Button, Loader } from 'components/atoms';
 import ShouldLoading from 'components/molecules/ShouldLoading';
 
-const FetchedBorrowData = ({
-  uid,
-  onRequest,
-  isLoading,
-  borrowData,
-  onReturn,
-}) => {
+const MyBorrowData = ({ uid, onRequest, isLoading, borrowData, onReturn }) => {
   useEffect(() => {
     onRequest(uid);
   }, [uid, onRequest, onReturn]);
@@ -36,9 +30,13 @@ const FetchedBorrowData = ({
               >
                 {data.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{data.borrowDate}</StyledTableCell>
+              <StyledTableCell className="collapse" align="right">
+                {data.borrowDate}
+              </StyledTableCell>
               <StyledTableCell align="right">{data.limitDate}</StyledTableCell>
-              <StyledTableCell align="right">{data.returnDate}</StyledTableCell>
+              <StyledTableCell className="collapse" align="right">
+                {data.returnDate}
+              </StyledTableCell>
               <StyledTableCell align="right">
                 <Button
                   disabled={data.returnDate !== ''}
@@ -70,9 +68,13 @@ const FetchedBorrowData = ({
         <TableHead>
           <TableRow>
             <StyledTableCell>本のタイトル</StyledTableCell>
-            <StyledTableCell align="right">貸出日</StyledTableCell>
+            <StyledTableCell className="collapse" align="right">
+              貸出日
+            </StyledTableCell>
             <StyledTableCell align="right">期限日</StyledTableCell>
-            <StyledTableCell align="right">返却日</StyledTableCell>
+            <StyledTableCell className="collapse" align="right">
+              返却日
+            </StyledTableCell>
             <StyledTableCell align="right" />
           </TableRow>
         </TableHead>
@@ -84,4 +86,4 @@ const FetchedBorrowData = ({
   );
 };
 
-export default FetchedBorrowData;
+export default MyBorrowData;

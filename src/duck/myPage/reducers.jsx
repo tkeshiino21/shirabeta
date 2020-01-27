@@ -77,13 +77,6 @@ const myPageReducer = (state = initState, action) => {
         isLoading: false,
         error: action.payload,
       };
-    // case actionTypes.CLEAR_STATE:
-    //   return {
-    //     ...state,
-    //     response: '',
-    //     error: '',
-    //     isLoading: false,
-    //   };
     default:
       return state;
   }

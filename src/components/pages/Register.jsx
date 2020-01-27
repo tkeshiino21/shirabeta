@@ -1,8 +1,8 @@
 import React from 'react';
 import { theme, Spacing, Box } from 'components/atoms';
 
-import FormBookRegister from 'containers/organisms/FormBookRegister';
-import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
+import FormBookRegister from 'containers/templates/FormBookRegister';
+import LayoutCommon from 'components/organisms/LayoutCommon';
 
 const Register = () => {
   return (

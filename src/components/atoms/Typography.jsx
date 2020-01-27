@@ -16,7 +16,7 @@ export const Text = styled.span`
     cursor: pointer;
     text-decoration: none;
     &:hover {
-      text-decoration-color: ${props => props.color};
+      text-decoration-color: ${props => props.color || theme.dark};
       text-decoration: underline;
     }
   }

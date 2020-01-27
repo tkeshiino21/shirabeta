@@ -1,7 +1,7 @@
 import React from 'react';
 import SubMenu from 'components/molecules/SubMenu';
 import { Box, theme, Spacing } from 'components/atoms';
-import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
+import LayoutCommon from 'components/organisms/LayoutCommon';
 
 const LayoutWithSubMenu = ({
   children,

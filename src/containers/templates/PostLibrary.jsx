@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PostLibrary from 'components/organisms/PostLibrary';
+import PostLibrary from 'components/templates/PostLibrary';
 import { libraryRequest } from 'duck/library/operations';
 
 const formatData = state => {

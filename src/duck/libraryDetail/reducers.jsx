@@ -10,12 +10,14 @@ const initState = {
   likes: '',
   showSnack: false,
   comment: '',
+  borrow: '',
   colloationComments: [],
   colloationLikes: [],
 };
 
 const requestReducer = (state = initState, action) => {
   switch (action.type) {
+    // When page is loaded and, detailRequest runs.
     case actionTypes.DETAILREQUEST_START:
       return {
         ...state,
@@ -33,6 +35,25 @@ const requestReducer = (state = initState, action) => {
         isLoading: false,
         error: action.payload,
       };
+    // When user push "BORROW" button, borrow runs.
+    case actionTypes.BORROW_START:
+      return {
+        ...state,
+        isBorrowing: true,
+      };
+    case actionTypes.BORROW_SUCCESS:
+      return {
+        ...state,
+        isBorrowing: false,
+        borrow: action.payload,
+      };
+    case actionTypes.BORROW_FAIL:
+      return {
+        ...state,
+        isBorrowing: false,
+        error: action.payload,
+      };
+    // When page is loaded and user push "POST" button,  commentsRequest runs.
     case actionTypes.COMMENTREQUEST_START:
       return {
         ...state,
@@ -50,6 +71,7 @@ const requestReducer = (state = initState, action) => {
         isFetching: false,
         error: action.payload,
       };
+    // When user push "LIKES" button, firebase updates userData and bookData.
     case actionTypes.LIKEADD_START:
       return {
         ...state,
@@ -64,7 +86,14 @@ const requestReducer = (state = initState, action) => {
       return {
         ...state,
         isAdding: false,
+        error: action.payload,
       };
+    case actionTypes.LIKEINC_FAIL:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    // When user push "POST" button, firebase updates userData
     case actionTypes.COMMENTADD_START:
       return {
         ...state,
@@ -80,19 +109,14 @@ const requestReducer = (state = initState, action) => {
       return {
         ...state,
         isAdding: false,
-      };
-    case actionTypes.COMMENTINC_START:
-      return {
-        ...state,
-      };
-    case actionTypes.COMMENTINC_SUCCESS:
-      return {
-        ...state,
+        error: action.payload,
       };
     case actionTypes.COMMENTINC_FAIL:
       return {
         ...state,
+        error: action.payload,
       };
+    // for Reloading Pages after submissiton of comment or like
     case actionTypes.CLEAR_STATE:
       return {
         ...state,

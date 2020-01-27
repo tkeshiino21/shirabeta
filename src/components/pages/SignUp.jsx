@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
+import LayoutCommon from 'components/organisms/LayoutCommon';
 import { theme, Container, Box, Paper } from 'components/atoms';
 import * as Yup from 'yup';
 import { CustomInput } from 'components/molecules/FormCustom';

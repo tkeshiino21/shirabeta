@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { MdHome, MdControlPoint, MdEventNote } from 'react-icons/md';
 import styled from 'styled-components';
-import { theme, Divider, Text, Container } from 'components/atoms';
+import { theme, Divider, Text, Container, Spacing } from 'components/atoms';
 
 const NavMenu = styled.div`
   position: absolute;
@@ -16,7 +16,7 @@ const NavMenu = styled.div`
 const Menu = () => {
   const navItems = [
     {
-      value: 'home',
+      value: 'Home',
       link: '/',
       icon: MdHome,
       border: theme.light,
@@ -31,6 +31,18 @@ const Menu = () => {
       value: 'MyPage',
       link: '/my-page',
       icon: MdEventNote,
+      border: theme.naturalDark,
+    },
+    {
+      value: 'About',
+      link: '/about',
+      icon: MdHome,
+      border: theme.light,
+    },
+    {
+      value: 'HowToUse',
+      link: '/how-to-use',
+      icon: MdHome,
       border: theme.light,
     },
   ];
@@ -40,7 +52,7 @@ const Menu = () => {
       <Container padding={`${theme.small} ${theme.small}`}>
         {navItems.map(navItem => {
           return (
-            <li key={navItem.link}>
+            <div key={navItem.link}>
               <Text
                 className="body1"
                 color={theme.secondary}
@@ -51,8 +63,10 @@ const Menu = () => {
               >
                 {navItem.value}
               </Text>
-              <Divider color={navItem.border} />
-            </li>
+              <Spacing mTop={theme.xsmall} mBottom={theme.xsmall}>
+                <Divider color={navItem.border} />
+              </Spacing>
+            </div>
           );
         })}
       </Container>

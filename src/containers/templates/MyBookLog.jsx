@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import BookLog from 'components/organisms/BookLog';
+import MyBookLog from 'components/templates/MyBookLog';
 import { userComments, userLikes } from 'duck/myPage/operations';
 
 const mapStateToProps = state => ({
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookLog);
+export default connect(mapStateToProps, mapDispatchToProps)(MyBookLog);

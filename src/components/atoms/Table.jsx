@@ -25,7 +25,6 @@ export const TableRow = styled.tr`
   text-align: left;
   font-size: 1em;
 `;
-
 export const StyledTableRow = styled.tr`
   border-bottom: 1px solid ${theme.naturalDark};
   padding: 1em;
@@ -42,8 +41,15 @@ export const StyledTableCell = styled.td`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    max-width: 500px;
+    ${media.md`
+      width:100px;
+    `}
+  }
+
+  &.collapse {
     ${media.sm`
-      width:60px;
+      display: none;
     `}
   }
 `;

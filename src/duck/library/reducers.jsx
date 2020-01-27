@@ -3,10 +3,6 @@ import * as actionTypes from 'duck/library/actionTypes';
 const initState = {
   response: '',
   error: '',
-  isAdding: '',
-  colloationComments: [],
-  colloationLikes: [],
-  showSnack: false,
 };
 
 const reviewReducer = (state = initState, action) => {

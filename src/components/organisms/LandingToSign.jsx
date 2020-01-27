@@ -1,7 +1,15 @@
 import React from 'react';
 import * as Yup from 'yup';
 import FormFormat from 'components/molecules/FormFormat';
-import { theme, Box, Button, Card, Container, Spacing } from 'components/atoms';
+import {
+  theme,
+  Box,
+  Button,
+  Card,
+  Container,
+  Spacing,
+  Strong,
+} from 'components/atoms';
 import { CustomInput } from 'components/molecules/FormCustom';
 import { Collapse } from 'components/atoms/media';
 
@@ -73,7 +81,7 @@ const LandingToSign = ({ onSignUp, onLogIn }) => {
               className="text stretch"
               color={theme.secondary}
             >
-              or テストユーザーでログイン
+              or テストユーザーで<Strong>ログイン</Strong>
             </Button>
           </Box>
         </Container>

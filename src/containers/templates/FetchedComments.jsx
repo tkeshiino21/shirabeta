@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FetchedComments from 'components/organisms/FetchedComments';
+import FetchedComments from 'components/templates/FetchedComments';
 import {
   libraryDetailRequest,
   commentRequest,

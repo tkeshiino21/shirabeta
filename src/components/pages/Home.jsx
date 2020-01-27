@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MdSearch, MdBook } from 'react-icons/md';
-import PostQiita from 'containers/organisms/PostQiita';
-import PostLibrary from 'containers/organisms/PostLibrary';
-import LayoutWithSubMenu from 'components/organisms/Layout/LayoutWithSubMenu';
+import PostQiita from 'containers/templates/PostQiita';
+import PostLibrary from 'containers/templates/PostLibrary';
+import LayoutWithSubMenu from 'components/organisms/LayoutWithSubMenu';
 
 const Home = () => {
   const subMenuItems = [

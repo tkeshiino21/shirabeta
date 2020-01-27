@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import BorrowData from 'containers/organisms/FetchedBorrowData';
-import LayoutWithSubMenu from 'components/organisms/Layout/LayoutWithSubMenu';
+import BorrowData from 'containers/templates/MyBorrowData';
+import LayoutWithSubMenu from 'components/organisms/LayoutWithSubMenu';
 import { MdComment, MdEventNote } from 'react-icons/md';
 import { Paper, Container, Spacing, theme } from 'components/atoms';
-import BookLog from 'containers/organisms/BookLog';
+import BookLog from 'containers/templates/MyBookLog';
 
-const MyPage = ({ onReturn }) => {
+const MyPage = () => {
   const listItems = [
     {
       name: 'BookLog',
@@ -31,11 +31,7 @@ const MyPage = ({ onReturn }) => {
     >
       <Paper>
         <Container>
-          {activeMenu === 'Borrowed' ? (
-            <BorrowData handleClick={onReturn} />
-          ) : (
-            <BookLog />
-          )}
+          {activeMenu === 'Borrowed' ? <BorrowData /> : <BookLog />}
           <Spacing mTop={theme.small} />
         </Container>
       </Paper>

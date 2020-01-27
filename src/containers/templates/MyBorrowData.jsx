@@ -1,10 +1,11 @@
-import MyPage from 'components/pages/MyPage';
 import { connect } from 'react-redux';
-import { bookReturn, myPageRequest } from 'duck/myPage/operations';
+import { myPageRequest, bookReturn } from 'duck/myPage/operations';
+import MyBorrowData from 'components/templates/MyBorrowData';
 
 const mapStateToProps = state => ({
-  authState: state.firebase.auth.uid !== undefined,
   uid: state.firebase.auth.uid,
+  isLoading: state.myPage.isLoading,
+  borrowData: state.myPage.response,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -16,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MyBorrowData);

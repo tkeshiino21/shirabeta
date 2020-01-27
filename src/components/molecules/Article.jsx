@@ -11,7 +11,7 @@ import {
 } from 'components/atoms';
 import CounterReactions from 'components/molecules/CounterReactions';
 
-const Article = ({ post, counts, reactions }) => {
+const Article = ({ post, counts, collation }) => {
   const { link } = post;
   const { outer } = post;
   const { title } = post;
@@ -27,7 +27,7 @@ const Article = ({ post, counts, reactions }) => {
             {outer === true ? (
               <Text
                 as="a"
-                className="h6 link"
+                className="subtitle1 link"
                 // to={outer === false ? link : null}
                 href={link}
                 target="_blank"
@@ -36,7 +36,7 @@ const Article = ({ post, counts, reactions }) => {
                 <Span>{title} </Span>
               </Text>
             ) : (
-              <Text as={Link} className="h6 link" to={link}>
+              <Text as={Link} className="subtitle1 link" to={link}>
                 <Span>{title} </Span>
               </Text>
             )}
@@ -47,7 +47,7 @@ const Article = ({ post, counts, reactions }) => {
                   <Text
                     key={name}
                     as="p"
-                    className="body1"
+                    className="body2"
                     color={theme.naturalDark}
                     style={{ display: 'inline' }}
                   >
@@ -62,7 +62,7 @@ const Article = ({ post, counts, reactions }) => {
           </Block>
         </Box>
         <Box basis="80px" justify="flex-end">
-          <CounterReactions reactions={reactions} counts={counts} />
+          <CounterReactions collation={collation} counts={counts} />
         </Box>
       </Box>
       <Divider />

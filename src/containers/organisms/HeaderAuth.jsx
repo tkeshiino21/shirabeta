@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HeaderAuth from 'components/organisms/Layout/HeaderAuth';
+import HeaderAuth from 'components/organisms/HeaderAuth';
 import authSwitch from 'duck/auth/operations';
 
 const mapStateToProps = state => ({

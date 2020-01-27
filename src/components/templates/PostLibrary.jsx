@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Article from 'components/molecules/Article';
-import SearchLibrary from 'components/organisms/SearchLibrary';
+import SearchLibrary from 'components/templates/SearchLibrary';
 import {
   Loader,
   Block,
@@ -39,7 +39,7 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
         likesCount: fetchedPost.likesCount,
         commentsCount: fetchedPost.commentsCount,
       };
-      const reactions = {
+      const collation = {
         myLikes:
           collations === undefined || collations.collationLikes === undefined
             ? []
@@ -49,11 +49,13 @@ const PostLibrary = ({ onRequest, isLoading, library, collations }) => {
             ? []
             : collations.collationComments.includes(fetchedPost.ISBN),
       };
-
       return (
-        <li key={fetchedPost.ISBN}>
-          <Article post={post} reactions={reactions} counts={counts} />
-        </li>
+        <Article
+          key={fetchedPost.ISBN}
+          post={post}
+          collation={collation}
+          counts={counts}
+        />
       );
     });
   };

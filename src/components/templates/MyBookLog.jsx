@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { theme, Text, Spacing } from 'components/atoms';
 import ShouldLoading from 'components/molecules/ShouldLoading';
 
-const BookLog = ({
+const MyBookLog = ({
   uid,
   ISBNS,
   onUserLikes,
@@ -25,30 +25,25 @@ const BookLog = ({
           ? null
           : userLikes.map(documentSnapshot => {
               const bookData = documentSnapshot.data();
-              const borrowStatus =
-                bookData.borrowing === true ? (
-                  <Text className="caption" as="p" color={theme.naturalDark}>
-                    &emsp;貸出中
-                  </Text>
-                ) : (
-                  <Text className="caption" as="p" color={theme.primary}>
-                    &emsp;貸出可能
-                  </Text>
-                );
-
               return (
                 <div key={bookData.ISBN}>
-                  <Spacing mTop={theme.medium} />
+                  <Spacing mTop={theme.small} />
                   <Text
-                    className="body2"
+                    className="body1 link"
                     as={Link}
                     to={`/library/${bookData.ISBN}`}
                   >
                     {bookData.title}
                   </Text>
-                  <Text className="caption" as="p" color={theme.naturalDark}>
-                    &emsp;{borrowStatus}
-                  </Text>
+                  {bookData.borrowing === true ? (
+                    <Text className="caption" as="p" color={theme.naturalDark}>
+                      &emsp;貸出中
+                    </Text>
+                  ) : (
+                    <Text className="caption" as="p" color={theme.primary}>
+                      &emsp;貸出可能
+                    </Text>
+                  )}
                 </div>
               );
             })}
@@ -65,7 +60,11 @@ const BookLog = ({
                 <li key={commentData.ISBN}>
                   <Spacing mTop={theme.medium} />
                   <div>
-                    <Text className="body2" as="h5">
+                    <Text
+                      className="body1 link"
+                      as={Link}
+                      to={`/library/${commentData.ISBN}`}
+                    >
                       {commentData.title}
                     </Text>
                   </div>
@@ -85,4 +84,4 @@ const BookLog = ({
   );
 };
 
-export default BookLog;
+export default MyBookLog;

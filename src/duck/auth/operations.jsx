@@ -1,6 +1,7 @@
 import { getFirebase } from 'react-redux-firebase';
 import * as action from './actions';
 
+// When user push LogIn, SignUp or LogOut button, authAction runs
 const authSwitch = ({ method, userData }) => dispatch => {
   switch (method) {
     case 'signup':

@@ -8,6 +8,7 @@ const initState = {
 
 const requestReducer = (state = initState, action) => {
   switch (action.type) {
+    // When user visit Qiita page, postRequest runs
     case actionTypes.POST_REQUEST_START:
       return {
         ...state,
@@ -25,13 +26,6 @@ const requestReducer = (state = initState, action) => {
         isLoading: false,
         error: action.payload,
       };
-    // case actionTypes.CLEAR_STATE:
-    //   return {
-    //     ...state,
-    //     response: '',
-    //     error: '',
-    //     isLoading: false,
-    //   };
     default:
       return state;
   }

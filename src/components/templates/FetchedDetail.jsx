@@ -1,19 +1,14 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import ShouldLoading from 'components/molecules/ShouldLoading';
-import FormComment from 'containers/organisms/FormComment';
-import BookDetail from 'components/molecules/BookDetail';
+import LikeButton from 'components/molecules/LikeButton';
+import FormComment from 'containers/templates/FormComment';
+import BookDetail from 'components/organisms/BookDetail';
 import noimage from 'images/noimage.png';
-import {
-  theme,
-  Button,
-  Card,
-  Spacing,
-  Container,
-  Snackbar,
-} from 'components/atoms';
-import FetchedComments from 'containers/organisms/FetchedComments';
-import LayoutWithImage from './Layout/LayoutWithImage';
+import { theme, Card, Spacing, Container, Snackbar } from 'components/atoms';
+import FetchedComments from 'containers/templates/FetchedComments';
+import LayoutWithImage from '../organisms/LayoutWithImage';
+import BorrowButton from 'components/molecules/BorrowButton';
 
 const FetchedDetail = ({
   userData,
@@ -33,7 +28,11 @@ const FetchedDetail = ({
     history.push('/my-page');
   };
   const handleLike = () => {
-    onLike(ISBN, userData.uid);
+    if (collation.myLikes === false) {
+      onLike(ISBN, userData.uid, 'likeAdd');
+    } else {
+      onLike(ISBN, userData.uid, 'likeRemove');
+    }
   };
   useEffect(() => onRequest(ISBN, userData.uid), [
     ISBN,
@@ -60,20 +59,26 @@ const FetchedDetail = ({
                 commentsCount: fetchedDetail.commentsCount,
               }}
             />
-            <Spacing mTop={theme.small} />
-            <Button className="grey stretch large" onClick={handleLike}>
-              LIKE
-            </Button>
-            <Spacing mTop={theme.small} />
-            <Button className="secondary stretch large" onClick={handleBorrow}>
-              BORROW
-            </Button>
-            <Spacing mTop={theme.small} />
-            <ShouldLoading isLoading={isAdding}>
-              <FetchedComments ISBN={fetchedDetail.ISBN} />
-            </ShouldLoading>
-            <Spacing mTop={theme.xlarge} />
-            <FormComment fetchedDetail={fetchedDetail} userData={userData} />
+            <Spacing mTop={theme.small}>
+              <LikeButton
+                handleLike={handleLike}
+                likeStatus={collation.myLikes}
+              />
+            </Spacing>
+            <Spacing mTop={theme.small}>
+              <BorrowButton
+                borrowing={fetchedDetail.borrowing}
+                handleBorrow={handleBorrow}
+              />
+            </Spacing>
+            <Spacing mTop={theme.small}>
+              <ShouldLoading isLoading={isAdding}>
+                <FetchedComments ISBN={fetchedDetail.ISBN} />
+              </ShouldLoading>
+            </Spacing>
+            <Spacing mTop={theme.xlarge}>
+              <FormComment fetchedDetail={fetchedDetail} userData={userData} />
+            </Spacing>
           </Container>
           <Snackbar className={showSnack === true ? 'show' : 'hidden'}>
             Successfully commented!

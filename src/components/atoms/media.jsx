@@ -40,17 +40,17 @@ export const Collapse = styled.div`
     `}
   }
   &.md {
-    ${media.sm`
+    ${media.md`
       display: none;
     `}
   }
   &.lg {
-    ${media.sm`
+    ${media.lg`
       display: none;
     `}
   }
   &.xl {
-    ${media.sm`
+    ${media.xl`
       display: none;
     `}
   }

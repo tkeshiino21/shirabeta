@@ -1,8 +1,8 @@
 import React from 'react';
-import LayoutCommon from 'components/organisms/Layout/LayoutCommon';
+import LayoutCommon from 'components/organisms/LayoutCommon';
 import GoBack from 'components/molecules/GoBack';
 import { Box } from 'components/atoms';
-import FetchedDetail from 'containers/organisms/FetchedDetail';
+import FetchedDetail from 'containers/templates/FetchedDetail';
 
 const LibraryDetail = () => {
   return (

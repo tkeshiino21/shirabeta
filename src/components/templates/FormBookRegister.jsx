@@ -2,10 +2,10 @@ import React from 'react';
 import * as Yup from 'yup';
 import bookAndGlasses from 'images/bookAndGlasses.jpg';
 import FormFormat from 'components/molecules/FormFormat';
-import LayoutWithImage from 'components/organisms/Layout/LayoutWithImage';
+import LayoutWithImage from 'components/organisms/LayoutWithImage';
 import { Box, Container, Card, Loader, Snackbar } from 'components/atoms';
 import { CustomInput, SelectCategory } from 'components/molecules/FormCustom';
-import FormISBN from 'containers/organisms/FormISBN';
+import FormISBN from 'containers/templates/FormISBN';
 
 const BookRegisterForm = ({
   isLoading,

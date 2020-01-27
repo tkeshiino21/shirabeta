@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FetchedDetail from 'components/organisms/FetchedDetail';
+import FetchedDetail from 'components/templates/FetchedDetail';
 import {
   libraryDetailRequest,
   bookBorrow,
@@ -15,6 +15,27 @@ const formatData = state => {
       });
 };
 
+const collation = state => {
+  const collationLikes = state.firebase.profile.likes;
+  const collationComments = state.firebase.profile.comments;
+  const ISBN = state.libraryDetail.response.ISBN;
+  if (
+    collationLikes === undefined ||
+    collationLikes === undefined ||
+    ISBN === undefined
+  ) {
+    return {
+      myLikes: false,
+      myComments: false,
+    };
+  } else {
+    return {
+      myLikes: collationLikes.includes(ISBN),
+      myComments: collationComments.includes(ISBN),
+    };
+  }
+};
+
 const mapStateToProps = state => ({
   fetchedDetail: state.libraryDetail.response,
   comments: formatData(state),
@@ -25,10 +46,7 @@ const mapStateToProps = state => ({
     uid: state.firebase.auth.uid,
     userName: state.firebase.profile.name,
   },
-  collation: {
-    collationLikes: state.firebase.profile.likes,
-    collationComments: state.firebase.profile.comments,
-  },
+  collation: collation(state),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,8 +59,8 @@ const mapDispatchToProps = dispatch => ({
   onComment: (ISBN, title, uid, userName, comment) => {
     dispatch(bookComment(ISBN, title, uid, userName, comment));
   },
-  onLike: (ISBN, uid) => {
-    dispatch(bookLike(ISBN, uid));
+  onLike: (ISBN, uid, method) => {
+    dispatch(bookLike(ISBN, uid, method));
   },
 });
 

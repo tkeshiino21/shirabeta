@@ -13,9 +13,7 @@ src
 ┣━ components // View に関するもの  
 ┣━ containers // State と View をつなぐもの(mapStateToProps など)  
 ┣━ ducks // Redux に関するもの(reducer や actionCreator など)  
-┣━ images // 画像フォルダ  
-┣━ Layout // ヘッダーなどの共通する Layout  
-┗━ Shared // styled-components で作成した UI コンポーネント
+┗━ images // 画像フォルダ
 
 ## Libraries
 
@@ -23,8 +21,7 @@ src
 状態管理: Redux  
 データベース: Firebase Cloudstore  
 認証: Firebase Authentication  
-スタイリングライブラリ: styled-components  
-(テスト: Jest and Enzyme)
+スタイリングライブラリ: styled-components
 
 ## 今回の課題点
 

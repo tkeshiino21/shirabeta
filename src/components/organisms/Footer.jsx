@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { theme } from 'components/atoms';
-import FooterLinks from 'components/organisms/Layout/FooterLinks';
+import FooterLinks from 'components/organisms/FooterLinks';
 import MainWrapper from 'components/molecules/MainWrapper';
 
 const FooterContainer = styled.div`

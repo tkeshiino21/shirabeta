@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FormComment from 'components/organisms/FormComment';
+import FormComment from 'components/templates/FormComment';
 import { bookComment } from 'duck/libraryDetail/operations';
 
 const mapDispatchToProps = dispatch => ({

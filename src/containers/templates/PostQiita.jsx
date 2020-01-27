@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import PostQiita from 'components/organisms/PostQiita';
+import PostQiita from 'components/templates/PostQiita';
 import { postRequest } from 'duck/qiita/operations';
 
 const mapStateToProps = state => ({

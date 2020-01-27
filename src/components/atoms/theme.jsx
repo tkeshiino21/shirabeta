@@ -19,6 +19,7 @@ export const theme = {
   // color
   primary: '#ffbb00',
   secondary: '#a31f94',
+  success: '#c4ff00',
   danger: '#d9534f',
   light: '#ffffff',
   natural: '#f6f6f4', // almost white

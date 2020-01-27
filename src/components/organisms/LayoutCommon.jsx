@@ -1,8 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Spacing } from 'components/atoms';
-import Header from 'components/organisms/Layout/Header';
-import Footer from 'components/organisms/Layout/Footer';
+import Header from 'components/organisms/Header';
+import Footer from 'components/organisms/Footer';
 import LandingView from 'containers/organisms/LandingView';
 import MainWrapper from 'components/molecules/MainWrapper';
 

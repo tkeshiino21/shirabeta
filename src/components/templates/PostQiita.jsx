@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Article from 'components/molecules/Article';
-import SearchQiita from 'components/organisms/SearchQiita';
+import SearchQiita from 'components/templates/SearchQiita';
 import {
   Loader,
   Block,
@@ -43,7 +43,7 @@ const PostQiita = ({ onRequest, isLoading, fetchedPosts }) => {
         <Article
           key={post.title}
           post={post}
-          reactions={{ myLikes: false, myComments: false }}
+          collation={{ collation: { myLikes: false, myComments: false } }}
           counts={counts}
         />
       );

@@ -1,6 +1,7 @@
 import { getFirebase } from 'react-redux-firebase';
 import * as action from 'duck/myPage/actions';
 
+// when user visit myPage, myPageRequest runs
 export const myPageRequest = uid => dispatch => {
   dispatch(action.myPageRequestStart());
   const borrowRef = getFirebase()
@@ -18,6 +19,7 @@ export const myPageRequest = uid => dispatch => {
   });
 };
 
+// when user push "返却" button, return runs
 export const bookReturn = (ISBN, uid) => dispatch => {
   const today = new Date();
   const returnDate = `${today.getFullYear()}-${today.getMonth() +
@@ -50,6 +52,7 @@ export const bookReturn = (ISBN, uid) => dispatch => {
     });
 };
 
+// for Fetching user's comments data
 export const userComments = uid => dispatch => {
   dispatch(action.userCommentsStart());
   const commentsRef = getFirebase()
@@ -66,6 +69,7 @@ export const userComments = uid => dispatch => {
   });
 };
 
+// for Fetching user's likes data
 export const userLikes = ISBNS => dispatch => {
   dispatch(action.userLikesStart());
   const bookRef = getFirebase()

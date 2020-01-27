@@ -2,6 +2,7 @@ import * as action from 'duck/bookRegister/actions';
 import { getFirebase } from 'react-redux-firebase';
 import axios from 'axios';
 
+// Request GoogleBooksAPI for book data
 export const bookRequest = ISBN => dispatch => {
   dispatch(action.bookRequestStart());
   const fetchData = async () => {
@@ -14,6 +15,7 @@ export const bookRequest = ISBN => dispatch => {
   });
 };
 
+// Register fetched book data  with firestore
 export const bookRegister = book => dispatch => {
   const author =
     Array.isArray(book.author) === true ? book.author[0] : [book.author];
@@ -41,6 +43,7 @@ export const bookRegister = book => dispatch => {
       commentsCount: 0,
     });
     await dispatch(action.registerSuccess());
+    // After Submition, clear fetched book data
     await dispatch(action.clearBookData());
     const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
     await sleep(1000);

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import FormBookRegister from 'components/organisms/FormBookRegister';
+import FormBookRegister from 'components/templates/FormBookRegister';
 import { bookRegister } from 'duck/bookRegister/operations';
 
 const getFormatData = state => {
