@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, useSelector } from 'react-redux';
 import firebase from 'firebase/app';
@@ -40,12 +40,15 @@ const rrfProps = {
   createFirestoreInstance,
 };
 
-function AuthIsLoaded({ children }) {
-  const auth = useSelector(state => state.firebase.auth);
+type Props = {
+  children: any;
+};
+const AuthIsLoaded: FC<Props> = ({ children }) => {
+  const auth = useSelector((state: any) => state.firebase.auth);
   if (!isLoaded(auth)) return <Loader />;
 
   return children;
-}
+};
 
 ReactDOM.render(
   <Provider store={store}>

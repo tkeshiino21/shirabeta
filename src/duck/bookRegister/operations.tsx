@@ -3,7 +3,7 @@ import { getFirebase } from 'react-redux-firebase';
 import axios from 'axios';
 
 // Request GoogleBooksAPI for book data
-export const bookRequest = ISBN => dispatch => {
+export const bookRequest = (ISBN: any) => (dispatch: any) => {
   dispatch(action.bookRequestStart());
   const fetchData = async () => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${ISBN}`;
@@ -16,7 +16,7 @@ export const bookRequest = ISBN => dispatch => {
 };
 
 // Register fetched book data  with firestore
-export const bookRegister = book => dispatch => {
+export const bookRegister = (book: any) => (dispatch: any) => {
   const author =
     Array.isArray(book.author) === true ? book.author[0] : [book.author];
   const today = new Date();
@@ -45,7 +45,8 @@ export const bookRegister = book => dispatch => {
     await dispatch(action.registerSuccess());
     // After Submition, clear fetched book data
     await dispatch(action.clearBookData());
-    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+    const sleep = (msec: any) =>
+      new Promise(resolve => setTimeout(resolve, msec));
     await sleep(1000);
     await dispatch(action.reloadPage());
   };

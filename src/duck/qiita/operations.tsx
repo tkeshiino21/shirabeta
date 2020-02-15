@@ -2,7 +2,7 @@
 import axios from 'axios';
 import * as action from 'duck/qiita/actions';
 
-export const postRequest = tagName => dispatch => {
+export const postRequest = (tagName: any) => (dispatch: any) => {
   dispatch(action.postRequestStart());
   const fetchResource = async () => {
     const perPage = 'items?page=1&per_page=15';

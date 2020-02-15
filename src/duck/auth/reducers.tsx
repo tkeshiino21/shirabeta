@@ -7,7 +7,7 @@ const initState = {
   authError: '',
 };
 
-const authReducer = (state = initState, action) => {
+const authReducer = (state = initState, action: any) => {
   switch (action.type) {
     case actionTypes.AUTH_START:
       return {

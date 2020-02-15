@@ -8,7 +8,7 @@ const initState = {
   userLikes: '',
 };
 
-const myPageReducer = (state = initState, action) => {
+const myPageReducer = (state = initState, action: any) => {
   switch (action.type) {
     case actionTypes.MYPAGE_REQUEST_START:
       return {

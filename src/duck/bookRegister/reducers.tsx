@@ -8,7 +8,7 @@ const initState = {
   isAdding: '',
 };
 
-const registerReducer = (state = initState, action) => {
+const registerReducer = (state = initState, action: any) => {
   switch (action.type) {
     // Request GoogleBooksAPI for book data
     case actionTypes.BOOK_REQUEST_START:

@@ -1,24 +1,26 @@
-import * as actionTypes from 'duck/library/actionTypes';
+import * as actionTypes from 'duck/qiita/actionTypes';
 
 const initState = {
   response: '',
   error: '',
+  isLoading: '',
 };
 
-const reviewReducer = (state = initState, action) => {
+const requestReducer = (state = initState, action: any) => {
   switch (action.type) {
-    case actionTypes.LIBRARY_REQUEST_START:
+    // When user visit Qiita page, postRequest runs
+    case actionTypes.POST_REQUEST_START:
       return {
         ...state,
         isLoading: true,
       };
-    case actionTypes.LIBRARY_REQUEST_SUCCESS:
+    case actionTypes.POST_REQUEST_SUCCESS:
       return {
         ...state,
         isLoading: false,
         response: action.payload,
       };
-    case actionTypes.LIBRARY_REQUEST_FAIL:
+    case actionTypes.POST_REQUEST_FAIL:
       return {
         ...state,
         isLoading: false,
@@ -29,4 +31,4 @@ const reviewReducer = (state = initState, action) => {
   }
 };
 
-export default reviewReducer;
+export default requestReducer;

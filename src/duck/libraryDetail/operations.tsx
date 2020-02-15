@@ -6,13 +6,13 @@ import 'firebase/firestore';
 import 'firebase/functions';
 
 // When page is loaded and, detailRequest runs.
-export const libraryDetailRequest = ISBN => dispatch => {
+export const libraryDetailRequest = (ISBN: any) => (dispatch: any) => {
   dispatch(action.detailRequestStart());
   const bookRef = getFirebase()
     .firestore()
     .collection('books')
     .doc(ISBN);
-  const asyncFunc = async doc => {
+  const asyncFunc = async (doc: any) => {
     const data = await doc.data();
     await dispatch(action.detailRequestSuccess(data));
   };
@@ -25,7 +25,7 @@ export const libraryDetailRequest = ISBN => dispatch => {
 };
 
 // When page is loaded and user push "POST" button,  commentsRequest runs.
-export const commentRequest = ISBN => dispatch => {
+export const commentRequest = (ISBN: any) => (dispatch: any) => {
   dispatch(action.commentRequestStart());
   const fetchResourse = async () => {
     const snapshotRef = getFirebase()
@@ -41,7 +41,9 @@ export const commentRequest = ISBN => dispatch => {
 };
 
 // When user push "BORROW" button, borrow runs.
-export const bookBorrow = (ISBN, title, uid) => dispatch => {
+export const bookBorrow = (ISBN: string, title: string, uid: any) => (
+  dispatch: any,
+) => {
   const today = new Date();
   const todayCopy = new Date();
   const limitDay = new Date(todayCopy.setDate(todayCopy.getDate() + 14));
@@ -62,7 +64,7 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
       .firestore()
       .collection('books')
       .doc(ISBN);
-    const response = await userBorrowRef.set({
+    await userBorrowRef.set({
       ISBN,
       title,
       borrowDate,
@@ -70,7 +72,7 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
       returnDate: '',
     });
     await bookRef.update({ borrowing: true });
-    await dispatch(action.borrowSuccess(response));
+    await dispatch(action.borrowSuccess());
   };
   pushData().catch(error => {
     dispatch(action.borrowFail(error));
@@ -78,7 +80,9 @@ export const bookBorrow = (ISBN, title, uid) => dispatch => {
 };
 
 // When user push "LIKES" button, firebase updates userData and bookData.
-export const bookLike = (ISBN, uid, method) => dispatch => {
+export const bookLike = (ISBN: any, uid: any, method: any) => (
+  dispatch: any,
+) => {
   switch (method) {
     case 'likeAdd':
       dispatch(action.likeAddStart());
@@ -129,7 +133,7 @@ export const bookLike = (ISBN, uid, method) => dispatch => {
           .collection('books')
           .doc(ISBN);
         await bookLikesRef.update({
-          likesCount: firebase.firestore.FieldValue.decrement(1),
+          likesCount: firebase.firestore.FieldValue.increment(-1),
         });
       };
       likesDecrement().catch(error => {
@@ -143,12 +147,12 @@ export const bookLike = (ISBN, uid, method) => dispatch => {
 
 // When user push "POST" button, firebase updates userData.
 export const bookComment = (
-  ISBN,
-  title,
-  uid,
-  userName,
-  comment,
-) => dispatch => {
+  ISBN: any,
+  title: any,
+  uid: any,
+  userName: any,
+  comment: any,
+) => (dispatch: any) => {
   dispatch(action.commentAddStart());
   const today = new Date();
   const commentDate = `${today.getFullYear()}-${today.getMonth() +
@@ -187,7 +191,8 @@ export const bookComment = (
     await bookCommentsRef.update({
       commentsCount: firebase.firestore.FieldValue.increment(1),
     });
-    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+    const sleep = (msec: any) =>
+      new Promise(resolve => setTimeout(resolve, msec));
     await sleep(1000);
     // for Reloading Pages after submissiton of comment or like
     await dispatch(action.clearState());

@@ -15,7 +15,7 @@ const initState = {
   colloationLikes: [],
 };
 
-const requestReducer = (state = initState, action) => {
+const requestReducer = (state = initState, action: any) => {
   switch (action.type) {
     // When page is loaded and, detailRequest runs.
     case actionTypes.DETAILREQUEST_START:

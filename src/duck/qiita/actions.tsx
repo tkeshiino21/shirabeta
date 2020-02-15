@@ -4,9 +4,9 @@ import * as actionTypes from 'duck/qiita/actionTypes';
 export const postRequestStart = () => {
   return { type: actionTypes.POST_REQUEST_START };
 };
-export const postRequestSuccess = data => {
+export const postRequestSuccess = (data: any) => {
   return { type: actionTypes.POST_REQUEST_SUCCESS, payload: data };
 };
-export const postRequestFail = error => {
+export const postRequestFail = (error: any) => {
   return { type: actionTypes.POST_REQUEST_FAIL, payload: error };
 };

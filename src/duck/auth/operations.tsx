@@ -1,8 +1,11 @@
 import { getFirebase } from 'react-redux-firebase';
+import { Dispatch } from 'redux';
 import * as action from './actions';
+import { ThunkAction } from 'redux-thunk';
 
 // When user push LogIn, SignUp or LogOut button, authAction runs
-const authSwitch = ({ method, userData }) => dispatch => {
+
+const authSwitch = (method: any, userData: any) => (dispatch: any) => {
   switch (method) {
     case 'signup':
       return (
@@ -10,7 +13,7 @@ const authSwitch = ({ method, userData }) => dispatch => {
         getFirebase()
           .auth()
           .createUserWithEmailAndPassword(userData.email, userData.password)
-          .then(res => {
+          .then((res: any) => {
             dispatch(action.authSuccess(res));
             getFirebase()
               .firestore()

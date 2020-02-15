@@ -1,7 +1,9 @@
 import * as action from 'duck/library/actions';
 import { getFirebase } from 'react-redux-firebase';
 
-export const libraryRequest = (category, filter) => dispatch => {
+export const libraryRequest = (category: any, filter: any) => (
+  dispatch: any,
+) => {
   switch (filter) {
     case 'すべて':
       dispatch(action.libraryRequestStart());
