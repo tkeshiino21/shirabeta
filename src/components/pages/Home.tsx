@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { FC, ChangeEvent, useState } from 'react';
 import { MdSearch, MdBook } from 'react-icons/md';
 import PostQiita from 'containers/templates/PostQiita';
 import PostLibrary from 'containers/templates/PostLibrary';
 import LayoutWithSubMenu from 'components/organisms/LayoutWithSubMenu';
 
-const Home: React.FC = () => {
+const Home: FC = () => {
   const subMenuItems = [
     {
       name: 'qiita',
@@ -16,7 +16,7 @@ const Home: React.FC = () => {
     },
   ];
   const [activeMenu, setActiveMenu] = useState(subMenuItems[1].name);
-  const menuHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const menuHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setActiveMenu(e.target.value);
   };
 

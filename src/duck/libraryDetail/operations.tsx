@@ -4,9 +4,10 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/functions';
+import { Dispatch } from 'redux';
 
 // When page is loaded and, detailRequest runs.
-export const libraryDetailRequest = (ISBN: any) => (dispatch: any) => {
+export const libraryDetailRequest = (ISBN: string) => (dispatch: Dispatch) => {
   dispatch(action.detailRequestStart());
   const bookRef = getFirebase()
     .firestore()
@@ -25,7 +26,7 @@ export const libraryDetailRequest = (ISBN: any) => (dispatch: any) => {
 };
 
 // When page is loaded and user push "POST" button,  commentsRequest runs.
-export const commentRequest = (ISBN: any) => (dispatch: any) => {
+export const commentRequest = (ISBN: string) => (dispatch: Dispatch) => {
   dispatch(action.commentRequestStart());
   const fetchResourse = async () => {
     const snapshotRef = getFirebase()
@@ -33,6 +34,7 @@ export const commentRequest = (ISBN: any) => (dispatch: any) => {
       .collectionGroup('comments')
       .where('ISBN', '==', ISBN);
     const snapshot = await snapshotRef.get();
+    console.log(snapshot);
     await dispatch(action.commentRequestSuccess(snapshot));
   };
   fetchResourse().catch(error => {
@@ -41,8 +43,8 @@ export const commentRequest = (ISBN: any) => (dispatch: any) => {
 };
 
 // When user push "BORROW" button, borrow runs.
-export const bookBorrow = (ISBN: string, title: string, uid: any) => (
-  dispatch: any,
+export const bookBorrow = (ISBN: string, title: string, uid: string) => (
+  dispatch: Dispatch,
 ) => {
   const today = new Date();
   const todayCopy = new Date();
@@ -80,8 +82,8 @@ export const bookBorrow = (ISBN: string, title: string, uid: any) => (
 };
 
 // When user push "LIKES" button, firebase updates userData and bookData.
-export const bookLike = (ISBN: any, uid: any, method: any) => (
-  dispatch: any,
+export const bookLike = (ISBN: string, uid: string, method: string) => (
+  dispatch: Dispatch,
 ) => {
   switch (method) {
     case 'likeAdd':
@@ -147,12 +149,12 @@ export const bookLike = (ISBN: any, uid: any, method: any) => (
 
 // When user push "POST" button, firebase updates userData.
 export const bookComment = (
-  ISBN: any,
-  title: any,
-  uid: any,
-  userName: any,
-  comment: any,
-) => (dispatch: any) => {
+  ISBN: string,
+  title: string,
+  uid: string,
+  userName: string,
+  comment: string,
+) => (dispatch: Dispatch) => {
   dispatch(action.commentAddStart());
   const today = new Date();
   const commentDate = `${today.getFullYear()}-${today.getMonth() +
@@ -191,7 +193,7 @@ export const bookComment = (
     await bookCommentsRef.update({
       commentsCount: firebase.firestore.FieldValue.increment(1),
     });
-    const sleep = (msec: any) =>
+    const sleep = (msec: number) =>
       new Promise(resolve => setTimeout(resolve, msec));
     await sleep(1000);
     // for Reloading Pages after submissiton of comment or like

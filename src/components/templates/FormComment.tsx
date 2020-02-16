@@ -4,23 +4,29 @@ import FormFormat from 'components/molecules/FormFormat';
 import { CustomTextarea } from 'components/molecules/FormCustom';
 
 type Props = {
-  fetchedDetail: any;
+  fetchedDetail: { ISBN: string; title: string };
   userData: any;
   onComment: (
-    arg0: string,
-    arg1: string,
-    arg2: string,
-    arg3: string,
-    arg4: string,
+    ISBN: string,
+    title: string,
+    uid: string,
+    userName: string,
+    comment: string,
   ) => void;
 };
 
 const FormComment: FC<Props> = ({ fetchedDetail, userData, onComment }) => {
-  const formDatas: any = {
+  const formDatas: {
+    initialValues: object;
+    validationSchema: object;
+    action: string;
+    onSubmit: (userData: object) => void;
+    items: { name: string; label: string; type: string; input: FC }[];
+  } = {
     initialValues: {
       comment: '',
     },
-    validationShema: Yup.object({
+    validationSchema: Yup.object({
       comment: Yup.string()
         .max(400, 'Must be 300 characters or less')
         .min(8, 'Must be 8 characters or more')

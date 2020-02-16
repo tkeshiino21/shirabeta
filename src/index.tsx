@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, useSelector } from 'react-redux';
 import firebase from 'firebase/app';
@@ -41,12 +41,13 @@ const rrfProps = {
 };
 
 type Props = {
-  children: any;
+  children: ReactElement;
 };
 const AuthIsLoaded: FC<Props> = ({ children }) => {
-  const auth = useSelector((state: any) => state.firebase.auth);
+  const auth = useSelector(
+    (state: { firebase: { auth: string } }) => state.firebase.auth,
+  );
   if (!isLoaded(auth)) return <Loader />;
-
   return children;
 };
 

@@ -9,8 +9,19 @@ type Props = {
   onUserLikes: (arg0: string) => void;
   onUserComments: (arg0: string) => void;
   isLoading: boolean | '';
-  userLikes: [any] | '';
-  userComments: [any] | '';
+  userLikes:
+    | { data: () => { ISBN: string; title: string; borrowing: boolean } }[]
+    | '';
+  userComments:
+    | {
+        data: () => {
+          ISBN: string;
+          title: string;
+          commentDate: string;
+          comment: string;
+        };
+      }[]
+    | '';
 };
 
 const MyBookLog: FC<Props> = ({

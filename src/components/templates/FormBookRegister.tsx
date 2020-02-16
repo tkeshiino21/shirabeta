@@ -8,6 +8,12 @@ import { CustomInput, SelectCategory } from 'components/molecules/FormCustom';
 import FormISBN from 'containers/templates/FormISBN';
 
 type Props = {
+  name: string;
+  label: string;
+  type: string;
+  input: FC;
+};
+type BookRegisterFormProps = {
   isLoading: boolean;
   isAdding: boolean;
   fetchedBook: any;
@@ -16,7 +22,7 @@ type Props = {
   showSnack: boolean;
 };
 
-const BookRegisterForm: FC<Props> = ({
+const BookRegisterForm: FC<BookRegisterFormProps> = ({
   isLoading,
   isAdding,
   fetchedBook,
@@ -24,7 +30,13 @@ const BookRegisterForm: FC<Props> = ({
   onRegister,
   showSnack,
 }) => {
-  const formDatas: any = {
+  const formDatas: {
+    initialValues: object;
+    validationSchema: object;
+    onSubmit: (bookData: object) => void;
+    action: string;
+    items: Props[];
+  } = {
     initialValues: {
       ISBN: inputISBN === null ? '' : inputISBN,
       title: fetchedBook === null ? '' : fetchedBook[0].title,
@@ -50,7 +62,7 @@ const BookRegisterForm: FC<Props> = ({
       image: Yup.string(),
       category: Yup.string().required('Required'),
     }),
-    onSubmit: (bookDatas: any) => {
+    onSubmit: bookDatas => {
       onRegister(bookDatas);
     },
     action: 'SUBMIT',
@@ -105,7 +117,15 @@ const BookRegisterForm: FC<Props> = ({
                 <Loader />
               ) : (
                 <>
-                  <FormFormat formDatas={formDatas} />
+                  <FormFormat
+                    formDatas={{
+                      initialValues: formDatas.initialValues,
+                      validationSchema: formDatas.validationSchema,
+                      action: formDatas.action,
+                      onSubmit: formDatas.onSubmit,
+                      items: formDatas.items,
+                    }}
+                  />
                 </>
               )}
             </Box>

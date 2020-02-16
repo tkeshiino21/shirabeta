@@ -1,4 +1,10 @@
-import React, { FC, ChangeEvent, useEffect, useState } from 'react';
+import React, {
+  FC,
+  ChangeEvent,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react';
 import Article from 'components/molecules/Article';
 import SearchQiita from 'components/templates/SearchQiita';
 import {
@@ -14,7 +20,12 @@ import moment from 'moment';
 type Props = {
   onRequest: (arg0: string) => void;
   isLoading: boolean;
-  fetchedPosts: any;
+  fetchedPosts: {
+    map: () => ReactElement;
+    concat: () => {
+      sort: (arg0: object) => { map: (fetchedPost: object) => ReactElement };
+    };
+  };
 };
 
 const PostQiita: FC<Props> = ({ onRequest, isLoading, fetchedPosts }) => {

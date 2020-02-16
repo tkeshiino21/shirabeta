@@ -4,10 +4,10 @@ import * as actionTypes from 'duck/myPage/actionTypes';
 export const myPageRequestStart = () => {
   return { type: actionTypes.MYPAGE_REQUEST_START };
 };
-export const myPageRequestSuccess = (response: any) => {
+export const myPageRequestSuccess = (response: object) => {
   return { type: actionTypes.MYPAGE_REQUEST_SUCCESS, payload: response };
 };
-export const myPageRequestFail = (error: any) => {
+export const myPageRequestFail = (error: object) => {
   return { type: actionTypes.MYPAGE_REQUEST_FAIL, payload: error };
 };
 
@@ -37,9 +37,9 @@ export const userCommentsFail = (error: any) => {
 export const userLikesStart = () => {
   return { type: actionTypes.USERLIKES_START };
 };
-export const userLikesSuccess = (response: any) => {
+export const userLikesSuccess = (response: object) => {
   return { type: actionTypes.USERLIKES_SUCCESS, payload: response };
 };
-export const userLikesFail = (error: any) => {
+export const userLikesFail = (error: object) => {
   return { type: actionTypes.USERLIKES_FAIL, payload: error };
 };

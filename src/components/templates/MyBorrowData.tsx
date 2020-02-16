@@ -13,10 +13,18 @@ import ShouldLoading from 'components/molecules/ShouldLoading';
 
 type Props = {
   uid: string;
-  onRequest: (arg0: string) => void;
+  onRequest: (ISBN: string) => void;
   isLoading: boolean;
-  borrowData: [any];
-  onReturn: (arg0: string, arg1: string) => void;
+  borrowData: {
+    data: () => {
+      ISBN: string;
+      title: string;
+      borrowDate: string;
+      limitDate: string;
+      returnDate: string;
+    };
+  }[];
+  onReturn: (ISBN: string, uid: string) => void;
 };
 
 const MyBorrowData: FC<Props> = ({

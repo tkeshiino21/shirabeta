@@ -12,13 +12,19 @@ type Props = {
 };
 
 const SignUp: FC<Props> = ({ authState, onSignUp }) => {
-  const formDatas: any = {
+  const formDatas: {
+    initialValues: object;
+    validationSchema: object;
+    action: string;
+    onSubmit: (userData: object) => void;
+    items: { name: string; label: string; type: string; input: FC }[];
+  } = {
     initialValues: {
       name: '',
       emai: '',
       password: '',
     },
-    validationShema: Yup.object({
+    validationSchema: Yup.object({
       name: Yup.string()
         .max(20, 'Must be 20 characters or less')
         .min(8, 'Must be 8 characters or more')
@@ -32,9 +38,8 @@ const SignUp: FC<Props> = ({ authState, onSignUp }) => {
         .required('Required'),
     }),
     action: 'SIGN UP',
-    onSubmit: (userData: any, { setSubmitting }: any) => {
+    onSubmit: userData => {
       onSignUp(userData);
-      setSubmitting(false);
     },
     items: [
       {

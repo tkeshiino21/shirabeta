@@ -1,5 +1,20 @@
 import * as actionTypes from 'duck/libraryDetail/actionTypes';
 
+export type AppState = {
+  response: object;
+  listen: '';
+  error: object;
+  isLoading: boolean | null;
+  isAdding: false;
+  isFetching: ''; // comment
+  likes: '';
+  showSnack: false;
+  comment: '';
+  borrow: '';
+  colloationComments: [];
+  colloationLikes: [];
+};
+
 const initState = {
   response: '',
   listen: '',
@@ -15,7 +30,10 @@ const initState = {
   colloationLikes: [],
 };
 
-const requestReducer = (state = initState, action: any) => {
+const requestReducer = (
+  state = initState,
+  action: { type: string; payload: string },
+) => {
   switch (action.type) {
     // When page is loaded and, detailRequest runs.
     case actionTypes.DETAILREQUEST_START:

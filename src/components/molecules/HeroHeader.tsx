@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import heroImage from 'images/heroImage.jpg';
 import { Image } from 'components/atoms';
@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   z-index: -1;
 `;
 
-const HeroHeader = () => {
+const HeroHeader: FC = () => {
   return (
     <Wrapper>
       <Image className="shadow" image={heroImage} width="100vw" height="58vh" />

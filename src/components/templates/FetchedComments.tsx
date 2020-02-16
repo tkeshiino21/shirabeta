@@ -4,9 +4,9 @@ import ShouldLoading from 'components/molecules/ShouldLoading';
 
 type Props = {
   ISBN: string;
-  onCommentRequest: (arg0: string) => void;
+  onCommentRequest: (ISBN: string) => void;
   isFetching: boolean;
-  comments: [{ userName: any; comment: any; commentDate: string }];
+  comments: [{ userName: string; comment: string; commentDate: string }];
 };
 
 const FetchedComments: FC<Props> = ({

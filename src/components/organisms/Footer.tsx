@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { theme } from 'components/atoms';
 import FooterLinks from 'components/organisms/FooterLinks';
@@ -13,7 +13,7 @@ const FooterContainer = styled.div`
   padding-top: ${theme.large};
 `;
 
-const Footer: React.FC = () => {
+const Footer: FC = () => {
   return (
     <FooterContainer>
       <MainWrapper>

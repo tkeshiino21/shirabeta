@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Loader } from 'components/atoms';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   children: any;
 };
 
-const ShouldLoading: React.FC<Props> = ({ isLoading, children }) => {
+const ShouldLoading: FC<Props> = ({ isLoading, children }) => {
   if (isLoading !== false) {
     return <Loader />;
   }

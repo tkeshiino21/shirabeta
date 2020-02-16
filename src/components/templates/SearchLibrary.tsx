@@ -1,19 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import ArticleSearch from 'components/molecules/ArticleSearch';
 
 type Props = {
-  handles: any;
+  handles: {
+    handleCategory: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleFilter: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleOrder: (e: ChangeEvent<HTMLInputElement>) => void;
+  };
 };
 
 const SearchLibrary: FC<Props> = ({ handles }) => {
-  const { handleCategory } = handles;
-  const { handleFilter } = handles;
-  const { handleOrder } = handles;
-  const searchItems: any = {
+  const searchItems: {
+    selects: {
+      title: string;
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+      items: any;
+    }[];
+    order: {
+      title: string;
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+      items: string[];
+    };
+  } = {
     selects: [
       {
         title: 'カテゴリ',
-        onChange: handleCategory,
+        onChange: handles.handleCategory,
         items: [
           'すべて',
           'インフラ',
@@ -25,13 +37,13 @@ const SearchLibrary: FC<Props> = ({ handles }) => {
       },
       {
         title: '絞り込み',
-        onChange: handleFilter,
+        onChange: handles.handleFilter,
         items: ['すべて', '貸出可能のみ'],
       },
     ],
     order: {
       title: '並び替え',
-      onChange: handleOrder,
+      onChange: handles.handleOrder,
       items: ['新着順', '人気順'],
     },
   };

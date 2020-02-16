@@ -1,8 +1,9 @@
 // import { selectors as userSelectors } from 'duck/postRequest/selectors';
 import axios from 'axios';
 import * as action from 'duck/qiita/actions';
+import { Dispatch } from 'redux';
 
-export const postRequest = (tagName: any) => (dispatch: any) => {
+export const postRequest = (tagName: string) => (dispatch: Dispatch) => {
   dispatch(action.postRequestStart());
   const fetchResource = async () => {
     const perPage = 'items?page=1&per_page=15';

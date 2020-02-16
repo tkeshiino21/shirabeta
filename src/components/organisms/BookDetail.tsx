@@ -10,8 +10,8 @@ type Props = {
     category: string;
     description: string;
   };
-  collation: any;
-  counts: any;
+  collation: { myLikes: boolean; myComments: boolean };
+  counts: { likesCount: number; commentsCount: number };
 };
 
 const BookDetail: FC<Props> = ({ fetchedDetail, collation, counts }) => {

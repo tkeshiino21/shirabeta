@@ -5,25 +5,27 @@ import {
   commentRequest,
 } from 'duck/libraryDetail/operations';
 
-const formatData = state => {
+const formatData = (state: any) => {
   return state.libraryDetail.comment.docs === undefined
     ? null
-    : state.libraryDetail.comment.docs.map(queryDocumentSnapshot => {
-        return queryDocumentSnapshot.data();
-      });
+    : state.libraryDetail.comment.docs.map(
+        (queryDocumentSnapshot: { data: () => void }) => {
+          return queryDocumentSnapshot.data();
+        },
+      );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   comments: formatData(state),
   isFetching: state.libraryDetail.isAdding,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onRequest: ISBN => {
+const mapDispatchToProps = (dispatch: any) => ({
+  onRequest: (ISBN: string) => {
     dispatch(libraryDetailRequest(ISBN));
   },
-  onCommentRequest: ISBN => {
-    dispatch(commentRequest(ISBN));
+  onCommentRequest: (ISBN: string) => {
+    commentRequest(ISBN);
   },
 });
 

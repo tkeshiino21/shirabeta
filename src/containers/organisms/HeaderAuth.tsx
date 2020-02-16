@@ -7,9 +7,14 @@ const mapStateToProps = (state: any) => ({
   userName: state.firebase.profile.name,
 });
 
+const userData = {
+  email: '',
+  password: '',
+};
+
 const mapDipatchToProps = (dispatch: any) => ({
   onLogOut: () => {
-    dispatch(authSwitch('logout', null));
+    dispatch(authSwitch('logout', userData));
   },
 });
 

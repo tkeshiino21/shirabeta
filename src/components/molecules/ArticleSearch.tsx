@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import {
   Box,
   Block,
@@ -11,17 +11,15 @@ import {
 
 type Props = {
   searchItems: {
-    selects: [
-      {
-        title: string;
-        items: [];
-        onChange: () => void;
-      },
-    ];
+    selects: {
+      title: string;
+      items: string[];
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    }[];
     order: {
       title: string;
-      items: [];
-      onChange: () => void;
+      items: string[];
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
     };
   };
 };

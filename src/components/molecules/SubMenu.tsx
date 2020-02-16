@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { theme, media, Button, Box } from 'components/atoms';
+import { IconType } from 'react-icons/lib/cjs';
 
 const MenuButton = styled(Button)`
   border: none;
@@ -30,12 +31,16 @@ const ResponsiveTab = styled(Box)`
 `;
 
 type Props = {
-  listItems: [{ name: string; icon: any }];
-  menuHandler: () => void;
+  name: string;
+  icon: IconType;
+};
+type SubMenuProps = {
+  listItems: Props[];
+  menuHandler: any;
   activeMenu: string;
 };
 
-const SubMenu: FC<Props> = ({ listItems, menuHandler, activeMenu }) => {
+const SubMenu: FC<SubMenuProps> = ({ listItems, menuHandler, activeMenu }) => {
   return (
     <ResponsiveTab>
       {listItems.map(listItem => {

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import LayoutCommon from 'components/organisms/LayoutCommon';
 import { Text, theme, Spacing } from 'components/atoms';
 
-const HowToUse = () => {
+const HowToUse: FC = () => {
   return (
     <LayoutCommon>
       <div>

@@ -57,6 +57,7 @@ export const SelectWrapper = styled.div`
 
 type SelectProps = {
   width?: any;
+  onChange?: any;
 };
 export const Select = styled.select<SelectProps>`
   outline: none;

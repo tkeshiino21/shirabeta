@@ -11,14 +11,25 @@ import LayoutWithImage from '../organisms/LayoutWithImage';
 import BorrowButton from 'components/molecules/BorrowButton';
 
 type Props = {
-  userData: any;
-  onBorrow: (arg0: any, arg1: string, arg2: string) => void;
-  onLike: (arg0: any, arg1: string, arg2: string) => void;
-  onRequest: (arg0: any, arg1: string) => void;
+  userData: { uid: string; userName: string };
+  onBorrow: (ISBN: string, title: string, uid: string) => void;
+  onLike: (ISBN: string, uid: string, isLike: string) => void;
+  onRequest: (ISBN: string, uid: string) => void;
   isLoading: boolean;
   isAdding: boolean;
-  fetchedDetail: any;
-  collation: any;
+  fetchedDetail: {
+    title: string;
+    author: [];
+    publishedDate: string;
+    category: string;
+    description: string;
+    image: string;
+    borrowing: boolean;
+    ISBN: string;
+    likesCount: number;
+    commentsCount: number;
+  };
+  collation: { myLikes: boolean; myComments: boolean };
   showSnack: boolean;
 };
 
@@ -68,7 +79,13 @@ const FetchedDetail: FC<Props> = ({
         <Card style={{ width: '100%' }}>
           <Container padding={`${theme.xxlarge} ${theme.xlarge}`}>
             <BookDetail
-              fetchedDetail={fetchedDetail}
+              fetchedDetail={{
+                title: fetchedDetail.title,
+                author: fetchedDetail.author,
+                publishedDate: fetchedDetail.publishedDate,
+                category: fetchedDetail.category,
+                description: fetchedDetail.description,
+              }}
               collation={collation}
               counts={{
                 likesCount: fetchedDetail.likesCount,

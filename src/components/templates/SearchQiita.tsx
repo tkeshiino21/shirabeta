@@ -1,24 +1,36 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import ArticleSearch from 'components/molecules/ArticleSearch';
 
 type Props = {
-  handles: any;
+  handles: {
+    handleTag: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleTitle: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleOrder: (e: ChangeEvent<HTMLInputElement>) => void;
+  };
 };
 
 const SearchQiita: FC<Props> = ({ handles }) => {
-  const { handleTag } = handles;
-  const { handleTitle } = handles;
-  const { handleOrder } = handles;
-  const searchItems: any = {
+  const searchItems: {
+    selects: {
+      title: string;
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+      items: any;
+    }[];
+    order: {
+      title: string;
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+      items: string[];
+    };
+  } = {
     selects: [
       {
         title: 'タグ1',
-        onChange: handleTag,
+        onChange: handles.handleTag,
         items: ['技術書', '書籍', '本'],
       },
       {
         title: 'タグ2',
-        onChange: handleTitle,
+        onChange: handles.handleTitle,
         items: [
           '技術書典1',
           '技術書典2',
@@ -33,7 +45,7 @@ const SearchQiita: FC<Props> = ({ handles }) => {
     ],
     order: {
       title: '並び替え',
-      onChange: handleOrder,
+      onChange: handles.handleOrder,
       items: ['新着順', '人気順'],
     },
   };

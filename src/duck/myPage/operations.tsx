@@ -1,8 +1,9 @@
 import { getFirebase } from 'react-redux-firebase';
 import * as action from 'duck/myPage/actions';
+import { Dispatch } from 'redux';
 
 // when user visit myPage, myPageRequest runs
-export const myPageRequest = (uid: any) => (dispatch: any) => {
+export const myPageRequest = (uid: string) => (dispatch: Dispatch) => {
   dispatch(action.myPageRequestStart());
   const borrowRef = getFirebase()
     .firestore()
@@ -20,7 +21,9 @@ export const myPageRequest = (uid: any) => (dispatch: any) => {
 };
 
 // when user push "返却" button, return runs
-export const bookReturn = (ISBN: any, uid: any) => (dispatch: any) => {
+export const bookReturn = (ISBN: string, uid: string) => (
+  dispatch: Dispatch,
+) => {
   const today = new Date();
   const returnDate = `${today.getFullYear()}-${today.getMonth() +
     1}-${today.getDate()}`;
@@ -43,7 +46,7 @@ export const bookReturn = (ISBN: any, uid: any) => (dispatch: any) => {
     });
     await bookRef.update({ borrowing: false });
     await dispatch(action.returnSuccess());
-    await dispatch(myPageRequest(uid));
+    await myPageRequest(uid);
   };
   pushData()
     .then()
@@ -53,7 +56,7 @@ export const bookReturn = (ISBN: any, uid: any) => (dispatch: any) => {
 };
 
 // for Fetching user's comments data
-export const userComments = (uid: any) => (dispatch: any) => {
+export const userComments = (uid: string) => (dispatch: Dispatch) => {
   dispatch(action.userCommentsStart());
   const commentsRef = getFirebase()
     .firestore()

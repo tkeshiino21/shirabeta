@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
 import LandingToSign from 'components/organisms/LandingToSign';
 import authSwitch from 'duck/auth/operations';
 

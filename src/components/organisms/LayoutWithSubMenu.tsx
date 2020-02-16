@@ -1,16 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, ChangeEvent, ReactElement } from 'react';
 import SubMenu from 'components/molecules/SubMenu';
 import { Box, theme, Spacing } from 'components/atoms';
 import LayoutCommon from 'components/organisms/LayoutCommon';
+import { IconType } from 'react-icons/lib/cjs';
 
 type Props = {
-  children: any;
-  listItems: any;
-  menuHandler: any;
+  name: string;
+  icon: IconType;
+};
+type LayoutWithSubMenuProps = {
+  children: ReactElement;
+  listItems: Props[];
+  menuHandler: (e: ChangeEvent<HTMLInputElement>) => void;
   activeMenu: string;
 };
 
-const LayoutWithSubMenu: FC<Props> = ({
+const LayoutWithSubMenu: FC<LayoutWithSubMenuProps> = ({
   children,
   listItems,
   menuHandler,

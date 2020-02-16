@@ -13,13 +13,19 @@ import {
 import { CustomInput } from 'components/molecules/FormCustom';
 import { Collapse } from 'components/atoms/media';
 
-type Props = {
-  onSignUp: any;
-  onLogIn: (arg0: object) => void;
+type LandingToSignProps = {
+  onSignUp: (userData: object) => void;
+  onLogIn: (userData: object) => void;
 };
 
-const LandingToSign: FC<Props> = ({ onSignUp, onLogIn }) => {
-  const formDatas: any = {
+const LandingToSign: FC<LandingToSignProps> = ({ onSignUp, onLogIn }) => {
+  const formDatas: {
+    initialValues: object;
+    validationSchema: object;
+    action: string;
+    onSubmit: (userData: object) => void;
+    items: { name: string; label: string; type: string; input: FC }[];
+  } = {
     initialValues: {
       name: '',
       email: '',
@@ -39,9 +45,8 @@ const LandingToSign: FC<Props> = ({ onSignUp, onLogIn }) => {
         .required('Required'),
     }),
     action: 'SIGN UP',
-    onSubmit: (userData: any, { setSubmitting }: any) => {
+    onSubmit: userData => {
       onSignUp(userData);
-      setSubmitting(false);
     },
     items: [
       {

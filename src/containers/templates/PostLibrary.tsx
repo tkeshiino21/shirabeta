@@ -2,15 +2,17 @@ import { connect } from 'react-redux';
 import PostLibrary from 'components/templates/PostLibrary';
 import { libraryRequest } from 'duck/library/operations';
 
-const formatData = state => {
+const formatData = (state: any) => {
   return state.library.response.docs === undefined
     ? null
-    : state.library.response.docs.map(queryDocumentSnapshot => {
-        return queryDocumentSnapshot.data();
-      });
+    : state.library.response.docs.map(
+        (queryDocumentSnapshot: { data: () => void }) => {
+          return queryDocumentSnapshot.data();
+        },
+      );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   uid: state.firebase.auth.uid,
   library: formatData(state),
   isLoading: state.library.isLoading,
@@ -20,8 +22,8 @@ const mapStateToProps = state => ({
   },
 });
 
-const mapDispatchToProps = dispatch => ({
-  onRequest: (category, filter) => {
+const mapDispatchToProps = (dispatch: any) => ({
+  onRequest: (category: string, filter: string) => {
     dispatch(libraryRequest(category, filter));
   },
 });

@@ -21,7 +21,13 @@ type Props = {
 };
 
 const LogIn: FC<Props> = ({ authState, onLogIn }) => {
-  const formDatas: any = {
+  const formDatas: {
+    initialValues: object;
+    validationSchema: object;
+    action: string;
+    onSubmit: (userData: object) => void;
+    items: { name: string; label: string; type: string; input: FC }[];
+  } = {
     initialValues: {
       email: '',
       password: '',
@@ -36,9 +42,8 @@ const LogIn: FC<Props> = ({ authState, onLogIn }) => {
         .required('Required'),
     }),
     action: 'LOG IN',
-    onSubmit: (userData: any, { setSubmitting }: any) => {
+    onSubmit: (userData: object) => {
       onLogIn(userData);
-      setSubmitting(false);
     },
     items: [
       {

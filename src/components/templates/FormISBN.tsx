@@ -2,7 +2,7 @@ import React, { FC, ChangeEvent, useState } from 'react';
 import { theme, Spacing, Label, Button, Box, Input } from 'components/atoms';
 
 type Props = {
-  ISBNSearch: (arg0: string) => void;
+  ISBNSearch: (ISBN: string) => void;
 };
 
 const FormISBN: FC<Props> = ({ ISBNSearch }) => {

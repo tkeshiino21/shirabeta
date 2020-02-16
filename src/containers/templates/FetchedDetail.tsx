@@ -7,15 +7,17 @@ import {
   bookLike,
 } from 'duck/libraryDetail/operations';
 
-const formatData = state => {
+const formatData = (state: any) => {
   return state.libraryDetail.likes.docs === undefined
     ? null
-    : state.libraryDetail.likes.docs.map(queryDocumentSnapshot => {
-        return queryDocumentSnapshot.data();
-      });
+    : state.libraryDetail.likes.docs.map(
+        (queryDocumentSnapshot: { data: () => void }) => {
+          return queryDocumentSnapshot.data();
+        },
+      );
 };
 
-const collation = state => {
+const collation = (state: any) => {
   const collationLikes = state.firebase.profile.likes;
   const collationComments = state.firebase.profile.comments;
   const ISBN = state.libraryDetail.response.ISBN;
@@ -36,7 +38,7 @@ const collation = state => {
   }
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: any) => ({
   fetchedDetail: state.libraryDetail.response,
   comments: formatData(state),
   isLoading: state.libraryDetail.isLoading,
@@ -49,17 +51,23 @@ const mapStateToProps = state => ({
   collation: collation(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  onRequest: (ISBN, uid) => {
-    dispatch(libraryDetailRequest(ISBN, uid));
+const mapDispatchToProps = (dispatch: any) => ({
+  onRequest: (ISBN: string) => {
+    dispatch(libraryDetailRequest(ISBN));
   },
-  onBorrow: (ISBN, title, uid) => {
+  onBorrow: (ISBN: string, title: string, uid: string) => {
     dispatch(bookBorrow(ISBN, title, uid));
   },
-  onComment: (ISBN, title, uid, userName, comment) => {
+  onComment: (
+    ISBN: string,
+    title: string,
+    uid: string,
+    userName: string,
+    comment: string,
+  ) => {
     dispatch(bookComment(ISBN, title, uid, userName, comment));
   },
-  onLike: (ISBN, uid, method) => {
+  onLike: (ISBN: string, uid: string, method: string) => {
     dispatch(bookLike(ISBN, uid, method));
   },
 });

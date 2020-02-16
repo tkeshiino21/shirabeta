@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import LayoutCommon from 'components/organisms/LayoutCommon';
 import GoBack from 'components/molecules/GoBack';
 import { Box } from 'components/atoms';
 import FetchedDetail from 'containers/templates/FetchedDetail';
 
-const LibraryDetail: React.FC = () => {
+const LibraryDetail: FC = () => {
   return (
     <LayoutCommon>
       <Box className="vertical">

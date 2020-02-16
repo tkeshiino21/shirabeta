@@ -1,11 +1,13 @@
 import { getFirebase } from 'react-redux-firebase';
 import { Dispatch } from 'redux';
 import * as action from './actions';
-import { ThunkAction } from 'redux-thunk';
 
 // When user push LogIn, SignUp or LogOut button, authAction runs
 
-const authSwitch = (method: any, userData: any) => (dispatch: any) => {
+const authSwitch = (
+  method: string,
+  userData: { email: string; password: string; name?: string },
+) => (dispatch: Dispatch) => {
   switch (method) {
     case 'signup':
       return (
@@ -38,11 +40,13 @@ const authSwitch = (method: any, userData: any) => (dispatch: any) => {
         getFirebase()
           .auth()
           .signOut()
-          .then(res => dispatch(action.authSuccess(res)))
-          .catch(err => dispatch(action.authFail(err)))
+          .then((response: any) => dispatch(action.authSuccess(response)))
+          .catch((error: object) => dispatch(action.authFail(error)))
       );
     default:
-      return dispatch(action.authFail('unpredictable errors occur'));
+      return dispatch(
+        action.authFail({ message: 'unpredictable errors occur' }),
+      );
   }
 };
 

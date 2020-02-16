@@ -2,13 +2,19 @@ import React, { FC } from 'react';
 import { Form, Formik, ErrorMessage, Field } from 'formik';
 import { theme, Box, Button, Spacing, Label } from 'components/atoms';
 
+type Props = {
+  name: string;
+  label: string;
+  type: string;
+  input: FC;
+};
 type FormFormatProps = {
   formDatas: {
-    initialValues: any;
-    validationSchema: any;
+    initialValues: object;
+    validationSchema: object;
     action: string;
-    onSubmit: any;
-    items: [{ name: any; label: any; type: any; input: any }];
+    onSubmit: (data: object) => void;
+    items: Props[];
   };
   gradation?: string;
 };
