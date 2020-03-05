@@ -7,8 +7,10 @@ import React, {
 } from 'react';
 import Article from 'components/molecules/Article';
 import SearchLibrary from 'components/templates/SearchLibrary';
+import Pagination from 'components/organisms/Pagination';
 import {
   Loader,
+  Box,
   Block,
   Paper,
   Container,
@@ -119,6 +121,10 @@ const PostLibrary: FC<Props> = ({
         </Block>
         <Spacing mTop={theme.medium} />
         <Posts />
+        <Spacing mTop={theme.medium} />
+        <Box justify="center" style={{ height: '60px' }}>
+          <Pagination sum={100} per={10} />
+        </Box>
       </Container>
     </Paper>
   );

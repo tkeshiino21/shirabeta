@@ -11,9 +11,10 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 100%;
   &.outlined {
-    outline: 1px solid ${theme.naturalDark};
+    border: 1px solid ${theme.naturalDark};
     background: ${theme.natural};
     text-indent: 2px;
+    border-radius: 4px;
   }
   &.underlined {
     border-bottom: 1px solid ${theme.naturalDark};

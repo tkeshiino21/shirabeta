@@ -7,9 +7,11 @@ import React, {
 } from 'react';
 import Article from 'components/molecules/Article';
 import SearchQiita from 'components/templates/SearchQiita';
+import Pagination from 'components/organisms/Pagination';
 import {
   Loader,
   Block,
+  Box,
   Paper,
   Container,
   Spacing,
@@ -37,6 +39,7 @@ const PostQiita: FC<Props> = ({ onRequest, isLoading, fetchedPosts }) => {
     setTagName(e.target.value);
   const handleOrder = (e: ChangeEvent<HTMLInputElement>) =>
     setOrder(e.target.value);
+  console.log(fetchedPosts);
 
   useEffect(() => onRequest(tagName), [tagName, setTagName, onRequest]);
   const Posts = () => {
@@ -87,6 +90,10 @@ const PostQiita: FC<Props> = ({ onRequest, isLoading, fetchedPosts }) => {
         </Block>
         <Spacing mTop={theme.medium} />
         <Posts />
+        <Spacing mTop={theme.medium} />
+        <Box justify="center" style={{ height: '60px' }}>
+          <Pagination sum={100} per={10} />
+        </Box>
       </Container>
     </Paper>
   );
